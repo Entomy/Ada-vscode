@@ -1,0 +1,51 @@
+{
+    "name": "ada",
+    "displayName": "Ada",
+    "description": "Ada language support",
+    "version": "0.0.1",
+    "publisher": "Entomy",
+    "license": "LICENSE",
+    "bugs": {
+        "email": "p-kell@live.com"
+    },
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "ada",
+                "aliases": ["Ada", "ada"],
+                "extensions": [".adb",".ads"],
+                "configuration": "./ada.language.json"
+            },
+            {
+                "id": "adc",
+                "aliases": ["GNAT Configuration", "GNAT Config", "adc"],
+                "extensions": [".adc"],
+                "configuration": "./adc.language.json"
+            },
+            {
+                "id": "gpr",
+                "aliases": ["GNAT Project", "gpr"],
+                "extensions": [".gpr"],
+                "configuration": "./gpr.language.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ada",
+                "scopeName": "source.ada",
+                "path": "./syntaxes/ada.tmLanguage.json"
+            },
+            {
+                "language": "adc",
+                "scopeName": "source.adc",
+                "path": "./syntaxes/adc.tmLanguage.json"
+            }
+        ]
+    }
+}
