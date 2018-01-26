@@ -8,6 +8,12 @@
 			"include": "#comments"
 		},
 		{
+			"include": "#packages"
+		},
+		{
+			"include": "#parameters"
+		},
+		{
 			"include": "#labels"
 		},
 		{
@@ -42,6 +48,51 @@
 				"match": "--.*$"
 			}]
 		},
+		"packages": {
+			"name": "meta.package.ada",
+			"begin": "(^|;)\\s*package.*",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "#keywords"
+						},
+						{
+							"include": "#aspects"
+						}
+					]
+				}
+			}
+		},
+		"parameters": {
+			"name": "meta.parameters.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "#separators"
+						},
+						{
+							"include": "#parameter"
+						}
+					]
+				}
+			}
+		},
+		"parameter": {
+			"patterns": [
+				{
+					"name": "meta.parameter",
+					"match": "\\b(\\w|_)+\\s*=>\\s*"
+				},
+				{
+					"name": "meta.parameter",
+					"match": "\\b(\\w|[0-9]|_)+\\b"
+				}
+			]
+		},
 		"labels": {
 			"patterns": [{
 				"name": "entity.name.label",
@@ -51,27 +102,27 @@
 		"keywords": {
 			"patterns": [
 				{
-					"name": "keyword.control.conditional",
+					"name": "keyword.control.conditional.ada",
 					"match": "(?i)\\b(case|else|elsif|if|when|while)\\b"
 				},
 				{
-					"name": "keyword.control.import",
+					"name": "keyword.control.import.ada",
 					"match": "(?i)(^|;)\\s*(with|use)\\b"
 				},
 				{
-					"name": "keyword.control",
+					"name": "keyword.control.ada",
 					"match": "(?i)\\b(abort|delay|do|end\\s+(case|if|loop)|exit|for|goto|loop|raise|requeue|return|reverse|select|terminate|then)\\b"
 				},
 				{
-					"name": "storage.modifier",
+					"name": "storage.modifier.ada",
 					"match": "(?i)\\b(abstract|access|aliased|constant|in|limited|out)\\b"
 				},
 				{
-					"name": "keyword.operator.new",
+					"name": "keyword.operator.new.ada",
 					"match": "(?i)\\bnew\\b"
 				},
 				{
-					"name": "keyword",
+					"name": "keyword.ada",
 					"match": "(?i)\\b(abs|accept|all|array|at|begin|body|declare|delta|digits|end|entry|exception|function|generic|interface|is|mod|not|null|of|others|overriding|package|private|procedure|protected|range|record|rem|renames|separate|some|subtype|synchronized|tagged|task|type|until)\\b"
 				}
 			]
@@ -120,46 +171,78 @@
 				}	
 			]
 		},
-		"pragmas": {
-			"name": "meta.preprocessor",
-			"begin": "pragma",
-			"end": "(\\(|;|$)",
-			"patterns": [
-				{
-					"name": "keyword",
-					"match": "(?i)\\bpragma\\b"
-				},
-				{
-					"name": "support.function",
-					"match": "(?i)\\b(all_calls_remote|assert|assertion_policy|cpu|default_storage_pool|detect_blocking|discard_names|dispatching_domain|elaborate|elaborate_all|elaborate_body|independent|independent_component|inspection_point|linker_options|list|locking_policy|normalize_scalars|optimize|page|partial_elaboration_policy|preelaborable_initialization|preelaborate|priority_specific_dispatching|profile|pure|queueing_policy|relative_deadline|remote_call_interface|remote_types|restrictions|reviewable|shared_passive|storage_size|suppress|task_dispatching_policy|unchecked_union|unsuppress|volatile|volatile_components)\\b"
-				},
-				{
-					"name": "support.function",
-					"match": "(?i)\\b(abort_defer|ada_83|ada_95|ada_05|ada_2005|ada_12|ada_2012|annotate|assume_no_invalid_values|ast_entry|c_pass_by_copy|canonical_streams|check|check_name|check_policy|comment|common_object|compile_time_error|compile_time_warning|complete_representation|complex_representation|component_alignment|convention_identifier|cpp_class|cpp_constructor|cpp_virtual|cpp_vtable|debug|debug_policy|elaboration_checks|eliminate|export_exception|export_function|export_object|export_procedure|export_value|export_valued_procedure|extend_system|extensions_allowed|external|external_name_casing|fast_math|favor_top_level|finalize_storage_only|float_representation|ident|implemented|implicit_packing|import_exception|import_function|import_object|import_procedure|import_valued_procedure|initialize_scalars|inline_always|inline_generic|interface_name|interrupt_state|invariant|keep_names|license|link_with|linker_alias|linker_constructor|linker_destructor|linker_section|long_float|machine_attribute|main|main_storage|no_body|no_strict_aliasing|obsolescent|optimize_alignment|ordered|passive|persistent_bss|polling|postcondition|precondition|profile_warnings|propagate_exceptions|psect_object|pure_function|restriction_warnings|share_generic|short_circuit_and_or|short_descriptors|simple_storage_pool_type|source_file_name|source_file_name_project|source_reference|static_elaboration_desired|stream_convert|style_checks|subtitle|suppress_all|suppress_exception_locations|suppress_initialization|task_info|task_name|task_storage|test_case|thread_body|thread_local_storage|time_slice|title|unimplemented_unit|universal_aliasing|universal_data|unmodified|unreferenced|unreferenced_objects|unreserve_all_interrupts|use_vads_size|validity_checks|warnings|weak_external|wide_character_encoding)\\b"
-				},
-				{
-					"name": "invalid.deprecated",
-					"match": "(?i)\\b(asynchronous|atomic|atomic_components|attach_handler|controlled|convention|export|import|inline|interface|interrupt_handler|interrupt_priority|memory_size|no_return|pack|priority|shared|storage_unit|system_name)\\b"
+		"separators": {
+			"name": "meta.punctuation",
+			"match": "[(),]",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "punctuation.separator.parenthesis",
+							"match": "[()]"
+						},
+						{
+							"name": "punctuation.separator.comma",
+							"match": "[,]"
+						}
+					]
 				}
-			]
+			}
+		},
+		"pragmas": {
+			"name": "meta.pragma.ada",
+			"match": "pragma.*",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\bpragma\\b"
+						},
+						{
+							"name": "keyword.control.directive.ada",
+							"match": "(?i)\\b(all_calls_remote|assert|assertion_policy|cpu|default_storage_pool|detect_blocking|discard_names|dispatching_domain|elaborate|elaborate_all|elaborate_body|independent|independent_component|inspection_point|linker_options|list|locking_policy|normalize_scalars|optimize|page|partial_elaboration_policy|preelaborable_initialization|preelaborate|priority_specific_dispatching|profile|pure|queueing_policy|relative_deadline|remote_call_interface|remote_types|restrictions|reviewable|shared_passive|storage_size|suppress|task_dispatching_policy|unchecked_union|unsuppress|volatile|volatile_components)\\b"
+						},
+						{
+							"name": "keyword.control.directive.ada",
+							"match": "(?i)\\b(abort_defer|ada_83|ada_95|ada_05|ada_2005|ada_12|ada_2012|annotate|assume_no_invalid_values|ast_entry|c_pass_by_copy|canonical_streams|check|check_name|check_policy|comment|common_object|compile_time_error|compile_time_warning|complete_representation|complex_representation|component_alignment|convention_identifier|cpp_class|cpp_constructor|cpp_virtual|cpp_vtable|debug|debug_policy|elaboration_checks|eliminate|export_exception|export_function|export_object|export_procedure|export_value|export_valued_procedure|extend_system|extensions_allowed|external|external_name_casing|fast_math|favor_top_level|finalize_storage_only|float_representation|ident|implemented|implicit_packing|import_exception|import_function|import_object|import_procedure|import_valued_procedure|initialize_scalars|inline_always|inline_generic|interface_name|interrupt_state|invariant|keep_names|license|link_with|linker_alias|linker_constructor|linker_destructor|linker_section|long_float|machine_attribute|main|main_storage|no_body|no_strict_aliasing|obsolescent|optimize_alignment|ordered|passive|persistent_bss|polling|postcondition|precondition|profile_warnings|propagate_exceptions|psect_object|pure_function|restriction_warnings|share_generic|short_circuit_and_or|short_descriptors|simple_storage_pool_type|source_file_name|source_file_name_project|source_reference|static_elaboration_desired|stream_convert|style_checks|subtitle|suppress_all|suppress_exception_locations|suppress_initialization|task_info|task_name|task_storage|test_case|thread_body|thread_local_storage|time_slice|title|unimplemented_unit|universal_aliasing|universal_data|unmodified|unreferenced|unreferenced_objects|unreserve_all_interrupts|use_vads_size|validity_checks|warnings|weak_external|wide_character_encoding)\\b"
+						},
+						{
+							"name": "invalid.deprecated.ada",
+							"match": "(?i)\\b(asynchronous|atomic|atomic_components|attach_handler|controlled|convention|export|import|inline|interface|interrupt_handler|interrupt_priority|memory_size|no_return|pack|priority|shared|storage_unit|system_name)\\b"
+						},
+						{
+							"include": "#parameters"
+						}
+					]
+				}
+			}
 		},
 		"aspects": {
+			"name": "meta.aspect.ada",
 			"begin": "with",
 			"end": "(is|;)",
-			"patterns": [
-				{
-					"name": "entity.name.trait",
-					"match": "(?i)\\b(address|alignment|all_calls_remote|asynchronous|atomic|atomic_components|attach_handler|bit_order|component_size|convention|constant_indexing|cpu|default_component_value|default_iterator|default_storage_pool|default_value|dispatching_domain|dynamic_predicate|elaborate_body|export|external_name|external_tag|implicit_dereference|import|independent|independent_components|inline|input|iterator_element|interrupt_handler|interrupt_priority|link_name|machine_radix|no_return|output|pack|post|pre|preelaborate|priority|pure|read|relative_deadline|remote_call_interface|remote_types|size|shared_passive|small|static_predicate|storage_size|storage_pool|stream_size|synchronization|type_invariant|unchecked_union|variable_indexing|volatile|volatile_components|write)\\b"
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.control.directive.ada",
+							"match": "(?i)\\b(address|alignment|all_calls_remote|asynchronous|atomic|atomic_components|attach_handler|bit_order|component_size|convention|constant_indexing|cpu|default_component_value|default_iterator|default_storage_pool|default_value|dispatching_domain|dynamic_predicate|elaborate_body|export|external_name|external_tag|implicit_dereference|import|independent|independent_components|inline|input|iterator_element|interrupt_handler|interrupt_priority|link_name|machine_radix|no_return|output|pack|post|pre|preelaborate|priority|pure|read|relative_deadline|remote_call_interface|remote_types|size|shared_passive|small|static_predicate|storage_size|storage_pool|stream_size|synchronization|type_invariant|unchecked_union|variable_indexing|volatile|volatile_components|write)\\b"
+						},
+						{
+							"name": "keyword.control.directive.ada",
+							"match": "(?i)\\b(ada_2005|ada_2012|favor_top_level|inline_always|object_size|persistent_bss|pure_function|remote_access_type|shared|suppress_debug_info|test_case|universal_aliasing|unmodified|unreferenced|unreferenced_objects|value_size|warnings)\\b"
+						}
+					]
 				},
-				{
-					"name": "entity.name.trait",
-					"match": "(?i)\\b(ada_2005|ada_2012|favor_top_level|inline_always|object_size|persistent_bss|pure_function|remote_access_type|shared|suppress_debug_info|test_case|universal_aliasing|unmodified|unreferenced|unreferenced_objects|value_size|warnings)\\b"
-				},
-				{
-					"name": "keyword",
-					"match": "(?i)(with|is)"
+				"1": {
+					"patterns": [
+						{
+							"include": "#keywords"
+						}
+					]
 				}
-			]
+			}
 		},
 		"attributes": {
 			"patterns": [
