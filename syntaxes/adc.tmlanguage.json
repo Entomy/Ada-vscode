@@ -42,7 +42,7 @@
             "patterns": [
                 {
                     "name": "keyword.adc",
-                    "match": "\\bpragma\\b"
+                    "match": "(?i)\\bpragma\\b"
                 }
             ]
         },
