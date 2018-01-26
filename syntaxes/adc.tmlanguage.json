@@ -36,7 +36,17 @@
         "arguments": {
             "name": "meta.arguments.adc",
             "begin": "[(]",
-            "end": "[)]"
+            "end": "[)]",
+            "captures": {
+                "0": {
+                    "patterns": [
+                        { "include": "#punctuation" }
+                    ]
+                }
+            },
+            "patterns": [
+                { "include": "#punctuation" }
+            ]
         },
         "keywords": {
             "patterns": [
@@ -51,6 +61,10 @@
                 {
                     "name": "punctuation.adc",
                     "match": "[()]"
+                },
+                {
+                    "name": "punctuation.delimiter.adc",
+                    "match": "=>"
                 },
                 {
                     "name": "punctuation.separator.adc",
