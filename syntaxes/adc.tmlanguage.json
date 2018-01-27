@@ -30,6 +30,10 @@
                 {
                     "name": "invalid.deprecated.adc",
                     "match": "(?i)\\b(asynchronous|atomic|atomic_components|attach_handler|controlled|convention|export|import|inline|interface|interrupt_handler|interrupt_priority|memory_size|no_return|pack|priority|shared|storage_unit|system_name)\\b"
+                },
+                {
+                    "name": "invalid.illegal.adc",
+                    "match": "\\b(\\w|_)+\\b"
                 }
             ]
         },
@@ -104,7 +108,37 @@
                     }
                 },
                 {
-                    "include": "#value"
+                    "name": "meta.argument.adc",
+                    "match": "\\b(\\w|\\.|_)+\\b",
+                    "captures": {
+                        "0": {
+                            "patterns": [
+                                { "include": "#value" }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "meta.argument.adc",
+                    "match": "'.'",
+                    "captures": {
+                        "0": {
+                            "patterns": [
+                                { "include": "#value" }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "meta.argument.adc",
+                    "match": "\".*\"",
+                    "captures": {
+                        "0": {
+                            "patterns": [
+                                { "include": "#value" }
+                            ]
+                        }
+                    }
                 }
             ]
         },
