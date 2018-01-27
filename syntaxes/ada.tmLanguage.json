@@ -4,9 +4,38 @@
 	"foldingStartMarker": "\\bbegin\\b",
 	"foldingStopMarker": "\\bend\\b",
 	"patterns": [
-		{ "include": "#comment" }
+		{ "include": "#aspect" },
+		{ "include": "#comment" },
+		{ "include": "#keyword" },
+		{ "include": "#value" }
 	],
 	"repository": {
+		"aspect": {
+			"patterns": [
+				{
+					"name": "meta.aspect.ada",
+					"begin": "\\bwith\\b",
+					"end": "(\\bis\\b|;)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" }
+							]
+						}
+					},
+					"patterns": [
+						{
+							"name": "keyword.control.directive.ada",
+							"match": "(?i)\\b(address|alignment|all_calls_remote|asynchronous|atomic|atomic_components|attach_handler|bit_order|component_size|convention|constant_indexing|cpu|default_component_value|default_iterator|default_storage_pool|default_value|dispatching_domain|dynamic_predicate|elaborate_body|export|external_name|external_tag|implicit_dereference|import|independent|independent_components|inline|input|iterator_element|interrupt_handler|interrupt_priority|link_name|machine_radix|no_return|output|pack|post|pre|preelaborate|priority|pure|read|relative_deadline|remote_call_interface|remote_types|size|shared_passive|small|static_predicate|storage_size|storage_pool|stream_size|synchronization|type_invariant|unchecked_union|variable_indexing|volatile|volatile_components|write)\\b"
+						},
+						{
+							"name": "keyword.control.directive.ada",
+							"match": "(?i)\\b(ada_2005|ada_2012|favor_top_level|inline_always|object_size|persistent_bss|pure_function|remote_access_type|shared|suppress_debug_info|test_case|universal_aliasing|unmodified|unreferenced|unreferenced_objects|value_size|warnings)\\b"
+						}
+					]
+				}
+			]
+		},
 		"comment": {
 			"patterns": [
 				{
@@ -32,6 +61,31 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		"keyword": {
+			"patterns": [
+				{
+					"name": "keyword.ada",
+					"match": "(?i)\\b(abort|abs|abstract|accept|access|aliased|all|and|array|at|begin|body|case|constant|declare|delay|delta|digits|do|else|elsif|end|entry|exception|exit|for|function|generic|goto|if|in|interface|is|limited|loop|mod|new|not|null|of|or|others|out|overriding|package|pragma|private|procedure|protected|raise|range|record|rem|renames|requeue|return|reverse|select|separate|some|subtype|synchronized|tagged|task|terminate|then|type|until|use|when|while|with|xor)\\b"
+				}
+			]
+		},
+		"value": {
+			"patterns": [
+				{
+					"name": "constant.numeric.ada",
+					"match": "[0-9]([0-9_]*[0-9])?(\\.[0-9]([0-9_]*[0-9])?)?"
+				},
+				{
+					"name": "string.quoted.single.ada",
+					"match": "'.'"
+				},
+				{
+					"name": "string.quoted.double.ada",
+					"begin": "\"",
+					"end": "\""
 				}
 			]
 		}
