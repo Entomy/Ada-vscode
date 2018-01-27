@@ -5,7 +5,9 @@
 	"foldingStopMarker": "\\bend\\b",
 	"patterns": [
 		{ "include": "#aspect" },
+		{ "include": "#attribute" },
 		{ "include": "#comment" },
+		{ "include": "#punctuation" },
 		{ "include": "#keyword" },
 		{ "include": "#value" }
 	],
@@ -33,6 +35,22 @@
 							"match": "(?i)\\b(ada_2005|ada_2012|favor_top_level|inline_always|object_size|persistent_bss|pure_function|remote_access_type|shared|suppress_debug_info|test_case|universal_aliasing|unmodified|unreferenced|unreferenced_objects|value_size|warnings)\\b"
 						}
 					]
+				}
+			]
+		},
+		"attribute": {
+			"patterns": [
+				{
+					"name": "entity.other.attribute-name.ada",
+					"match": "(?i)'(access|address|adjacent|aft|alignment|base|bit_order|body_version|callable|caller|ceiling|class|component_size|compose|constrained|copy_sign|count|definite|delta|denorm|digits|exponent|external_tag|first|first_bit|floor|fore|fraction|identity|image|input|last|last_bit|leading_part|length|machine|machine_emax|machine_emin|machine_mantissa|machine_overflows|machine_radix|machine_rounding|machine_rounds|max|max_alignment_for_allocation|max_size_in_storage_elements|min|mod|model|model_emin|model_epsilon|model_mantissa|model_small|modulus|old|output|overlaps_storage|partition_id|pos|position|pred|priority|range|read|remainder|result|round|rounding|safe_first|safe_last|scale|scaling|signed_zeros|size|small|storage_pool|storage_size|stream_size|succ|tag|terminated|truncation|unbiased_rounding|unchecked_access|val|valid|value|version|wide_image|wide_value|wide_wide_image|wide_wide_value|wide_wide_width|wide_width|width|write)\\b"
+				},
+				{
+					"name": "entity.other.attribute-name.ada",
+					"match": "(?i)'(abort_signal|address_size|asm_input|asm_output|ast_entry|bit|bit_position|code_address|default_bit_order|elaborated|elab_body|elab_spec|emax|enabled|enum_rep|enum_val|epsilon|fixed_value|has_access_values|has_discriminants|img|integer_value|invalid_value|machine_size|max_interrupt_priority|max_priority|maximum_alignment|machanism_code|null_parameter|object_size|old|passed_by_reference|pool_address|range_length|storage_unit|stub_type|target_name|tick|to_address|type_class|uet_address|unconstrained_array|universal_literal_string|unrestricted_access|vads_size|value_size|wchar_t_size|word_size)\\b"
+				},
+				{
+					"name": "invalid.deprecated.ada",
+					"match": "(?i)'(emax|epsilon|large|mantissa|safe_emax|safe_large|safe_small)\\b"
 				}
 			]
 		},
@@ -64,6 +82,26 @@
 				}
 			]
 		},
+        "punctuation": {
+            "patterns": [
+                {
+                    "name": "punctuation.adc",
+                    "match": "[()]"
+                },
+                {
+                    "name": "punctuation.delimiter.adc",
+                    "match": "=>"
+                },
+                {
+                    "name": "punctuation.separator.adc",
+                    "match": ","
+                },
+                {
+                    "name": "punctuation.terminator.adc",
+                    "match": ";"        
+                }
+            ]
+        },
 		"keyword": {
 			"patterns": [
 				{
