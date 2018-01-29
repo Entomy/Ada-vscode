@@ -88,6 +88,39 @@
 				{
 					"name": "keyword.ada",
 					"match": "(?i)\\b(abort|abs|abstract|accept|access|aliased|all|and|array|at|begin|body|case|constant|declare|delay|delta|digits|do|else|elsif|end|entry|exception|exit|for|function|generic|goto|if|in|interface|is|limited|loop|mod|new|not|null|of|or|others|out|overriding|package|pragma|private|procedure|protected|raise|range|record|rem|renames|requeue|return|reverse|select|separate|some|subtype|synchronized|tagged|task|terminate|then|type|until|use|when|while|with|xor)\\b"
+				},
+				{
+					"name": "keyword.other.ada",
+					"match": "(?i)<>"
+				}
+			]
+		},
+		"property": {
+			"patterns": [
+				{
+					"name": "meta.property.ada",
+					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.type.annotation.ada",
+									"match": ":\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
 				}
 			]
 		},
@@ -115,7 +148,7 @@
 			"patterns": [
 				{
 					"name": "meta.type.declaration.ada",
-					"begin": "(?i)\\btype\\s+(\\w|_)+\\s+is\\s+((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
+					"begin": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {
 						"0": {
@@ -127,11 +160,14 @@
 								}
 							]
 						}
-					}
+					},
+					"patterns": [
+						{ "include": "#property" }
+					]
 				},
 				{
 					"name": "meta.type.declaration.ada",
-					"match": "(?i)\\btype\\s+(\\w|_)+\\s+is\\s+new\\s+(\\w|\\.|_)+\\s+with\\s+null\\s+record;",
+					"match": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\s+with\\s+(limited\\s+)?null\\s+record;",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -146,7 +182,7 @@
 				},
 				{
 					"name": "meta.type.declaration.ada",
-					"begin": "(?i)\\btype\\s+(\\w|_)+\\s+is\\s+new\\s+(\\w|\\.|_)+\\s+with\\s+record\\b",
+					"begin": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\swith\\s+(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {
 						"0": {
@@ -158,7 +194,10 @@
 								}
 							]
 						}
-					}
+					},
+					"patterns": [
+						{ "include": "#property" }
+					]
 				},
 				{
 					"name": "meta.type.declaration.ada",
