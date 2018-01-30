@@ -2,9 +2,13 @@
     "name": "ada",
     "displayName": "Ada",
     "description": "Ada language support",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "Entomy",
     "license": "LICENSE",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Entomy/Ada-vscode"
+    },
     "bugs": {
         "email": "p-kell@live.com"
     },
@@ -18,20 +22,37 @@
         "languages": [
             {
                 "id": "ada",
-                "aliases": ["Ada", "ada"],
-                "extensions": [".adb",".ads"],
+                "aliases": [
+                    "Ada",
+                    "ada"
+                ],
+                "extensions": [
+                    ".adb",
+                    ".ads"
+                ],
                 "configuration": "./ada.language.json"
             },
             {
                 "id": "adc",
-                "aliases": ["GNAT Configuration", "GNAT Config", "adc"],
-                "extensions": [".adc"],
+                "aliases": [
+                    "GNAT Configuration",
+                    "GNAT Config",
+                    "adc"
+                ],
+                "extensions": [
+                    ".adc"
+                ],
                 "configuration": "./adc.language.json"
             },
             {
                 "id": "gpr",
-                "aliases": ["GNAT Project", "gpr"],
-                "extensions": [".gpr"],
+                "aliases": [
+                    "GNAT Project",
+                    "gpr"
+                ],
+                "extensions": [
+                    ".gpr"
+                ],
                 "configuration": "./gpr.language.json"
             }
         ],
@@ -45,6 +66,11 @@
                 "language": "adc",
                 "scopeName": "source.adc",
                 "path": "./syntaxes/adc.tmLanguage.json"
+            },
+            {
+                "language": "gpr",
+                "scopeName": "source.gpr",
+                "path": "./syntaxes/gpr.tmLanguage.json"
             }
         ]
     }
