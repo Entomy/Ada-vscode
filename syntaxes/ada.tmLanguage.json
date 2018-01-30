@@ -9,6 +9,7 @@
 		{ "include": "#comment" },
 		{ "include": "#pragma" },
 		{ "include": "#punctuation" },
+		{ "include": "#subroutine" },
 		{ "include": "#type" },
 		{ "include": "#keyword" },
 		{ "include": "#value" }
@@ -80,6 +81,36 @@
 									}
 								},
 								{ "include": "#value" }
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.argument.ada",
+					"match": "\\b(\\w|_)+\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.type.annotation.ada",
+									"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{ "include": "#punctuation" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+"
+												}
+											]
+										}
+									}
+								},
+								{
+									"name": "variable.parameter.ada",
+									"match": "\\b(\\w|_)+"
+								}
 							]
 						}
 					}
@@ -165,7 +196,17 @@
 			"patterns": [
 				{
 					"name": "comment.line.double-dash.ada",
-					"match": "--.*$"
+					"match": "--.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "comment.block.documentation.gnatdoc",
+									"match": "@.*$"
+								}
+							]
+						}
+					}
 				},
 				{
 					"name": "comment.block.ada",
@@ -193,7 +234,11 @@
 			"patterns": [
 				{
 					"name": "keyword.ada",
-					"match": "(?i)\\b(abort|abs|abstract|accept|access|aliased|all|and|array|at|begin|body|case|constant|declare|delay|delta|digits|do|else|elsif|end|entry|exception|exit|for|function|generic|goto|if|in|interface|is|limited|loop|mod|new|not|null|of|or|others|out|overriding|package|pragma|private|procedure|protected|raise|range|record|rem|renames|requeue|return|reverse|select|separate|some|subtype|synchronized|tagged|task|terminate|then|type|until|use|when|while|with|xor)\\b"
+					"match": "(?i)\\b(abort|abs|abstract|accept|access|aliased|all|and|array|at|begin|body|constant|declare|delay|delta|digits|end|entry|exception|function|generic|in|interface|is|limited|mod|new|not|null|of|or|others|out|overriding|package|pragma|private|procedure|protected|range|record|rem|renames|requeue|reverse|select|separate|some|subtype|synchronized|tagged|task|then|type|use|when|with|xor)\\b"
+				},
+				{
+					"name": "keyword.control.ada",
+					"match": "(?i)\\b(case|do|else|elsif|exit|for|goto|if|loop|raise|return|terminate|until|while)\\b"
 				},
 				{
 					"name": "keyword.other.ada",
@@ -254,6 +299,10 @@
 											]
 										}
 									}
+								},
+								{
+									"name": "variable.property.ada",
+									"match": "\\b(\\w|_)+\\b"
 								}
 							]
 						}
@@ -280,6 +329,60 @@
                     "match": ";"        
                 }
             ]
+		},
+		"subroutine": {
+			"patterns": [
+				{
+					"name": "meta.procedure.ada",
+					"match": "(?i)\\bprocedure\\s+(\\w|_)+(\\(.*\\))?",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.procedure.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.function.ada",
+					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\(.*\\))?\\s+return\\s+(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.return-type.ada",
+									"match": "\\breturn\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "keyword.ada",
+													"match": "(?i)\\breturn\\b"
+												},
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.function.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
+				}
+			]
 		},
 		"type": {
 			"patterns": [
