@@ -87,7 +87,7 @@
 				},
 				{
 					"name": "meta.argument.ada",
-					"match": "\\b(\\w|_)+\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -109,7 +109,14 @@
 								},
 								{
 									"name": "variable.parameter.ada",
-									"match": "\\b(\\w|_)+"
+									"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" }
+											]
+										}
+									}
 								}
 							]
 						}
