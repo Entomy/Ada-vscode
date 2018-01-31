@@ -2,6 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "gpr",
     "patterns": [
+        { "include": "#package" },
         { "include": "#attribute" },
         { "include": "#keyword" },
         { "include": "#value" }
@@ -11,7 +12,8 @@
             "patterns": [
                 {
                     "name": "meta.attribute.gpr",
-                    "match": "\\bfor\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+use\\b",
+                    "begin": "\\bfor\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+use\\b",
+                    "end": ";",
                     "captures": {
                         "0": {
                             "patterns": [
@@ -23,7 +25,10 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "patterns": [
+                        { "include": "#value" }
+                    ]
                 }
             ]
         },
@@ -32,6 +37,29 @@
                 {
                     "name": "keyword.gpr",
                     "match": "(?i)\\b(case|end|extends|external|for|is|library|others|package|project|renames|type|use|when|with)\\b"
+                }
+            ]
+        },
+        "package": {
+            "patterns": [
+                {
+                    "name": "meta.package.gpr",
+                    "begin": "(?i)\\bpackage\\s+(\\w|_)+\\s+is\\b",
+                    "end": "(?i)\\bend\\s+(\\w|_)+\\b",
+                    "captures": {
+                        "0": {
+                            "patterns": [
+                                { "include": "#keyword" },
+                                {
+                                    "name": "entity.name.package.gpr",
+                                    "match": "\\b(\\w|_)+\\b"
+                                }
+                            ]
+                        }
+                    },
+                    "patterns": [
+                        { "include": "#attribute" }
+                    ]
                 }
             ]
         },
