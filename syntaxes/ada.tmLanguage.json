@@ -447,23 +447,64 @@
 					]
 				},
 				{
-					"name": "meta.type.declaration.ada",
-					"begin": "(?i)\\btype\\b",
-					"end": ";",
+					"name": "meta.type.declaration.array.ada",
+					"match": "(?i)\\btype\\s+(\\w|_)+\\s+is\\s+array\\s*\\(.*\\)\\s*of\\s+(\\w|\\.|_)+\\b",
 					"captures": {
 						"0": {
 							"patterns": [
-								{ "include": "#keyword" }
+								{
+									"name": "meta.type.declaration.array.index.ada",
+									"match": "\\(.*\\)",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{
+									"name": "meta.type.declaration.array.of.ada",
+									"match": "(?i)\\bof\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{ "include": "#keyword" },
+								{
+									"name": "storage.type.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
 							]
 						}
-					},
-					"patterns": [
-						{ "include": "#keyword" },
-						{
-							"name": "storage.type.ada",
-							"match": "\\b(\\w|_)+\\b"
+					}
+				},
+				{
+					"name": "meta.type.declaration.ada",
+					"match": "(?i)\\btype\\s+(\\w|_)+\\s+is\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" },
+								{
+									"name": "storage.type.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
 						}
-					]
+					}
 				}
 			]
 		},
