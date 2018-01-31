@@ -388,13 +388,47 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "meta.operator.ada",
+					"match": "(?i)\\bfunction\\s+\"..?.?\"\\(.*\\)\\s+return\\s+(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.return-type.ada",
+									"match": "\\breturn\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "keyword.ada",
+													"match": "(?i)\\breturn\\b"
+												},
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.operator.ada",
+									"match": "\"..?.?\""
+								}
+							]
+						}
+					}
 				}
 			]
 		},
 		"type": {
 			"patterns": [
 				{
-					"name": "meta.type.declaration.ada",
+					"name": "meta.type.declaration.record.ada",
 					"begin": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {
@@ -413,7 +447,7 @@
 					]
 				},
 				{
-					"name": "meta.type.declaration.ada",
+					"name": "meta.type.declaration.record.ada",
 					"match": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\s+with\\s+(limited\\s+)?null\\s+record;",
 					"captures": {
 						"0": {
@@ -428,7 +462,7 @@
 					}
 				},
 				{
-					"name": "meta.type.declaration.ada",
+					"name": "meta.type.declaration.record.ada",
 					"begin": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\swith\\s+(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {

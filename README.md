@@ -8,4 +8,4 @@ This extension was developed largely in response to the horrible quality of Ada 
 
 * Highlighting for **pragmas** and **aspects**.
 * Highlighting for **types**, something often missed, and as I understand it only also seen in GPS.
-* Highlighting for `.adc` files (`.gpr` is on the way), not just `.adb` and `.ads`
+* Highlighting for `.adc` files and basic support for `.gpr` files, not just `.adb` and `.ads`
