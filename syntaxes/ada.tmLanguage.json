@@ -5,6 +5,7 @@
 	"foldingStopMarker": "\\bend\\b",
 	"patterns": [
 		{ "include": "#aspect" },
+		{ "include": "#assignment" },
 		{ "include": "#attribute" },
 		{ "include": "#comment" },
 		{ "include": "#pragma" },
@@ -180,6 +181,86 @@
 							"match": "(?i)\\b(ada_2005|ada_2012|favor_top_level|inline_always|object_size|persistent_bss|pure_function|remote_access_type|shared|suppress_debug_info|test_case|universal_aliasing|unmodified|unreferenced|unreferenced_objects|value_size|warnings)\\b"
 						}
 					]
+				}
+			]
+		},
+		"assignment": {
+			"patterns": [
+				{
+					"name": "meta.assignment.constant.ada",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*constant\\s*:=.*;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.type.annotation.ada",
+									"match": "(?i):\\s*constant\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" }
+											]
+										}
+									}
+								},
+								{
+									"match": ":=.*;",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" },
+												{ "include": "#value" }
+											]
+										}
+									}
+								},
+								{
+									"name": "variable.name.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.assignment.variable.ada",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+\\s*:=.*;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.type.annotation.ada",
+									"match": ":\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{
+									"match": ":=.*;",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" },
+												{ "include": "#value" }
+											]
+										}
+									}
+								},
+								{
+									"name": "variable.name.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
