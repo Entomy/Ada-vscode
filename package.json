@@ -2,7 +2,7 @@
     "name": "ada",
     "displayName": "Ada",
     "description": "Ada language support",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "publisher": "Entomy",
     "license": "LICENSE",
     "repository": {

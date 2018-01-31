@@ -402,8 +402,8 @@
             "patterns": [
                 {
                     "name": "punctuation.ada",
-                    "match": "[()]"
-                },
+                    "match": "[().]"
+				},
                 {
                     "name": "punctuation.delimiter.ada",
                     "match": "=>"
@@ -627,7 +627,87 @@
 			"patterns": [
 				{
 					"name": "constant.numeric.ada",
-					"match": "[0-9]([0-9_]*[0-9])?(\\.[0-9]([0-9_]*[0-9])?)?"
+					"match": "2#[01]([01_]*[01])?#",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "constant.numeric.base.ada",
+									"match": "2?#"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "constant.numeric.ada",
+					"match": "8#[0-7]([0-7_]*[0-7])?#",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "constant.numeric.base.ada",
+									"match": "8?#"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "constant.numeric.ada",
+					"match": "10#[0-9]([0-9_]*[0-9])?#",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "constant.numeric.base.ada",
+									"match": "(10)?#"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "constant.numeric.ada",
+					"match": "(?i)16#[0-9A-F]([0-9A-F_]*[0-9A-F])?#",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "constant.numeric.base.ada",
+									"match": "(16)?#"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "constant.numeric.ada",
+					"match": "[0-9]([0-9_]*[0-9])?(\\.[0-9]([0-9_]*[0-9])?([eE][0-9]+)?)?",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "punctuation.radix-point.ada",
+									"match": "\\."
+								},
+								{
+									"name": "meta.exponent.ada",
+									"match": "[eE][0-9]+",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "punctuation.exponent-mark.ada",
+													"match": "[eE]"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
 				},
 				{
 					"name": "string.quoted.single.ada",
