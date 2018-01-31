@@ -1,0 +1,53 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "gpr",
+    "patterns": [
+        { "include": "#attribute" },
+        { "include": "#keyword" },
+        { "include": "#value" }
+    ],
+    "repository": {
+        "attribute": {
+            "patterns": [
+                {
+                    "name": "meta.attribute.gpr",
+                    "match": "\\bfor\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+use\\b",
+                    "captures": {
+                        "0": {
+                            "patterns": [
+                                { "include": "#keyword" },
+                                { "include": "#value" },
+                                {
+                                    "name": "entity.other.attribute-name",
+                                    "match": "\\b(\\w|_)+\\b"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "keyword": {
+            "patterns": [
+                {
+                    "name": "keyword.gpr",
+                    "match": "(?i)\\b(case|end|extends|external|for|is|library|others|package|project|renames|type|use|when|with)\\b"
+                }
+            ]
+        },
+        "value": {
+            "patterns": [
+                {
+                    "name": "string.quoted.single.gpr",
+                    "match": "'.'"
+                },
+                {
+                    "name": "string.quoted.double.gpr",
+                    "begin": "\"",
+                    "end": "\""
+                }
+            ]
+        }
+    },
+    "scopeName": "source.gpr"
+}
