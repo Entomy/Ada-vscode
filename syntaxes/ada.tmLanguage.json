@@ -239,15 +239,23 @@
 									}
 								},
 								{
-									"match": ":=.*;",
+									"name": "meta.assignment.expression.ada",
+									"begin": ":=",
+									"end": ";",
 									"captures": {
 										"0": {
 											"patterns": [
-												{ "include": "#punctuation" },
-												{ "include": "#value" }
+												{ "include": "#punctuation" }
 											]
 										}
-									}
+									},
+									"patterns": [
+										{ "include": "#attribute" },
+										{ "include": "#value" },
+										{ "include": "#type" },
+										{ "include": "#punctuation" },
+										{ "include": "#keyword" }
+									]
 								},
 								{
 									"name": "variable.name.ada",
@@ -279,15 +287,23 @@
 									}
 								},
 								{
-									"match": ":=.*;",
+									"name": "meta.assignment.expression.ada",
+									"begin": ":=",
+									"end": ";",
 									"captures": {
 										"0": {
 											"patterns": [
-												{ "include": "#punctuation" },
-												{ "include": "#value" }
+												{ "include": "#punctuation" }
 											]
 										}
-									}
+									},
+									"patterns": [
+										{ "include": "#attribute" },
+										{ "include": "#value" },
+										{ "include": "#type" },
+										{ "include": "#punctuation" },
+										{ "include": "#keyword" }
+									]
 								},
 								{
 									"name": "variable.name.ada",
