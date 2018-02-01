@@ -110,13 +110,13 @@
 				},
 				{
 					"name": "meta.argument.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+(\\s*:=\\s*(\\w|\\.|_|')+)?",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*(\\w|\\.|_|')+)?",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.ada",
-									"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+(\\s*:=\\s*(\\w|\\.|_|')+)?",
+									"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*(\\w|\\.|_|')+)?",
 									"captures": {
 										"0": {
 											"patterns": [
@@ -133,6 +133,7 @@
 														}
 													}
 												},
+												{ "include": "#attribute" },
 												{ "include": "#keyword" },
 												{ "include": "#punctuation" },
 												{
@@ -223,17 +224,22 @@
 			"patterns": [
 				{
 					"name": "meta.assignment.constant.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*constant\\s*:=.*;",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*constant(\\s+(\\w|\\.|_)+('(\\w|_)+)?)?\\s*:=.*;",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.ada",
-									"match": "(?i):\\s*constant\\b",
+									"match": "(?i):\\s*constant(\\s+(\\w|\\.|_)+('(\\w|_)+)?)?\\b",
 									"captures": {
 										"0": {
 											"patterns": [
-												{ "include": "#keyword" }
+												{ "include": "#attribute" },
+												{ "include": "#keyword" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
 											]
 										}
 									}
@@ -267,16 +273,17 @@
 				},
 				{
 					"name": "meta.assignment.variable.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+\\s*:=.*;",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\s*:=.*;",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.ada",
-									"match": ":\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+\\b",
+									"match": ":\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\b",
 									"captures": {
 										"0": {
 											"patterns": [
+												{ "include": "#attribute" },
 												{ "include": "#keyword" },
 												{
 													"name": "storage.type.ada",

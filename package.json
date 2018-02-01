@@ -3,7 +3,7 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
-    "version": "0.15.0",
+    "version": "0.16.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -37,8 +37,12 @@
             {
                 "id": "ada",
                 "aliases": [
+                    "ADA",
                     "Ada",
-                    "ada"
+                    "ada",
+                    "SPARK",
+                    "Spark",
+                    "spark"
                 ],
                 "extensions": [
                     ".adb",
