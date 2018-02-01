@@ -8,6 +8,7 @@
 		{ "include": "#assignment" },
 		{ "include": "#attribute" },
 		{ "include": "#comment" },
+		{ "include": "#label" },
 		{ "include": "#pragma" },
 		{ "include": "#punctuation" },
 		{ "include": "#subroutine" },
@@ -331,6 +332,28 @@
 				{
 					"name": "keyword.other.ada",
 					"match": "(?i)<>"
+				}
+			]
+		},
+		"label": {
+			"patterns": [
+				{
+					"name": "meta.label.ada",
+					"match": "<<(\\w|_)+>>",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "punctuation.label.ada",
+									"match": "(<<|>>)"
+								},
+								{
+									"name": "entity.name.label.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
