@@ -8,6 +8,7 @@
 		{ "include": "#assignment" },
 		{ "include": "#attribute" },
 		{ "include": "#comment" },
+		{ "include": "#goto" },
 		{ "include": "#label" },
 		{ "include": "#pragma" },
 		{ "include": "#punctuation" },
@@ -316,6 +317,29 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		"goto": {
+			"patterns": [
+				{
+					"name": "meta.goto.ada",
+					"match": "(?i)\\bgoto\\s+(\\w|_)+;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#punctuation" },
+								{
+									"name": "keyword.control.goto.ada",
+									"match": "(?i)\\bgoto\\b"
+								},
+								{
+									"name": "entity.name.label.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
