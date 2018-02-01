@@ -3,7 +3,7 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
-    "version": "0.13.0",
+    "version": "0.14.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -11,7 +11,7 @@
         "theme": "light"
     },
     "preview": true,
-    "keywords": [ "ada", "adb", "adc", "ads", "gpr", "gnat", "gnat config", "gnat configuration", "gnat project" ],
+    "keywords": [ "ada", "adb", "adc", "ads", "gpr" ],
     "license": "LICENSE",
     "repository": {
         "type": "git",
