@@ -5,6 +5,13 @@
     "icon": "icon.png",
     "version": "0.13.0",
     "publisher": "Entomy",
+    "author": "Entomy",
+    "galleryBanner": {
+        "color": "#AAAAAA",
+        "theme": "light"
+    },
+    "preview": true,
+    "keywords": [ "ada", "adb", "adc", "ads", "gpr", "gnat", "gnat config", "gnat configuration", "gnat project" ],
     "license": "LICENSE",
     "repository": {
         "type": "git",
