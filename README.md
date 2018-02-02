@@ -8,6 +8,7 @@ This extension was developed largely in response to the horrible quality of Ada 
 
 * Highlighting for **pragmas** and **aspects**.
 * Highlighting for **types**, something often missed, and as I understand it only also seen in GPS.
+* Context aware highlighting, such as `return` being classed differently in function declarations versus control statements, or `exception` being classed as a keyword when introducing exception handler blocks, but as a type when declaring exceptions.
 * Highlighting for `.adc` files and basic support for `.gpr` files, not just `.adb` and `.ads`
 
 # Proofs in the Screenshot

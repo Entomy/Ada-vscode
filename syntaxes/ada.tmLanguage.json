@@ -4,10 +4,11 @@
 	"foldingStartMarker": "\\bbegin\\b",
 	"foldingStopMarker": "\\bend\\b",
 	"patterns": [
+		{ "include": "#comment" },
 		{ "include": "#aspect" },
 		{ "include": "#assignment" },
 		{ "include": "#attribute" },
-		{ "include": "#comment" },
+		{ "include": "#exception" },
 		{ "include": "#goto" },
 		{ "include": "#label" },
 		{ "include": "#pragma" },
@@ -373,6 +374,57 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		"exception": {
+			"patterns": [
+				{
+					"name": "meta.exception.ada",
+					"match": "\\braise\\s+(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ada",
+									"match": "(?i)\\braise\\b"
+								},
+								{
+									"name": "entity.name.exception.ada",
+									"match": "\\b(\\w|\\.|_)+\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.exception.declaration.ada",
+					"match": "(?i)\\b(\\w|_)+\\s*:\\s*exception\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.exception.annotation.ada",
+									"match": ":\\s*exception\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" },
+												{
+													"name": "storage.type.ada",
+													"match": "(?i)\\bexception\\b"
+												}
+											]
+										}
+									}
+								},
+								{
+									"name": "entity.name.exception.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
