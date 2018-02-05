@@ -217,6 +217,7 @@
 							"name": "keyword.control.directive.ada",
 							"match": "(?i)\\b(ada_2005|ada_2012|favor_top_level|inline_always|object_size|persistent_bss|pure_function|remote_access_type|shared|suppress_debug_info|test_case|universal_aliasing|unmodified|unreferenced|unreferenced_objects|value_size|warnings)\\b"
 						},
+						{ "include": "#attribute" },
 						{ "include": "#keyword" },
 						{ "include": "#value" },
 						{ "include": "#punctuation" }
