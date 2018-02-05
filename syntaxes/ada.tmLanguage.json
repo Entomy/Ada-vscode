@@ -780,6 +780,21 @@
 					}
 				},
 				{
+					"name": "meta.type.declaration.subtype.ada",
+					"match": "(?i)\\bsubtype\\s+(\\w|_)+\\s+is\\s+(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" },
+								{
+									"name": "storage.type.ada",
+									"match": "\\b(\\w|\\.|_)+\\b"
+								}
+							]
+						}
+					}
+				},
+				{
 					"name": "meta.type.aggregate.ada",
 					"match": "\\b(\\w|\\.|_)+'\\(.*\\)",
 					"captures": {
