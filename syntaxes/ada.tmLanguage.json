@@ -405,7 +405,7 @@
 							"patterns": [
 								{
 									"name": "meta.exception.annotation.ada",
-									"match": ":\\s*exception\\b",
+									"match": "(?i):\\s*exception\\b",
 									"captures": {
 										"0": {
 											"patterns": [
