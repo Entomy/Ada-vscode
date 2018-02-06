@@ -3,7 +3,7 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
-    "version": "0.22.0",
+    "version": "0.23.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -24,6 +24,7 @@
         "url": "https://github.com/Entomy/Ada-vscode"
     },
     "bugs": {
+        "url": "https://github.com/Entomy/Ada-vscode/issues",
         "email": "p-kell@live.com"
     },
     "engines": {
@@ -33,6 +34,23 @@
         "Languages"
     ],
     "contributes": {
+        "grammars": [
+            {
+                "language": "ada",
+                "scopeName": "source.ada",
+                "path": "./syntaxes/ada.tmLanguage.json"
+            },
+            {
+                "language": "adc",
+                "scopeName": "source.adc",
+                "path": "./syntaxes/adc.tmLanguage.json"
+            },
+            {
+                "language": "gpr",
+                "scopeName": "source.gpr",
+                "path": "./syntaxes/gpr.tmLanguage.json"
+            }
+        ],
         "languages": [
             {
                 "id": "ada",
@@ -74,21 +92,10 @@
                 "configuration": "./gpr.language.json"
             }
         ],
-        "grammars": [
-            {
-                "language": "ada",
-                "scopeName": "source.ada",
-                "path": "./syntaxes/ada.tmLanguage.json"
-            },
-            {
-                "language": "adc",
-                "scopeName": "source.adc",
-                "path": "./syntaxes/adc.tmLanguage.json"
-            },
+        "snippets": [
             {
                 "language": "gpr",
-                "scopeName": "source.gpr",
-                "path": "./syntaxes/gpr.tmLanguage.json"
+                "path": "./snippets/gpr.json"
             }
         ]
     }

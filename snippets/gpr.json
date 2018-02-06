@@ -1,0 +1,31 @@
+{
+	"for": {
+		"prefix": "for",
+		"body": [
+			"for ${1:attribute} use ${2};"
+		],
+		"description": "Attribute assignment"
+	},
+	"fori": {
+		"prefix": "fori",
+		"body": [
+			"for ${1:attribute}(\"${2:index}\") use ${3};"
+		],
+		"description": "Attribute assignment"
+	},
+	"package": {
+		"prefix": "package",
+		"body": [
+			"package ${1|Binder,Builder,Check,Clean,Compiler,Cross_Reference,Eliminate,Finder,Gnatls, Gnatstub, IDE, Install, Linker, Metrics, Naming, Pretty_Printer, Remote, Stack, Synchronize|} is",
+			"end ${1}"
+		],
+		"description": "Configuration package"
+	},
+	"with": {
+		"prefix": "with",
+		"body": [
+			"with \"${1:Name}\";"
+		],
+		"description": "With project"
+	}
+}

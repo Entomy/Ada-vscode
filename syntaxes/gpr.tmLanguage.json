@@ -36,7 +36,7 @@
             "patterns": [
                 {
                     "name": "keyword.gpr",
-                    "match": "(?i)\\b(case|end|extends|external|for|is|library|others|package|project|renames|type|use|when|with)\\b"
+                    "match": "(?i)\\b(abstract|aggregate|all|at|case|end|extends|external|external_as_list|for|is|library|limited|null|others|package|project|renames|type|use|when|with)\\b"
                 }
             ]
         },
