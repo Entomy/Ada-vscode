@@ -693,8 +693,36 @@
 										}
 									}
 								},
-								{ "include": "#keyword" },
 								{ "include": "#arguments" },
+								{ "include": "#keyword" },
+								{
+									"name": "entity.name.operator.ada",
+									"match": "\"..?.?\""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.operator.ada",
+					"match": "(?i)\\bfunction\\s+\"..?.?\"(\\(.*\\))?\\s+is\\s+new.*;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.instantiation.ada",
+									"match": "(?i)\\bis\\s+new\\s+.*;",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{ "include": "#punctuation" }
+											]
+										}
+									}
+								},
+								{ "include": "#arguments" },
+								{ "include": "#keyword" },
 								{
 									"name": "entity.name.operator.ada",
 									"match": "\"..?.?\""
@@ -803,6 +831,25 @@
 								{
 									"name": "storage.type.ada",
 									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.type.declaration.access.ada",
+					"match": "(?i)\\btype\\s+(\\w|_)+\\s+is\\s+access(\\s+all)?\\s+(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "\\baccess\\s+all\\b"
+								},
+								{ "include": "#keyword" },
+								{
+									"name": "storage.type.ada",
+									"match": "\\b(\\w|\\.|_)+\\b"
 								}
 							]
 						}
