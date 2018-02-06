@@ -1,0 +1,9 @@
+{
+	"pragma": {
+		"prefix": "pragma",
+		"body": [
+			"pragma ${1:Name};"
+		],
+		"description": "Pragma"
+	}
+}

@@ -3,7 +3,7 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
-    "version": "0.24.0",
+    "version": "0.25.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -93,6 +93,10 @@
             }
         ],
         "snippets": [
+            {
+                "language": "adc",
+                "path": "./snippets/adc.json"
+            },
             {
                 "language": "gpr",
                 "path": "./snippets/gpr.json"

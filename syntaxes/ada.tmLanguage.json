@@ -480,11 +480,15 @@
 			"patterns": [
 				{
 					"name": "keyword.ada",
-					"match": "(?i)\\b(abort|abs|abstract|accept|access|aliased|all|and|array|at|begin|body|constant|declare|delay|delta|digits|end|entry|exception|function|generic|in|interface|is|limited|mod|new|not|null|of|or|others|out|overriding|package|pragma|private|procedure|protected|range|record|rem|renames|requeue|reverse|select|separate|some|subtype|synchronized|tagged|task|then|type|use|when|with|xor)\\b"
+					"match": "(?i)\\b(abort|abs|abstract|accept|all|and|array|at|begin|body|declare|delay|delta|digits|end|entry|exception|function|generic|in|is|mod|new|not|null|of|or|others|out|overriding|package|pragma|private|procedure|range|record|rem|renames|requeue|reverse|select|separate|some|subtype|then|type|use|when|with|xor)\\b"
 				},
 				{
 					"name": "keyword.control.ada",
 					"match": "(?i)\\b(case|do|else|elsif|exit|for|goto|if|loop|raise|return|terminate|until|while)\\b"
+				},
+				{
+					"name": "storage.modifier.ada",
+					"match": "(?i)\\b(access|aliased|constant|interface|limited|protected|synchronized|tagged|task)\\b"
 				},
 				{
 					"name": "keyword.other.ada",
