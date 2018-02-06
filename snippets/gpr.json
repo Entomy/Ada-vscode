@@ -13,6 +13,14 @@
 		],
 		"description": "Attribute assignment"
 	},
+	"library": {
+		"prefix": "library",
+		"body": [
+			"library project ${1:name} is",
+			"end ${1};"
+		],
+		"description": "Library project"
+	},
 	"package": {
 		"prefix": "package",
 		"body": [
@@ -20,6 +28,14 @@
 			"end ${1};"
 		],
 		"description": "Configuration package"
+	},
+	"project": {
+		"prefix": "project",
+		"body": [
+			"project ${1:name} is",
+			"end ${1};"
+		],
+		"description": "Project"
 	},
 	"with": {
 		"prefix": "with",
