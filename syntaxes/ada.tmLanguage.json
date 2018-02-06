@@ -199,7 +199,7 @@
 			"patterns": [
 				{
 					"name": "meta.aspect.ada",
-					"begin": "\\bwith\\b",
+					"begin": "\\bwith(?!\\s+(procedure|function))\\b",
 					"end": "(\\bis\\b|;)",
 					"captures": {
 						"0": {
@@ -495,7 +495,7 @@
 			"patterns": [
 				{
 					"name": "keyword.ada",
-					"match": "(?i)\\b(abort|abs|abstract|accept|all|and|array|at|begin|body|declare|delay|delta|digits|end|entry|exception|function|generic|in|is|mod|new|not|null|of|or|others|out|overriding|package|pragma|private|procedure|range|record|rem|renames|requeue|reverse|select|separate|some|subtype|then|type|use|when|with|xor)\\b"
+					"match": "(?i)\\b(abort|abs|accept|all|and|at|begin|body|declare|delay|end|entry|exception|function|generic|in|is|mod|new|not|null|of|or|others|out|overriding|package|pragma|procedure|range|record|rem|renames|requeue|reverse|select|separate|some|subtype|then|type|use|when|with|xor)\\b"
 				},
 				{
 					"name": "keyword.control.ada",
@@ -503,11 +503,27 @@
 				},
 				{
 					"name": "storage.modifier.ada",
-					"match": "(?i)\\b(access|aliased|constant|interface|limited|protected|synchronized|tagged|task)\\b"
+					"match": "(?i)\\b(abstract|access|aliased|array|constant|delta|digits|interface|limited|protected|synchronized|tagged|task)\\b"
 				},
 				{
-					"name": "keyword.other.ada",
-					"match": "(?i)<>"
+					"name": "storage.visibility.ada",
+					"match": "(?i)\\b(private)\\b"
+				},
+				{
+					"name": "keyword.modifier.unknown.ada",
+					"match": "<>"
+				},
+				{
+					"name": "keyword.operator.arithmetic.ada",
+					"match": "(\\+|-|\\*|/)"
+				},
+				{
+					"name": "keyword.operator.assignment.ada",
+					"match": ":="
+				},
+				{
+					"name": "keyword.operator.logic.ada",
+					"match": "(=|/=|<|>|<=|>=)"
 				}
 			]
 		},
