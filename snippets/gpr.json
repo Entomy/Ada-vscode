@@ -17,7 +17,7 @@
 		"prefix": "package",
 		"body": [
 			"package ${1|Binder,Builder,Check,Clean,Compiler,Cross_Reference,Eliminate,Finder,Gnatls, Gnatstub, IDE, Install, Linker, Metrics, Naming, Pretty_Printer, Remote, Stack, Synchronize|} is",
-			"end ${1}"
+			"end ${1};"
 		],
 		"description": "Configuration package"
 	},
