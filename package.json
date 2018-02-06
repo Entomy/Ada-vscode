@@ -96,6 +96,10 @@
             {
                 "language": "gpr",
                 "path": "./snippets/gpr.json"
+            },
+            {
+                "language": "ada",
+                "path": "./snippets/ada.json"
             }
         ]
     }

@@ -1,0 +1,149 @@
+{
+    "begin … end": {
+        "prefix": "beg",
+        "body": [
+            "begin",
+            "$0",
+            "end;"
+        ],
+        "description": "Begin..End block"
+    },
+    "case … is … end case;": {
+        "prefix": "case",
+        "body": [
+            "case $1 is",
+            "$0",
+            "end case;"
+        ],
+        "description": "Case statement"
+    },
+    "elsif … then": {
+        "prefix": "eli",
+        "body": [
+            "elsif $1 then",
+            "$0"
+        ],
+        "description": "Else if"
+    },
+    "for … loop … end loop": {
+        "prefix": "for",
+        "body": [
+            "for $1 in $2 loop",
+            "\t$0",
+            "end loop;"
+        ],
+        "description": "For loop"
+    },
+    "function … end": {
+        "prefix": "fun",
+        "body": [
+            "function $1 return $2 is",
+            "$3",
+            "begin -- $1",
+            "\t$0",
+            "end $1;"
+        ],
+        "description": "Function definition"
+    },
+    "if … end if": {
+        "prefix": "if",
+        "body": [
+            "if $1 then",
+            "\t$0",
+            "end if;"
+        ],
+        "description": "If"
+    },
+    "loop … end loop": {
+        "prefix": "loop",
+        "body": [
+            "loop",
+            "\t$0",
+            "end loop;"
+        ],
+        "description": "Loop"
+    },
+    "package … end": {
+        "prefix": "pac",
+        "body": [
+            "package $1 is",
+            "$0",
+            "end $1;"
+        ],
+        "description": "Package definition"
+    },
+    "package body … end": {
+        "prefix": "pbo",
+        "body": [
+            "package body $1 is",
+            "$0",
+            "end $1;"
+        ],
+        "description": "Package body definition"
+    },
+    "procedure … end": {
+        "prefix": "pro",
+        "body": [
+            "procedure $1 is",
+            "$2",
+            "begin -- $1",
+            "$0",
+            "end $1;"
+        ],
+        "description": "Procedure definition"
+    },
+    "record … end record": {
+        "prefix": "rec",
+        "body": [
+            "record",
+            "\t$0",
+            "end record;"
+        ],
+        "description": "Record definition"
+    },
+    "return …;": {
+        "prefix": "ret",
+        "body": "return $1;",
+        "description": "Return statement"
+    },
+    "type … is …": {
+        "prefix": "ty",
+        "body": "type $1 is $0",
+        "description": "Retyping"
+    },
+    "use …;": {
+        "prefix": "u",
+        "body": "use $1;",
+        "description": "Use import"
+    },
+    "when … =>": {
+        "prefix": "when",
+        "body": [
+            "when $1 =>",
+            "\t$0"
+        ],
+        "description": "When statement"
+    },
+    "while … loop … end loop": {
+        "prefix": "whi",
+        "body": [
+            "while $1 loop",
+            "\t$0",
+            "end loop;"
+        ],
+        "description": "While loop"
+    },
+    "with …; use …;": {
+        "prefix": "wu",
+        "body": [
+            "with $1; use $1;",
+            "$0"
+        ],
+        "description": "With & use import"
+    },
+    "with …;": {
+        "prefix": "w",
+        "body": "with $1;",
+        "description": "With import"
+    }
+}
