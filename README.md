@@ -15,7 +15,7 @@ This extension was developed largely in response to the horrible quality of Ada 
 # Proofs in the Screenshot
 
 ![screenshot](1.jpg)
-![screenshot](2.jpg)
+![screenshot](2.JPG)
 
 # Help Me Out
 
