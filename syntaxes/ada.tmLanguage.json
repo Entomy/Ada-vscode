@@ -402,6 +402,21 @@
 				}
 			]
 		},
+		"discriminant": {
+			"patterns": [
+				{
+					"name": "meta.type.discriminant.ada",
+					"match": "\\(.*\\)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#argument" }
+							]
+						}
+					}
+				}
+			]
+		},
 		"exception": {
 			"patterns": [
 				{
@@ -694,11 +709,12 @@
 			"patterns": [
 				{
 					"name": "meta.type.declaration.record.ada",
-					"begin": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
+					"begin": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\s+((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {
 						"0": {
 							"patterns": [
+								{ "include": "#discriminant" },
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
@@ -713,10 +729,11 @@
 				},
 				{
 					"name": "meta.type.declaration.record.ada",
-					"match": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\s+with\\s+(limited\\s+)?null\\s+record;",
+					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\s+with\\s+(limited\\s+)?null\\s+record;",
 					"captures": {
 						"0": {
 							"patterns": [
+								{ "include": "#discriminant" },
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
@@ -728,11 +745,12 @@
 				},
 				{
 					"name": "meta.type.declaration.record.ada",
-					"begin": "(?i)\\btype\\s+(\\w|_)+(\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\swith\\s+(limited\\s+)?record\\b",
+					"begin": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\swith\\s+(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {
 						"0": {
 							"patterns": [
+								{ "include": "#discriminant" },
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
@@ -792,10 +810,11 @@
 				},
 				{
 					"name": "meta.type.declaration.ada",
-					"match": "(?i)\\btype\\s+(\\w|_)+\\s+is\\b",
+					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\b",
 					"captures": {
 						"0": {
 							"patterns": [
+								{ "include": "#discriminant" },
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
