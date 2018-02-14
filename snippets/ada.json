@@ -14,6 +14,21 @@
 		],
 		"description": "Elsif Block"
 	},
+	"for": {
+		"prefix": "for",
+		"body": [
+			"for ${1:I} in ${2:Range} loop",
+			"end loop;"
+		],
+		"description": "For Loop"
+	},
+	"foreach": {
+		"prefix": "foreach",
+		"body": [
+			"for ${1:Item} of ${2:Collection} loop",
+			"end loop;"
+		]
+	},
 	"if": {
 		"prefix": "if",
 		"body": [
@@ -21,6 +36,21 @@
 			"end if;"
 		],
 		"description": "If Block"
+	},
+	"ifex": {
+		"prefix": "ifex",
+		"body": [
+			"(if ${1:Condition} then ${2:Do Stuff})"
+		],
+		"description": "If Expression"
+	},
+	"loop": {
+		"prefix": "loop",
+		"body": [
+			"loop",
+			"end loop;"
+		],
+		"description": "Loop Block"
 	},
 	"packagespec": {
 		"prefix": "spec",
@@ -52,5 +82,13 @@
 			"when ${1:Condition} =>"
 		],
 		"description": "When Condition"
+	},
+	"while": {
+		"prefix": "while",
+		"body": [
+			"while ${1:Condition} loop",
+			"end loop;"
+		],
+		"description": "While Loop Block"
 	}
 }
