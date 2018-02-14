@@ -33,7 +33,7 @@
 						}
 					},
 					"patterns": [
-						{ "include": "#value" },
+						{ "include": "#argument" },
 						{ "include": "#punctuation" }
 					]
 				}	
@@ -59,7 +59,7 @@
 			"patterns": [
 				{
 					"name": "meta.argument.ada",
-					"match": "(\\w|_)+\\s*=>\\s*(\\w|_)+",
+					"match": "(\\w|_)+\\s*=>\\s*(new\\s+)?(\\w|_)+('(\\w|_)+)?",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -71,14 +71,15 @@
 											"patterns": [
 												{ "include": "#punctuation" },
 												{
-													"name": "entity.name.selector.ada",
+													"name": "variable.parameter.ada",
 													"match": "\\b(\\w|_)+\\b"
 												}
 											]
 										}
 									}
 								},
-								{ "include": "#value" }
+								{ "include": "#value" },
+								{ "include": "#attribute" }
 							]
 						}
 					}
@@ -97,7 +98,7 @@
 											"patterns": [
 												{ "include": "#punctuation" },
 												{
-													"name": "entity.name.selector.ada",
+													"name": "variable.parameter.ada",
 													"match": "\\b(\\w|_)+\\b"
 												}
 											]
@@ -334,7 +335,7 @@
 				},
 				{
 					"name": "meta.assignment.variable.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\s*:=.*;",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=.*)?;?",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -417,6 +418,39 @@
 							]
 						}
 					}
+				}
+			]
+		},
+		"case": {
+			"patterns": [
+				{
+					"name": "meta.control.case.ada",
+					"begin": "(?i)\\bcase\\b",
+					"end": "(?i)\\bend\\s+case;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" },
+								{ "include": "#punctuation" }
+							]
+						}
+					},
+					"patterns": [
+						{
+							"name": "meta.control.case.when.ada",
+							"match": "(?i)\\bwhen\\s+((\\w|_)+\\s*\\|\\s*)*(\\w|_)+\\s*=>",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#keyword" },
+										{ "include": "#punctuation" }
+									]
+								}
+							}
+						},
+						{ "include": "#property" },
+						{ "include": "#punctuation" }
+					]
 				}
 			]
 		},
@@ -692,7 +726,7 @@
 				},
                 {
                     "name": "punctuation.delimiter.ada",
-                    "match": "(=>|')"
+                    "match": "(=>|\\||')"
                 },
                 {
                     "name": "punctuation.separator.ada",
@@ -839,7 +873,8 @@
 						}
 					},
 					"patterns": [
-						{ "include": "#property" }
+						{ "include": "#property" },
+						{ "include": "#case" }
 					]
 				},
 				{
@@ -875,7 +910,8 @@
 						}
 					},
 					"patterns": [
-						{ "include": "#property" }
+						{ "include": "#property" },
+						{ "include": "#case" }
 					]
 				},
 				{
