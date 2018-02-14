@@ -3,7 +3,7 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
-    "version": "0.31.0",
+    "version": "0.32.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -55,11 +55,11 @@
             {
                 "id": "ada",
                 "aliases": [
-                    "ADA",
                     "Ada",
+                    "ADA",
                     "ada",
-                    "SPARK",
                     "Spark",
+                    "SPARK",
                     "spark"
                 ],
                 "extensions": [
@@ -93,6 +93,10 @@
             }
         ],
         "snippets": [
+            {
+                "language": "ada",
+                "path": "./snippets/ada.json"
+            },
             {
                 "language": "adc",
                 "path": "./snippets/adc.json"

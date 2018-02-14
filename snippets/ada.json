@@ -1,0 +1,56 @@
+{
+	"case": {
+		"prefix": "case",
+		"body": [
+			"case ${1:Variable} then",
+			"end case;"
+		],
+		"description": "Case Block"
+	},
+	"elsif": {
+		"prefix": "elsif",
+		"body": [
+			"elsif ${1:Condition} then"
+		],
+		"description": "Elsif Block"
+	},
+	"if": {
+		"prefix": "if",
+		"body": [
+			"if ${1:Condition} then",
+			"end if;"
+		],
+		"description": "If Block"
+	},
+	"packagespec": {
+		"prefix": "spec",
+		"body": [
+			"package ${1:Name} with ${2:Aspects} is",
+			"end ${1};"
+		],
+		"description": "Package Spec Block"
+	},
+	"packagebody": {
+		"prefix": "body",
+		"body": [
+			"package body ${1:Name} is",
+			"end ${1};"
+		],
+		"description": "Package Body Block"
+	},
+	"record": {
+		"prefix": "record",
+		"body": [
+			"type ${1:Name} is ${2:Modifiers} record",
+			"end record;"
+		],
+		"description": "Record Block"
+	},
+	"when": {
+		"prefix": "when",
+		"body": [
+			"when ${1:Condition} =>"
+		],
+		"description": "When Condition"
+	}
+}
