@@ -111,13 +111,69 @@
 				},
 				{
 					"name": "meta.argument.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*(\\w|\\.|_|')+)?",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*access\\s+(\\w|\\.|_)+(\\(.*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.type.annotation.access.ada",
+									"match": ":\\s*access\\s+(\\w|\\.|_)+(\\(.*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "meta.type.annotation.default.ada",
+													"match": ":=\\s*(\\w|\\.|_|')+\\b",
+													"captures": {
+														"0": {
+															"patterns": [
+																{ "include": "#punctuation" },
+																{ "include": "#attribute" },
+																{ "include": "#value" }
+															]
+														}
+													}
+												},
+												{
+													"name": "storage.type.ada",
+													"match": "(?i)\\b(function|procedure)\\b"
+												},
+												{ "include": "#arguments" },
+												{ "include": "#attribute" },
+												{ "include": "#keyword" },
+												{ "include": "#punctuation" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{
+									"name": "variable.parameter.ada",
+									"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" }
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.argument.ada",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(aliased\\s+)?(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*(\\w|\\.|_|')+)?",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.ada",
-									"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*(\\w|\\.|_|')+)?",
+									"match": ":\\s*(aliased\\s+)?(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*(\\w|\\.|_|')+)?",
 									"captures": {
 										"0": {
 											"patterns": [
@@ -139,7 +195,7 @@
 												{ "include": "#punctuation" },
 												{
 													"name": "storage.type.ada",
-													"match": "\\b(\\w|\\.|_)+"
+													"match": "\\b(\\w|\\.|_)+\\b"
 												}
 											]
 										}
@@ -410,7 +466,22 @@
 					"captures": {
 						"0": {
 							"patterns": [
-								{ "include": "#argument" }
+								{
+									"name": "meta.argument.ada",
+									"match": "<>",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "keyword.modifier.unknown.ada",
+													"match": "<>"
+												}
+											]
+										}
+									}
+								},
+								{ "include": "#argument" },
+								{ "include": "#punctuation" }
 							]
 						}
 					}
