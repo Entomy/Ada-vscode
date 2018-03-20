@@ -851,6 +851,21 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "meta.operator.ada",
+					"match": "(?i)\\bend\\s+\"..?.?\"\\s*;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" },
+								{
+									"name": "entity.name.operator.ada",
+									"match": "\"..?.?\""
+								}
+							]
+						}
+					}
 				}
 			]
 		},
