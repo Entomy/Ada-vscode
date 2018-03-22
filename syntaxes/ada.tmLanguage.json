@@ -731,7 +731,11 @@
                 {
                     "name": "punctuation.separator.ada",
                     "match": ","
-                },
+				},
+				{
+					"name": "punctuation.underline.ada",
+					"match": "_"
+				},
                 {
                     "name": "punctuation.terminator.ada",
                     "match": ";"        
@@ -987,7 +991,14 @@
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
-									"match": "\\b(\\w|\\.|_)+\\b"
+									"match": "\\b(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" }
+											]
+										}
+									}
 								}
 							]
 						}
@@ -995,7 +1006,7 @@
 				},
 				{
 					"name": "meta.type.declaration.ada",
-					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\b",
+					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is(\\s+new\\s+(\\w|\\.|_)+)?\\b",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -1003,7 +1014,14 @@
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
-									"match": "\\b(\\w|_)+\\b"
+									"match": "\\b(\\w|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" }
+											]
+										}
+									}
 								}
 							]
 						}
@@ -1018,7 +1036,14 @@
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
-									"match": "\\b(\\w|\\.|_)+\\b"
+									"match": "\\b(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" }
+											]
+										}
+									}
 								}
 							]
 						}
@@ -1059,7 +1084,8 @@
 								{
 									"name": "constant.numeric.base.ada",
 									"match": "2?#"
-								}
+								},
+								{ "include": "#punctuation" }
 							]
 						}
 					}
@@ -1073,7 +1099,8 @@
 								{
 									"name": "constant.numeric.base.ada",
 									"match": "8?#"
-								}
+								},
+								{ "include": "#punctuation" }
 							]
 						}
 					}
@@ -1087,7 +1114,8 @@
 								{
 									"name": "constant.numeric.base.ada",
 									"match": "(10)?#"
-								}
+								},
+								{ "include": "#punctuation" }
 							]
 						}
 					}
@@ -1101,7 +1129,8 @@
 								{
 									"name": "constant.numeric.base.ada",
 									"match": "(16)?#"
-								}
+								},
+								{ "include": "#punctuation" }
 							]
 						}
 					}
@@ -1129,7 +1158,8 @@
 											]
 										}
 									}
-								}
+								},
+								{ "include": "#punctuation" }
 							]
 						}
 					}
