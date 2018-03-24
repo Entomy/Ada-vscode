@@ -898,7 +898,7 @@
 				},
 				{
 					"name": "meta.type.declaration.record.ada",
-					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+(\\s+and\\s+(\\w|\\.|_)+)?\\s+with\\s+(limited\\s+)?null\\s+record;",
+					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\s+(abstract\\s+)?new\\s+(\\w|\\.|_)+(\\s+and\\s+(\\w|\\.|_)+)?\\s+with\\s+(limited\\s+)?null\\s+record;",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -914,7 +914,7 @@
 				},
 				{
 					"name": "meta.type.declaration.record.ada",
-					"begin": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+(\\s+and\\s+(\\w|\\.|_)+)?\\swith\\s+(limited\\s+)?record\\b",
+					"begin": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is\\s+(abstract\\s+)?new\\s+(\\w|\\.|_)+(\\s+and\\s+(\\w|\\.|_)+)?\\swith\\s+(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {
 						"0": {
@@ -1006,7 +1006,7 @@
 				},
 				{
 					"name": "meta.type.declaration.ada",
-					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is(\\s+new\\s+(\\w|\\.|_)+(\\s+and\\s+(\\w|\\.|_)+)?)?\\b",
+					"match": "(?i)\\btype\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+is(\\s+(abstract\\s+)?new\\s+(\\w|\\.|_)+(\\s+and\\s+(\\w|\\.|_)+)?)?\\b",
 					"captures": {
 						"0": {
 							"patterns": [
