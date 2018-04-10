@@ -113,13 +113,13 @@
 				},
 				{
 					"name": "meta.argument.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*access\\s+(\\w|\\.|_)+(\\(.*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*((not\\s+)?null\\s+)?access\\s+(\\w|\\.|_)+(\\(.*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.access.ada",
-									"match": ":\\s*access\\s+(\\w|\\.|_)+(\\(.*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
+									"match": ":\\s*((not\\s+)?null\\s+)?access\\s+(\\w|\\.|_)+(\\(.*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
 									"captures": {
 										"0": {
 											"patterns": [
