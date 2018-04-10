@@ -746,7 +746,7 @@
 			"patterns": [
 				{
 					"name": "meta.procedure.ada",
-					"match": "(?i)\\bprocedure\\s+(\\w|_)+(\\(.*\\))?",
+					"match": "(?i)\\bprocedure\\s+(\\w|_)+(\\s*\\(.*\\))?",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -762,7 +762,7 @@
 				},
 				{
 					"name": "meta.function.ada",
-					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\(.*\\))?\\s+return\\s+(\\w|\\.|_)+\\b",
+					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\(.*\\))?\\s+return\\s+(\\w|\\.|_)+\\b",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -796,7 +796,7 @@
 				},
 				{
 					"name": "meta.operator.ada",
-					"match": "(?i)\\bfunction\\s+\"..?.?\"\\(.*\\)\\s+return\\s+(\\w|\\.|_)+\\b",
+					"match": "(?i)\\bfunction\\s+\"..?.?\"\\s*\\(.*\\)\\s+return\\s+(\\w|\\.|_)+\\b",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -830,7 +830,7 @@
 				},
 				{
 					"name": "meta.operator.ada",
-					"match": "(?i)\\bfunction\\s+\"..?.?\"(\\(.*\\))?\\s+is\\s+new.*;",
+					"match": "(?i)\\bfunction\\s+\"..?.?\"(\\s*\\(.*\\))?\\s+is\\s+new.*;",
 					"captures": {
 						"0": {
 							"patterns": [
