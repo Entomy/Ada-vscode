@@ -80,7 +80,8 @@
 									}
 								},
 								{ "include": "#value" },
-								{ "include": "#attribute" }
+								{ "include": "#attribute" },
+								{ "include": "#keyword" }
 							]
 						}
 					}
@@ -106,7 +107,8 @@
 										}
 									}
 								},
-								{ "include": "#value" }
+								{ "include": "#value" },
+								{ "include": "#keyword" }
 							]
 						}
 					}
@@ -224,7 +226,8 @@
 					"captures": {
 						"0": {
 							"patterns": [
-								{ "include": "#value" }
+								{ "include": "#value" },
+								{ "include": "#keyword" }
 							]
 						}
 					}
