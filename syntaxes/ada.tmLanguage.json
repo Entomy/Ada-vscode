@@ -462,6 +462,20 @@
 			"patterns": [
 				{
 					"name": "comment.line.double-dash.ada",
+					"match": "--\\s*(\\w|\\s|_)+\\s*--",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "entity.name.section",
+									"match": "\\b(\\w|\\s|_)*\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "comment.line.double-dash.ada",
 					"match": "--.*$",
 					"captures": {
 						"0": {
@@ -473,26 +487,6 @@
 							]
 						}
 					}
-				},
-				{
-					"name": "comment.block.ada",
-					"begin": "^\\s*--+\\s*$",
-					"end": "^\\s*--+\\s*$",
-					"patterns": [
-						{
-							"match": "--\\s*(\\w|\\s|_)+\\s*--",
-							"captures": {
-								"0": {
-									"patterns": [
-										{
-											"name": "entity.name.section",
-											"match": "\\b(\\w|\\s|_)*\\b"
-										}
-									]
-								}
-							}
-						}
-					]
 				}
 			]
 		},
