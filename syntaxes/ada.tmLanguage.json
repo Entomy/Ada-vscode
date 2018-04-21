@@ -13,6 +13,7 @@
 		{ "include": "#label" },
 		{ "include": "#pragma" },
 		{ "include": "#punctuation" },
+		{ "include": "#return" },
 		{ "include": "#subroutine" },
 		{ "include": "#type" },
 		{ "include": "#keyword" },
@@ -750,6 +751,26 @@
                     "match": ";"        
                 }
             ]
+		},
+		"return": {
+			"patterns": [
+				{
+					"name": "meta.return-block.ada",
+					"begin": "(?i)\\breturn\\s+(\\w|\\.|_)+\\s*:\\s*(\\w|\\.|_)+\\s+do\\b",
+					"end": "(?i)\\bend\\s+return;?",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#argument" },
+								{ "include": "#keyword" }
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#keyword" }
+					]
+				}
+			]
 		},
 		"subroutine": {
 			"patterns": [
