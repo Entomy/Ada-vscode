@@ -18,6 +18,10 @@ As I've developed this, I feel like the TextMate grammar approach is very insuff
 
 Good quality extensions take a lot of time. Considerably more than just "meh, close enough" level work. If you'd like to help out but don't know how to contribute to the code, consider donating to my [Patreon](https://www.patreon.com/Entomy). Leave a message with the donation about it being for this extension, and I'll weight my work towards this.
 
+If you're one for actually contributing, a repo is located on [GitHub](https://github.com/Entomy/Ada-vscode). Clone the repo, make your changes, and create a pull request. Assuming they meet quality standards and conventions, it will be integrated.
+
+Sometimes I just don't see an issue with the syntax highlighter, so if you notice something not being highlighted or being highlighted wrong, please file an issue report, and include a screenshot.
+
 # Works Best With
 * [Offbase](https://marketplace.visualstudio.com/items?itemName=Entomy.offbase) although any theme will work well.
 
