@@ -11,8 +11,8 @@ As I've developed this, I feel like the TextMate grammar approach is very insuff
 * Highlighting for **pragmas** and **aspects**.
 * Highlighting for **types**, something often missed, and as I understand it only also seen in GPS.
 * Context aware highlighting, such as `return` being classed differently in function declarations versus control statements, or `exception` being classed as a keyword when introducing exception handler blocks, but as a type when declaring exceptions.
-* Highlighting for `.adc` files and basic support for `.gpr` files, not just `.adb` and `.ads`.
-* Some snippets for `.gpr` files.
+* Highlighting for `.adc` and `.gpr` files, not just `.adb` and `.ads`.
+* Some snippets for `.ads`, `.adb`, `.adc`, and `.gpr` files.
 
 # Help Me Out
 
