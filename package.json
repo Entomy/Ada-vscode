@@ -3,7 +3,7 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
-    "version": "0.53.0",
+    "version": "0.54.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -31,7 +31,7 @@
         "vscode": "^1.19.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "contributes": {
         "grammars": [
