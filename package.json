@@ -3,7 +3,11 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
+<<<<<<< HEAD
     "version": "0.53.0",
+=======
+    "version": "0.52.0",
+>>>>>>> b00be30badca94f2cfdb90d6759e1ae25e783fc6
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
