@@ -831,11 +831,26 @@
 		"subroutine": {
 			"patterns": [
 				{
-					"name": "meta.procedure.ada",
-					"match": "(?i)\\bprocedure\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?",
+					"name": "meta.procedure.declaration.ada",
+					"match": "(?i)\\bprocedure\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?(\\s+renames\\s+(\\w|\\.|_)+)?;",
 					"captures": {
 						"0": {
 							"patterns": [
+								{
+									"name": "meta.rename.ada",
+									"match": "\\brenames\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{
+													"name": "entity.name.function.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
 								{ "include": "#keyword" },
 								{ "include": "#arguments" },
 								{
@@ -847,8 +862,77 @@
 					}
 				},
 				{
-					"name": "meta.function.ada",
-					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+(\\s+with\\s+(\\\\.|[^;])*)?;",
+					"name": "meta.procedure.block.ada",
+					"begin": "(?i)\\bprocedure\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+is\\b",
+					"end": "(?i)\\bend\\s+(\\w|\\.|_)+;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.procedure.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#keyword" }
+					]
+				},
+				{
+					"name": "meta.function.declaration.ada",
+					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+(\\s+renames\\s+(\\w|\\.|_)+)?(\\s+with\\s+(\\\\.|[^;])*)?;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.return-type.ada",
+									"match": "\\breturn\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "keyword.ada",
+													"match": "(?i)\\breturn\\b"
+												},
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{
+									"name": "meta.rename.ada",
+									"match": "\\brenames\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{
+													"name": "entity.name.function.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.function.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.function.expression.ada",
+					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+\\s+is\\s+\\((\\\\.|[^)])*\\);",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -878,11 +962,12 @@
 								}
 							]
 						}
-					}
+					}	
 				},
 				{
-					"name": "meta.operator.ada",
-					"match": "(?i)\\bfunction\\s+\"..?.?\"\\s*\\((\\\\.|[^\\)])*\\)\\s+return\\s+(\\w|\\.|_)+\\b",
+					"name": "meta.function.block.ada",
+					"begin": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+\\s+is\\b",
+					"end": "(?i)\\bend\\s+(\\w|_)+;",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -904,6 +989,58 @@
 										}
 									}
 								},
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.function.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#keyword" }
+					]
+				},
+				{
+					"name": "meta.operator.declaration.ada",
+					"match": "(?i)\\bfunction\\s+\"..?.?\"\\s*\\((\\\\.|[^\\)])*\\)\\s+return\\s+(\\w|\\.|_)+(\\s+renames\\s+(\\w|\\.|_)+)?(\\s+with\\s+(\\\\.|[^;])*)?;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.return-type.ada",
+									"match": "\\breturn\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "keyword.ada",
+													"match": "(?i)\\breturn\\b"
+												},
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{
+									"name": "meta.rename.ada",
+									"match": "\\brenames\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#keyword" },
+												{
+													"name": "entity.name.function.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
 								{ "include": "#arguments" },
 								{ "include": "#keyword" },
 								{
@@ -915,7 +1052,79 @@
 					}
 				},
 				{
-					"name": "meta.operator.ada",
+					"name": "meta.operator.expression.ada",
+					"match": "(?i)\\bfunction\\s+\"..?.?\"(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+\\s+is\\s+\\((\\\\.|[^)])*\\);",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.return-type.ada",
+									"match": "\\breturn\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "keyword.ada",
+													"match": "(?i)\\breturn\\b"
+												},
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.operator.ada",
+									"match": "\"..?.?\""
+								}
+							]
+						}
+					}	
+				},
+				{
+					"name": "meta.operator.block.ada",
+					"begin": "(?i)\\bfunction\\s+\"..?.?\"(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+\\s+is\\b",
+					"end": "(?i)\\bend\\s+\"..?.?\";",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.return-type.ada",
+									"match": "\\breturn\\s+(\\w|\\.|_)+\\b",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "keyword.ada",
+													"match": "(?i)\\breturn\\b"
+												},
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+\\b"
+												}
+											]
+										}
+									}
+								},
+								{ "include": "#keyword" },
+								{ "include": "#arguments" },
+								{
+									"name": "entity.name.operator.ada",
+									"match": "\"..?.?\""
+								}
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#keyword" }
+					]
+				},
+				{
+					"name": "meta.operator.instantiation.ada",
 					"match": "(?i)\\bfunction\\s+\"..?.?\"(\\s*\\((\\\\.|[^\\)])*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\((\\\\.|[^\\)])*\\)",
 					"captures": {
 						"0": {
@@ -933,21 +1142,6 @@
 									}
 								},
 								{ "include": "#arguments" },
-								{ "include": "#keyword" },
-								{
-									"name": "entity.name.operator.ada",
-									"match": "\"..?.?\""
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.operator.ada",
-					"match": "(?i)\\bend\\s+\"..?.?\"\\s*;",
-					"captures": {
-						"0": {
-							"patterns": [
 								{ "include": "#keyword" },
 								{
 									"name": "entity.name.operator.ada",
