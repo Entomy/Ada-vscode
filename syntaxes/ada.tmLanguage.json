@@ -499,8 +499,24 @@
 		"discriminant": {
 			"patterns": [
 				{
+					"name": "meta.type.array.index.ada",
+					"match": "\\((\\w|\\d|\\.|_)+\\s*\\.\\.\\s*(\\w|\\d|\\.|_)+\\)",
+					"captures": {
+						"0" : {
+							"patterns": [
+								{ "include": "#value" },
+								{
+									"name": "variable.ada",
+									"match": "\\b(\\w|\\.|_)+\\b"
+								},
+								{ "include": "#punctuation" }
+							]
+						}
+					}
+				},
+				{
 					"name": "meta.type.discriminant.ada",
-					"match": "\\(.*\\)",
+					"match": "\\((\\\\.|[^)])*\\)",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -721,20 +737,27 @@
 			"patterns": [
 				{
 					"name": "meta.property.ada",
-					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+\\s*(:=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+\\s*)?;",
+					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?\\s*(:=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+\\s*)?;",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.ada",
-									"match": ":\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+\\b",
+									"match": ":\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?",
 									"captures": {
 										"0": {
 											"patterns": [
 												{ "include": "#keyword" },
 												{
 													"name": "storage.type.ada",
-													"match": "\\b(\\w|\\.|_)+\\b"
+													"match": "\\b(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?",
+													"captures": {
+														"0": {
+															"patterns": [
+																{ "include": "#discriminant" }
+															]
+														}
+													}
 												}
 											]
 										}
@@ -825,7 +848,7 @@
 				},
 				{
 					"name": "meta.function.ada",
-					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+\\b",
+					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+(\\s+with\\s+(\\\\.|[^;])*)?;",
 					"captures": {
 						"0": {
 							"patterns": [
