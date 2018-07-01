@@ -2,6 +2,8 @@
 
 # About
 
+[![Join the chat at https://gitter.im/Ada-vscode/Lobby](https://badges.gitter.im/Ada-vscode/Lobby.svg)](https://gitter.im/Ada-vscode/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This extension was developed largely in response to the horrible quality of Ada syntax highlighters, whether for VS Code or otherwise. It's all too apparent they were created by people who barely, if at all, work with the language.
 
 As I've developed this, I feel like the TextMate grammar approach is very insufficient. A language server for VS Code would need to be implemented to better highlight the source code, especially for cases where RegEx will always fall short, like types within generic initializers, or function names versus type constraints. I'll still update this grammar in the meantime, until a language server can be developed.
