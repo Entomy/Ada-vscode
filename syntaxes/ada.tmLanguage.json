@@ -851,6 +851,7 @@
 										}
 									}
 								},
+								{ "include": "#aspect" },
 								{ "include": "#keyword" },
 								{ "include": "#arguments" },
 								{
@@ -900,6 +901,7 @@
 										}
 									}
 								},
+								{ "include": "#aspect" },
 								{ "include": "#keyword" },
 								{ "include": "#arguments" },
 								{
@@ -934,6 +936,7 @@
 										}
 									}
 								},
+								{ "include": "#aspect" },
 								{ "include": "#keyword" },
 								{ "include": "#arguments" },
 								{
@@ -983,6 +986,7 @@
 										}
 									}
 								},
+								{ "include": "#aspect" },
 								{ "include": "#arguments" },
 								{ "include": "#keyword" },
 								{
@@ -1031,6 +1035,7 @@
 										}
 									}
 								},
+								{ "include": "#aspect" },
 								{ "include": "#keyword" },
 								{ "include": "#arguments" },
 								{
@@ -1043,13 +1048,13 @@
 				},
 				{
 					"name": "meta.operator.instantiation.ada",
-					"match": "(?i)\\bfunction\\s+\"..?.?\"(\\s*\\((\\\\.|[^\\)])*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\((\\\\.|[^\\)])*\\)",
+					"match": "(?i)\\bfunction\\s+\"..?.?\"(\\s*\\((\\\\.|[^\\)])*\\))?\\s+is\\s+new\\s+(\\w|\\.|_)+\\((\\\\.|[^\\)])*\\)(\\s+with\\s+(\\\\.|[^;])*)?\\s*(is|;)",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.instantiation.ada",
-									"match": "(?i)\\bis\\s+new\\s+.*;",
+									"match": "(?i)\\bis\\s+new\\s+(\\w|\\.|_)+(\\((\\\\.|[^\\)])*\\))?",
 									"captures": {
 										"0": {
 											"patterns": [
@@ -1059,6 +1064,7 @@
 										}
 									}
 								},
+								{ "include": "#aspect" },
 								{ "include": "#arguments" },
 								{ "include": "#keyword" },
 								{
