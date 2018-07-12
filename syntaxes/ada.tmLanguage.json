@@ -333,7 +333,7 @@
 								},
 								{
 									"name": "variable.name.ada",
-									"match": "\\b(\\w|_)+\\b"
+									"match": "\\b\\w((\\w|\\d|_)*\\w)?\\b"
 								}
 							]
 						}
@@ -382,7 +382,40 @@
 								},
 								{
 									"name": "variable.name.ada",
-									"match": "\\b(\\w|_)+\\b"
+									"match": "\\b\\w((\\w|\\d|_)*\\w)?\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.assignment.variable.ada",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:=.*;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.assignment.expression.ada",
+									"begin": ":=",
+									"end": ";",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#punctuation" }
+											]
+										}
+									},
+									"patterns": [
+										{ "include": "#attribute" },
+										{ "include": "#value" },
+										{ "include": "#type" },
+										{ "include": "#punctuation" },
+										{ "include": "#keyword" }
+									]
+								},
+								{
+									"name": "variable.name.ada",
+									"match": "\\b\\w((\\w|\\d|_)*\\w)?\\b"
 								}
 							]
 						}
@@ -1281,7 +1314,7 @@
 			"patterns": [
 				{
 					"name": "constant.numeric.ada",
-					"match": "2#[01]([01_]*[01])?#",
+					"match": "(?<!\\w)2#[01]([01_]*[01])?#",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -1296,7 +1329,7 @@
 				},
 				{
 					"name": "constant.numeric.ada",
-					"match": "8#[0-7]([0-7_]*[0-7])?#",
+					"match": "(?<!\\w)8#[0-7]([0-7_]*[0-7])?#",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -1311,7 +1344,7 @@
 				},
 				{
 					"name": "constant.numeric.ada",
-					"match": "10#[0-9]([0-9_]*[0-9])?#",
+					"match": "(?<!\\w)10#[0-9]([0-9_]*[0-9])?#",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -1326,7 +1359,7 @@
 				},
 				{
 					"name": "constant.numeric.ada",
-					"match": "(?i)16#[0-9A-F]([0-9A-F_]*[0-9A-F])?#",
+					"match": "(?<!\\w)(?i)16#[0-9A-F]([0-9A-F_]*[0-9A-F])?#",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -1341,7 +1374,7 @@
 				},
 				{
 					"name": "constant.numeric.ada",
-					"match": "[0-9]([0-9_]*[0-9])?(\\.[0-9]([0-9_]*[0-9])?([eE][0-9]+)?)?",
+					"match": "(?<!\\w)[0-9]([0-9_]*[0-9])?(\\.[0-9]([0-9_]*[0-9])?([eE][0-9]+)?)?",
 					"captures": {
 						"0": {
 							"patterns": [
