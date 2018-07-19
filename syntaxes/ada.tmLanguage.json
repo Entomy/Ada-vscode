@@ -501,7 +501,7 @@
 			"patterns": [
 				{
 					"name": "comment.line.double-dash.ada",
-					"match": "--\\s*(\\w|\\s|_)+\\s*--",
+					"match": "--[^-]+--",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -521,7 +521,27 @@
 							"patterns": [
 								{
 									"name": "comment.block.documentation.gnatdoc",
-									"match": "@.*$"
+									"match": "@.*$",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "entity.name.tag.gnatdoc",
+													"match": "@\\w+",
+													"captures": {
+														"0": {
+															"patterns": [
+																{
+																	"name": "punctuation.definition.tag.gnatdoc",
+																	"match": "@"
+																}
+															]
+														}
+													}
+												}
+											]
+										}
+									}
 								}
 							]
 						}
