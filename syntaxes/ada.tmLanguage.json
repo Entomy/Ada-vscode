@@ -1286,10 +1286,11 @@
 				},
 				{
 					"name": "meta.type.declaration.subtype.ada",
-					"match": "(?i)\\bsubtype\\s+(\\w|_)+\\s+is\\s+(\\w|\\.|_)+\\b",
+					"match": "(?i)\\bsubtype\\s+(\\w|_)+\\s+is\\s+(\\w|\\.|_)+(\\s+with\\s+(\\\\.|[^;])*)?",
 					"captures": {
 						"0": {
 							"patterns": [
+								{ "include": "#aspect" },
 								{ "include": "#keyword" },
 								{
 									"name": "storage.type.ada",
