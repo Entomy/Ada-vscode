@@ -1243,7 +1243,7 @@
 							"patterns": [
 								{
 									"name": "storage.modifier.ada",
-									"match": "\\baccess\\s+all\\b"
+									"match": "\\baccess(\\s+all)?\\b"
 								},
 								{ "include": "#keyword" },
 								{
