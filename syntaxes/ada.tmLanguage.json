@@ -730,6 +730,10 @@
 				{
 					"name": "keyword.operator.logic.ada",
 					"match": "(=|/=|<|>|<=|>=)"
+				},
+				{
+					"name": "keyword.operator.concatenation.ada",
+					"match": "\\&"
 				}
 			]
 		},
@@ -840,25 +844,17 @@
         "punctuation": {
             "patterns": [
                 {
-                    "name": "punctuation.ada",
-                    "match": "[().]"
-				},
-                {
                     "name": "punctuation.delimiter.ada",
-                    "match": "(=>|\\||')"
+                    "match": "(=>|\\||'|[()]|\\.|,)"
                 },
-                {
-                    "name": "punctuation.separator.ada",
-                    "match": ","
-				},
 				{
 					"name": "punctuation.underline.ada",
 					"match": "_"
 				},
                 {
                     "name": "punctuation.terminator.ada",
-                    "match": ";"        
-                }
+                    "match": ";"
+				}
             ]
 		},
 		"return": {
