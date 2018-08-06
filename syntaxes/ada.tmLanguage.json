@@ -881,7 +881,7 @@
 			"patterns": [
 				{
 					"name": "meta.procedure.ada",
-					"match": "(?i)\\bprocedure\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?(\\s+renames\\s+(\\w|\\.|_)+)?\\s*(is|;)",
+					"match": "(?i)\\bprocedure\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?(\\s+renames\\s+(\\w|\\.|_)+)?(\\s+with\\s+(\\\\.|[^;])*)?\\s*(is|;)",
 					"captures": {
 						"0": {
 							"patterns": [
