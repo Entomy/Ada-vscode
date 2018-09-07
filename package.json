@@ -91,20 +91,6 @@
                 ],
                 "configuration": "./gpr.language.json"
             }
-        ],
-        "snippets": [
-            {
-                "language": "ada",
-                "path": "./snippets/ada.json"
-            },
-            {
-                "language": "adc",
-                "path": "./snippets/adc.json"
-            },
-            {
-                "language": "gpr",
-                "path": "./snippets/gpr.json"
-            }
         ]
     }
 }
