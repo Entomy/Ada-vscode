@@ -30,4 +30,3 @@ Sometimes I just don't see an issue with the syntax highlighter, so if you notic
 # Proofs in the Screenshot
 
 ![screenshot](screenshots/1.jpg)
-![screenshot](screenshots/2.jpg)

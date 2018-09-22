@@ -794,13 +794,13 @@
 			"patterns": [
 				{
 					"name": "meta.property.ada",
-					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?\\s*(:=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+\\s*)?;",
+					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?\\s*(:=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+\\s*)?;",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.ada",
-									"match": ":\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?",
+									"match": ":\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?",
 									"captures": {
 										"0": {
 											"patterns": [
