@@ -1,0 +1,143 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ALI",
+	"patterns": [
+		{ "include": "#version" },
+		{ "include": "#with" },
+		{ "include": "#arguments" },
+		{ "include": "#external" },
+		{ "include": "#dependency" },
+		{ "include": "#reference" }
+	],
+	"repository": {
+		"version": {
+			"patterns": [
+				{
+					"name": "version.ali",
+					"match": "^V.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "V"
+								},
+								{
+									"name": "constant.ali",
+									"match": ".*"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"with": {
+			"patterns": [
+				{
+					"name": "with.ali",
+					"match": "^W.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "W"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"arguments": {
+			"patterns": [
+				{
+					"name": "argument.ali",
+					"match": "^A.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "entity.other.attribute-name.ali",
+									"match": "-\\S+\\b"
+								},
+								{
+									"name": "keyword.control.ali",
+									"match": "A"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"external": {
+			"patterns": [
+				{
+					"name": "external.ali",
+					"match": "^E.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "E"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"dependency": {
+			"patterns": [
+				{
+					"name": "dependency.ali",
+					"match": "^D.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "variable.name.ali",
+									"match": "\\b\\w+\\.\\w+\\b"
+								},
+								{
+									"name": "keyword.control.ali",
+									"match": "D"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"reference": {
+			"patterns": [
+				{
+					"name": "reference.ali",
+					"match": "^X.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "variable.name.ali",
+									"match": "\\b\\w+\\.\\w+\\b"
+								},
+								{
+									"name": "constant.numeric.ali",
+									"match": "\\d+"
+								},
+								{
+									"name": "keyword.control.ali",
+									"match": "X"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.ali"
+}

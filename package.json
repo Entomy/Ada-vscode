@@ -16,7 +16,8 @@
         "adb",
         "adc",
         "ads",
-        "gpr"
+        "gpr",
+        "ali"
     ],
     "license": "LICENSE",
     "repository": {
@@ -44,6 +45,11 @@
                 "language": "adc",
                 "scopeName": "source.adc",
                 "path": "./syntaxes/adc.tmLanguage.json"
+            },
+            {
+                "language": "ali",
+                "scopeName": "source.ali",
+                "path": "./syntaxes/ali.tmLanguage.json"
             },
             {
                 "language": "gpr",
@@ -79,6 +85,17 @@
                     ".adc"
                 ],
                 "configuration": "./adc.language.json"
+            },
+            {
+                "id": "ali",
+                "aliases": [
+                    "ali",
+                    "ALI",
+                    "Ada Library Information"
+                ],
+                "extensions": [
+                    ".ali"
+                ]
             },
             {
                 "id": "gpr",
