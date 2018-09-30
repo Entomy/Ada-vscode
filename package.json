@@ -3,7 +3,7 @@
     "displayName": "Ada",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
-    "version": "0.68.0",
+    "version": "0.66.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -14,7 +14,6 @@
     "keywords": [
         "ada",
         "adb",
-        "adc",
         "ads",
         "gpr",
         "ali"
