@@ -501,7 +501,7 @@
 			"patterns": [
 				{
 					"name": "comment.line.double-dash.ada",
-					"match": "--[^-]+--",
+					"match": "--[^-]+--\\s*$",
 					"captures": {
 						"0": {
 							"patterns": [
