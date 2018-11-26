@@ -3,8 +3,11 @@
 	"name": "ALI",
 	"patterns": [
 		{ "include": "#version" },
-		{ "include": "#with" },
+		{ "include": "#mainprogram" },
 		{ "include": "#arguments" },
+		{ "include": "#program" },
+		{ "include": "#restriction" },
+		{ "include": "#with" },
 		{ "include": "#external" },
 		{ "include": "#dependency" },
 		{ "include": "#reference" }
@@ -32,17 +35,21 @@
 				}
 			]
 		},
-		"with": {
+		"mainprogram": {
 			"patterns": [
 				{
-					"name": "with.ali",
-					"match": "^W.*$",
+					"name": "mainprogram.ali",
+					"match": "^M.*$",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "keyword.control.ali",
-									"match": "W"
+									"match": "^M"
+								},
+								{
+									"name": "constant.ali",
+									"match": ".*"
 								}
 							]
 						}
@@ -64,7 +71,69 @@
 								},
 								{
 									"name": "keyword.control.ali",
-									"match": "A"
+									"match": "^A"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"program": {
+			"patterns": [
+				{
+					"name": "program.ali",
+					"match": "^P.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^P"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"restriction": {
+			"patterns": [
+				{
+					"name": "restriction.ali",
+					"match": "^R.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^R\\w"
+								},
+								{
+									"name": "keyword.control.directive.ali",
+									"match": "(\\w|_)+"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"with": {
+			"patterns": [
+				{
+					"name": "with.ali",
+					"match": "^W.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^W"
+								},
+								{
+									"name": "entity.name.package.ali",
+									"match": "(\\w|\\.|-)+%[bs]"
 								}
 							]
 						}
@@ -82,7 +151,7 @@
 							"patterns": [
 								{
 									"name": "keyword.control.ali",
-									"match": "E"
+									"match": "^E"
 								}
 							]
 						}
@@ -99,12 +168,16 @@
 						"0": {
 							"patterns": [
 								{
-									"name": "variable.name.ali",
-									"match": "\\b\\w+\\.\\w+\\b"
+									"name": "keyword.control.ali",
+									"match": "^D"
 								},
 								{
-									"name": "keyword.control.ali",
-									"match": "D"
+									"name": "entity.name.package.ali",
+									"match": "(\\w|\\.|-)+%[bs]"
+								},
+								{
+									"name": "constant.numeric.ali",
+									"match": "\\b\\h+\\b"
 								}
 							]
 						}
@@ -121,16 +194,16 @@
 						"0": {
 							"patterns": [
 								{
+									"name": "keyword.control.ali",
+									"match": "^X"
+								},
+								{
 									"name": "variable.name.ali",
 									"match": "\\b\\w+\\.\\w+\\b"
 								},
 								{
 									"name": "constant.numeric.ali",
 									"match": "\\d+"
-								},
-								{
-									"name": "keyword.control.ali",
-									"match": "X"
 								}
 							]
 						}
