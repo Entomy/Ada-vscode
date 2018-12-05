@@ -7,10 +7,17 @@
 		{ "include": "#arguments" },
 		{ "include": "#program" },
 		{ "include": "#restriction" },
+		{ "include": "#unit" },
 		{ "include": "#with" },
 		{ "include": "#external" },
 		{ "include": "#dependency" },
-		{ "include": "#reference" }
+		{ "include": "#reference" },
+		{ "include": "#dispatching" },
+		{ "include": "#limitedwith" },
+		{ "include": "#implicitwith" },
+		{ "include": "#sco" },
+		{ "include": "#sparkcrossreference" },
+		{ "include": "#taskstackinfo" }
 	],
 	"repository": {
 		"version": {
@@ -119,6 +126,24 @@
 				}
 			]
 		},
+		"unit": {
+			"patterns": [
+				{
+					"name": "unit.ali",
+					"match": "^U.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^U"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
 		"with": {
 			"patterns": [
 				{
@@ -204,6 +229,114 @@
 								{
 									"name": "constant.numeric.ali",
 									"match": "\\d+"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"dispatching": {
+			"patterns": [
+				{
+					"name": "dispatching.ali",
+					"match": "^S.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^S"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"limitedwith": {
+			"patterns": [
+				{
+					"name": "limitedwith.ali",
+					"match": "^Y.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^Y"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"implicitwith": {
+			"patterns": [
+				{
+					"name": "implicitwith.ali",
+					"match": "^Z.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^Z"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"sco": {
+			"patterns": [
+				{
+					"name": "sco.ali",
+					"match": "^C.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^C"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"sparkcrossreference": {
+			"patterns": [
+				{
+					"name": "sparkcrossreference.ali",
+					"match": "^F.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^F"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"taskstackinfo": {
+			"patterns": [
+				{
+					"name": "taskstackinfo.ali",
+					"match": "^T.*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ali",
+									"match": "^T"
 								}
 							]
 						}
