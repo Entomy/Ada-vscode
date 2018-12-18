@@ -794,16 +794,17 @@
 			"patterns": [
 				{
 					"name": "meta.property.ada",
-					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?\\s*(:=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+\\s*)?;",
+					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+('\\w+)?(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?\\s*(:=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+\\s*)?;",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "meta.type.annotation.ada",
-									"match": ":\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?",
+									"match": ":\\s*(access\\s+|aliased\\s+|constant\\s+)?(\\w|\\.|_)+('\\w+)?(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?",
 									"captures": {
 										"0": {
 											"patterns": [
+												{ "include": "#attribute" },
 												{ "include": "#keyword" },
 												{
 													"name": "storage.type.ada",
@@ -822,10 +823,11 @@
 								},
 								{
 									"name": "meta.property.default.ada",
-									"match": ":=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+\\s*;",
+									"match": ":=\\s*((\\w|\\d|\\.|_)|\".*\"|'.')+('\\w+)?\\s*;",
 									"captures": {
 										"0": {
 											"patterns": [
+												{ "include": "#attribute" },
 												{ "include": "#value" }
 											]
 										}
