@@ -3,6 +3,7 @@
 # About
 
 [![Join the chat at https://gitter.im/Ada-vscode/Lobby](https://badges.gitter.im/Ada-vscode/Lobby.svg)](https://gitter.im/Ada-vscode/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Beerpay](https://img.shields.io/beerpay/Entomy/Ada-vscode.svg)](https://beerpay.io/Entomy/Ada-vscode)
 
 ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/Entomy.ada.svg?logo=visual-studio-code) ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/Entomy.ada.svg?logo=visual-studio-code)
 
