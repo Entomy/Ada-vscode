@@ -227,6 +227,17 @@
 					}
 				},
 				{
+					"name": "meta.argument.numeric.ada",
+					"match": "([0-9]+#)?([0-9A-Fa-f]|_)+#?",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#value" }
+							]
+						}
+					}
+				},
+				{
 					"name": "meta.argument.ada",
 					"match": "\\b(\\w|\\.|_)+\\b",
 					"captures": {
