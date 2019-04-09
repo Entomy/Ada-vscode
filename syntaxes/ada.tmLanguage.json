@@ -292,7 +292,7 @@
 			"patterns": [
 				{
 					"name": "meta.assignment.constant.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*constant(\\s+(\\w|\\.|_)+('(\\w|_)+)?)?\\s*:=.*;",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*constant(\\s+(\\w|\\.|_)+('(\\w|_)+)?)?\\s*:=\\s*\\S+\\s*;",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -341,7 +341,7 @@
 				},
 				{
 					"name": "meta.assignment.variable.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=.*)?;",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*\\S+\\s*)?;",
 					"captures": {
 						"0": {
 							"patterns": [
