@@ -2,6 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "gpr",
     "patterns": [
+        { "include": "#comment" },
         { "include": "#package" },
         { "include": "#attribute" },
         { "include": "#keyword" },
@@ -32,6 +33,28 @@
                 }
             ]
         },
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.line.double-dash.ada",
+					"match": "--[^-]+--\\s*$",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "entity.name.section",
+									"match": "\\b(\\w|\\s|_)*\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "comment.line.double-dash.ada",
+                    "match": "--.*$"
+                }
+			]
+		},
         "keyword": {
             "patterns": [
                 {
@@ -58,6 +81,7 @@
                         }
                     },
                     "patterns": [
+                        { "include": "#comment" },
                         { "include": "#attribute" }
                     ]
                 }
