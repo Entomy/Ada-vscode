@@ -16,5 +16,11 @@
         ["<<", ">>"],
         ["'", "'"],
         ["\"", "\""]
-    ]
+    ],
+    "folding": {
+        "markers": {
+            "start": "(?ig)\\brecord\\b",
+            "end": "(?ig)\\bend\\s+record;"
+        }
+    }
 }
