@@ -1162,6 +1162,7 @@
 						}
 					},
 					"patterns": [
+						{ "include": "#comment" },
 						{ "include": "#property" },
 						{ "include": "#case" }
 					]
