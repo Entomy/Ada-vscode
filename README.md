@@ -3,9 +3,8 @@
 # About
 
 [![Join the chat at https://gitter.im/Ada-vscode/Lobby](https://badges.gitter.im/Ada-vscode/Lobby.svg)](https://gitter.im/Ada-vscode/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Beerpay](https://img.shields.io/beerpay/Entomy/Ada-vscode.svg)](https://beerpay.io/Entomy/Ada-vscode)
-
-![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/Entomy.ada.svg?logo=visual-studio-code) ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/Entomy.ada.svg?logo=visual-studio-code)
+![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/Entomy.ada.svg?logo=visual-studio-code)
+![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/Entomy.ada.svg?logo=visual-studio-code)
 
 This extension was developed largely in response to the horrible quality of Ada syntax highlighters, whether for VS Code or otherwise. It's all too apparent they were created by people who barely, if at all, work with the language.
 
@@ -20,7 +19,7 @@ As I've developed this, I feel like the TextMate grammar approach is very insuff
 
 # Help Me Out
 
-Good quality extensions take a lot of time. Considerably more than just "meh, close enough" level work. If you'd like to help out but don't know how to contribute to the code, consider donating to my [Patreon](https://www.patreon.com/Entomy). Leave a message with the donation about it being for this extension, and I'll weight my work towards this.
+Good quality extensions take a lot of time. Considerably more than just "meh, close enough" level work. If you'd like to help out but don't know how to contribute to the code, consider donating to this projects [![Beerpay](https://img.shields.io/beerpay/Entomy/Ada-vscode.svg)](https://beerpay.io/Entomy/Ada-vscode).
 
 If you're one for actually contributing, a repo is located on [GitHub](https://github.com/Entomy/Ada-vscode). Clone the repo, make your changes, and create a pull request. Assuming they meet quality standards and conventions, it will be integrated.
 
