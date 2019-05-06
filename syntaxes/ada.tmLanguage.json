@@ -522,7 +522,7 @@
 							"patterns": [
 								{
 									"name": "entity.name.section",
-									"match": "\\b(\\w|\\s|_)*\\b"
+									"match": "[^-]+"
 								}
 							]
 						}
