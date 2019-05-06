@@ -1446,8 +1446,7 @@
 				},
 				{
 					"name": "string.quoted.double.ada",
-					"begin": "\"",
-					"end": "\""
+					"match": "\"(\\\\.|[^\"])*\""
 				}
 			]
 		}
