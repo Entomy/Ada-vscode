@@ -1210,7 +1210,7 @@
 				},
 				{
 					"name": "meta.type.declaration.array.ada",
-					"match": "(?i)\\btype\\s+(\\w|_)+\\s+is\\s+array\\s*\\(.*\\)\\s*of\\s+(\\w|\\.|_)+\\b",
+					"match": "(?i)\\btype\\s+(\\w|_)+\\s+is\\s+array\\s*\\(.*\\)\\s*of\\s+(access\\s+((all|constant)\\s+)?)?(\\w|\\.|_)+\\b",
 					"captures": {
 						"0": {
 							"patterns": [
