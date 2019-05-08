@@ -891,7 +891,7 @@
 									"captures": {
 										"0": {
 											"patterns": [
-												{ "include": "#arguments" }
+												{ "include": "#aggregate" }
 											]
 										}
 									}
