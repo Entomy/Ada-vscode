@@ -855,6 +855,54 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "meta.property.ada",
+					"match": "\\b(\\w|_)+\\s*:\\s*(access\\s+(constant\\s+)?|aliased\\s+|constant\\s+)?(\\w|\\.|_)+('\\w+)?(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?\\s*(:=\\s*\\((\\\\.|[^)])*\\))?;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "meta.type.annotation.ada",
+									"match": ":\\s*(access\\s+(constant\\s+)?|aliased\\s+|constant\\s+)?(\\w|\\.|_)+('\\w+)?(\\s*\\((\\\\.|[^)])*\\))?(\\s*range\\s+\\S+\\s*\\.\\.\\s*\\S+)?",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#attribute" },
+												{ "include": "#keyword" },
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|\\.|_)+(\\s*\\((\\\\.|[^)])*\\))?",
+													"captures": {
+														"0": {
+															"patterns": [
+																{ "include": "#discriminant" }
+															]
+														}
+													}
+												}
+											]
+										}
+									}
+								},
+								{
+									"name": "meta.property.default.ada",
+									"match": ":=\\s*\\((\\\\.|[^)])*\\);",
+									"captures": {
+										"0": {
+											"patterns": [
+												{ "include": "#arguments" }
+											]
+										}
+									}
+								},
+								{
+									"name": "variable.property.ada",
+									"match": "\\b(\\w|_)+\\b"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
