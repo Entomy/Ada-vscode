@@ -287,6 +287,7 @@
 						}
 					},
 					"patterns": [
+						{ "include": "#comment" },
 						{
 							"name": "keyword.control.directive.ada",
 							"match": "(?i)\\b(address|alignment|all_calls_remote|asynchronous|atomic|atomic_components|attach_handler|bit_order|component_size|convention|constant_indexing|cpu|default_component_value|default_iterator|default_storage_pool|default_value|dispatching_domain|dynamic_predicate|elaborate_body|export|external_name|external_tag|implicit_dereference|import|independent|independent_components|inline|input|iterator_element|interrupt_handler|interrupt_priority|link_name|machine_radix|no_return|output|pack|post|pre|preelaborate|priority|pure|read|relative_deadline|remote_call_interface|remote_types|size|shared_passive|small|static_predicate|storage_size|storage_pool|stream_size|synchronization|type_invariant|unchecked_union|variable_indexing|volatile|volatile_components|write)\\b"
