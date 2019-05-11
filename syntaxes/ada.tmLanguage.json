@@ -127,7 +127,7 @@
 							"patterns": [
 								{
 									"name": "meta.type.annotation.access.ada",
-									"match": ":\\s*((not\\s+)?null\\s+)?access\\s+(constant\\s+)?(\\w|\\.|_)+(\\((\\\\.|[^\\)])*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
+									"match": ":\\s*((not\\s+)?null\\s+)?access\\s+(constant\\s+)?vsce(\\w|\\.|_)+(\\((\\\\.|[^\\)])*\\))?(\\s*:=\\s*(\\w|\\.|_|')+)?",
 									"captures": {
 										"0": {
 											"patterns": [
