@@ -979,7 +979,7 @@
 				},
 				{
 					"name": "meta.function.ada",
-					"match": "(?i)\\bfunction\\s+(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+('Class)?(\\s+renames\\s+(\\w|\\.|_)+)?(\\s+with\\s+(\\\\.|[^;])*)?\\s*(is|;)",
+					"match": "(?i)\\bfunction\\s+((\\w|_)+\\.)*(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+('Class)?(\\s+renames\\s+(\\w|\\.|_)+)?(\\s+with\\s+(\\\\.|[^;])*)?\\s*(is|;)",
 					"captures": {
 						"0": {
 							"patterns": [
