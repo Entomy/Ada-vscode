@@ -979,7 +979,7 @@
 				},
 				{
 					"name": "meta.function.ada",
-					"match": "(?i)\\bfunction\\s+((\\w|_)+\\.)*(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+('Class)?(\\s+renames\\s+(\\w|\\.|_)+)?(\\s+with\\s+(\\\\.|[^;])*)?\\s*(is|;)",
+					"match": "(?i)\\bfunction\\s+((\\w|_)+\\.)*(\\w|_)+(\\s*\\((\\\\.|[^\\)])*\\))?\\s+return\\s+(\\w|\\.|_)+('Class)?(\\s+renames\\s+(\\w|\\.|_)+('(\\w|_)+)?)?(\\s+with\\s+(\\\\.|[^;])*)?\\s*(is|;)",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -1003,10 +1003,11 @@
 								},
 								{
 									"name": "meta.rename.ada",
-									"match": "\\brenames\\s+(\\w|\\.|_)+\\b",
+									"match": "\\brenames\\s+(\\w|\\.|_)+('(\\w|_)+)?\\b",
 									"captures": {
 										"0": {
 											"patterns": [
+												{ "include": "#attribute" },
 												{ "include": "#keyword" },
 												{
 													"name": "entity.name.function.ada",
