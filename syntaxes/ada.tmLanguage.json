@@ -1033,6 +1033,23 @@
 					}	
 				},
 				{
+					"name": "meta.instantiation.ada",
+					"match": "(?i)\\b(procedure|function)\\s+(\\w|_)+\\s+is\\s+new\\s+(\\w|\\.|_)+(\\s*\\((\\\\.|[^\\)])*\\))?(\\s+with\\s+(\\\\.|[^;])*)?",
+					"captures": {
+						"0": {
+							"patterns": [
+									{ "include": "#aspect" },
+									{ "include": "#keyword" },
+									{ "include": "#arguments" },
+									{
+										"name": "entity.name.function.ada",
+										"match": "\\b(\\w|\\.|_)+\\b"
+									}
+							]
+						}
+					}
+				},
+				{
 					"name": "meta.operator.ada",
 					"match": "(?i)\\bfunction\\s+\"..?.?\"\\s*\\((\\\\.|[^\\)])*\\)\\s+return\\s+(\\w|\\.|_)+('Class)(\\s+renames\\s+(\\w|\\.|_)+)?(\\s+with\\s+(\\\\.|[^;])*)?\\s*(is|;)",
 					"captures": {
