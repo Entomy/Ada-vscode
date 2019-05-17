@@ -308,7 +308,7 @@
 			"patterns": [
 				{
 					"name": "meta.assignment.constant.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*constant(\\s+(\\w|\\.|_)+('(\\w|_)+)?)?\\s*:=\\s*\\S+\\s*;",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*constant(\\s+(\\w|\\.|_)+('(\\w|_)+)?)?\\s*:=.*;",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -357,7 +357,7 @@
 				},
 				{
 					"name": "meta.assignment.variable.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=\\s*\\S+\\s*)?;",
+					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:\\s*(access\\s+|aliased\\s+)?(\\w|\\.|_)+('(\\w|_)+)?(\\s*:=.*)?;",
 					"captures": {
 						"0": {
 							"patterns": [
@@ -377,39 +377,6 @@
 										}
 									}
 								},
-								{
-									"name": "meta.assignment.expression.ada",
-									"begin": ":=",
-									"end": ";",
-									"captures": {
-										"0": {
-											"patterns": [
-												{ "include": "#punctuation" }
-											]
-										}
-									},
-									"patterns": [
-										{ "include": "#attribute" },
-										{ "include": "#value" },
-										{ "include": "#type" },
-										{ "include": "#punctuation" },
-										{ "include": "#keyword" }
-									]
-								},
-								{
-									"name": "variable.name.ada",
-									"match": "\\b\\w((\\w|\\d|_)*\\w)?\\b"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.assignment.variable.ada",
-					"match": "\\b((\\w|_)+\\s*,\\s*)*(\\w|_)+\\s*:=.*;",
-					"captures": {
-						"0": {
-							"patterns": [
 								{
 									"name": "meta.assignment.expression.ada",
 									"begin": ":=",
