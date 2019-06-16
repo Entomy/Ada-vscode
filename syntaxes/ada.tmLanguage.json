@@ -8,57 +8,53 @@
 		{ "include": "#package" }
 	],
 	"repository": {
-		"comment": {
-			"patterns": [
-				{
-					"name": "comment.line.double-dash.ada",
-					"match": "--[^-]+--\\s*$",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "entity.name.section",
-									"match": "[^-]+"
-								}
-							]
+		"section-comment": {
+			"name": "comment.line.double-dash.ada",
+			"match": "--[^-]+--\\s*$",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "entity.name.section",
+							"match": "[^-]+"
 						}
-					}
-				},
-				{
-					"name": "comment.line.double-dash.ada",
-					"match": "--.*$",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "comment.block.documentation.gnatdoc",
-									"match": "@.*$",
-									"captures": {
-										"0": {
-											"patterns": [
-												{
-													"name": "entity.name.tag.gnatdoc",
-													"match": "@\\w+",
-													"captures": {
-														"0": {
-															"patterns": [
-																{
-																	"name": "punctuation.definition.tag.gnatdoc",
-																	"match": "@"
-																}
-															]
-														}
-													}
-												}
-											]
-										}
-									}
-								}
-							]
-						}
-					}
+					]
 				}
-			]
+			}
+		},
+		"comment": {
+			"name": "comment.line.double-dash.ada",
+			"match": "--.*$",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "comment.block.documentation.gnatdoc",
+							"match": "@.*$",
+							"captures": {
+								"0": {
+									"patterns": [
+										{
+											"name": "entity.name.tag.gnatdoc",
+											"match": "@\\w+",
+											"captures": {
+												"0": {
+													"patterns": [
+														{
+															"name": "punctuation.definition.tag.gnatdoc",
+															"match": "@"
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					]
+				}
+			}
 		},
 		"package": {
 			"patterns": [
@@ -77,6 +73,7 @@
 						}
 					},
 					"patterns": [
+						{ "include": "#section-comment" },
 						{ "include": "#comment" }
 					]
 				},
@@ -95,6 +92,7 @@
 						}	
 					},
 					"patterns": [
+						{ "include": "#section-comment" },
 						{ "include": "#comment" }
 					]
 				}
