@@ -1,9 +1,11 @@
 {
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Ada",
 	"foldingStartMarker": "\\bbegin\\b",
 	"foldingStopMarker": "\\bend\\b",
 	"patterns": [
-		{ "include": "#comment" }
+		{ "include": "#comment" },
+		{ "include": "#package" }
 	],
 	"repository": {
 		"comment": {
@@ -55,6 +57,20 @@
 							]
 						}
 					}
+				}
+			]
+		},
+		"package": {
+			"patterns": [
+				{
+					"name": "meta.package.spec.ada",
+					"begin": "(?i)package\\s+((\\w|\\.|_)+)\\s+is",
+					"end": "(?i)end\\s+(\\1);"
+				},
+				{
+					"name": "meta.package.body.ada",
+					"begin": "(?i)package\\s+body\\s+((\\w|\\.|_)+)\\s+is",
+					"end": "(?i)end\\s+(\\1)+;"
 				}
 			]
 		}
