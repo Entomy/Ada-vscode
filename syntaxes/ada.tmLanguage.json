@@ -3,6 +3,7 @@
 	"name": "Ada",
 	"patterns": [
 		{ "include": "#comment" },
+		{ "include": "#import" },
 		{ "include": "#package" }
 	],
 	"repository": {
@@ -54,6 +55,27 @@
 				}
 			}
 		},
+		"delimiter": {
+			"name": "punctuation.delimiter.ada",
+			"match": "(=>|\\||'|[()]|\\.|,)"
+		},
+		"import": {
+			"name": "meta.import.package.ada",
+			"match": "(?i)\\b(use|with)\\s+(\\w|\\.|_)+(\\s*,\\s*(\\w|\\.|_)+)?\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(use|with)\\b"
+						},
+						{ "include": "#delimiter" },
+						{ "include": "#underline" },
+						{ "include": "#terminator" }
+					]
+				}
+			}
+		},
 		"package": {
 			"patterns": [
 				{
@@ -66,7 +88,8 @@
 								{
 									"name": "keyword.ada",
 									"match": "(?i)\\b(end|is|package)\\b"
-								}
+								},
+								{ "include": "#terminator" }
 							]
 						}
 					},
@@ -85,7 +108,8 @@
 								{
 									"name": "keyword.ada",
 									"match": "(?i)\\b(body|end|is|package)\\b"
-								}
+								},
+								{ "include": "terminator" }
 							]
 						}	
 					},
@@ -95,6 +119,14 @@
 					]
 				}
 			]
+		},
+		"terminator": {
+			"name": "punctuation.terminator.ada",
+			"match": ";"
+		},
+		"underline": {
+			"name": "punctuation.underline.ada",
+			"match": "_"
 		}
 	},
 	"scopeName": "source.ada"
