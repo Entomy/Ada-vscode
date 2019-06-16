@@ -65,12 +65,38 @@
 				{
 					"name": "meta.package.spec.ada",
 					"begin": "(?i)package\\s+((\\w|\\.|_)+)\\s+is",
-					"end": "(?i)end\\s+(\\1);"
+					"end": "(?i)end\\s+(\\1);",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\b(end|is|package)\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#comment" }
+					]
 				},
 				{
 					"name": "meta.package.body.ada",
 					"begin": "(?i)package\\s+body\\s+((\\w|\\.|_)+)\\s+is",
-					"end": "(?i)end\\s+(\\1)+;"
+					"end": "(?i)end\\s+(\\1)+;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\b(body|end|is|package)\\b"
+								}
+							]
+						}	
+					},
+					"patterns": [
+						{ "include": "#comment" }
+					]
 				}
 			]
 		}
