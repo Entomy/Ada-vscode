@@ -82,6 +82,36 @@
 			"name": "punctuation.delimiter.ada",
 			"match": "(=>|\\||'|[()]|\\.|,)"
 		},
+		"function-rename": {
+			"name": "meta.function.rename.ada",
+			"match": "(?i)\\bfunction.*renames.*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(function|renames|return)\\b"
+						},
+						{ "include": "#terminator" }
+					]
+				}
+			}
+		},
+		"function-spec": {
+			"name": "meta.function.spec.ada",
+			"match": "(?i)\\bfunction.*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(function|return)\\b"
+						},
+						{ "include": "#terminator" }
+					]
+				}
+			}
+		},
 		"import": {
 			"name": "meta.import.package.ada",
 			"match": "(?i)\\b(use|with)\\s+(\\w|\\.|_)+(\\s*,\\s*(\\w|\\.|_)+)?\\s*;",
@@ -116,6 +146,8 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#function-rename" },
+				{ "include": "#function-spec" },
 				{ "include": "#section-comment" },
 				{ "include": "#comment" }
 			]
