@@ -7,6 +7,28 @@
 		{ "include": "#package" }
 	],
 	"repository": {
+		"aspect": {
+			"name": "meta.aspect.ada",
+			"begin": "(?i)\\bwith\\b",
+			"end": "(?i)(;|is)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(with|is)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "keyword.control.directive.ada",
+					"match": "\\b(\\w|\\d|_)+\\b"
+				},
+				{ "include": "#delimiter" }
+			]
+		},
 		"section-comment": {
 			"name": "comment.line.double-dash.ada",
 			"match": "--[^-]+--\\s*$",
@@ -80,7 +102,7 @@
 			"patterns": [
 				{
 					"name": "meta.package.spec.ada",
-					"begin": "(?i)package\\s+((\\w|\\.|_)+)\\s+is",
+					"begin": "(?i)package\\s+((\\w|\\.|_)+)\\s+(with.*)?is",
 					"end": "(?i)end\\s+(\\1);",
 					"captures": {
 						"0": {
@@ -89,6 +111,7 @@
 									"name": "keyword.ada",
 									"match": "(?i)\\b(end|is|package)\\b"
 								},
+								{ "include": "#aspect" },
 								{ "include": "#terminator" }
 							]
 						}
