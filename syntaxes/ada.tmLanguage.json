@@ -4,7 +4,8 @@
 	"patterns": [
 		{ "include": "#comment" },
 		{ "include": "#import" },
-		{ "include": "#package" }
+		{ "include": "#package-spec" },
+		{ "include": "#package-body" }
 	],
 	"repository": {
 		"aspect": {
@@ -98,49 +99,45 @@
 				}
 			}
 		},
-		"package": {
-			"patterns": [
-				{
-					"name": "meta.package.spec.ada",
-					"begin": "(?i)package\\s+((\\w|\\.|_)+)\\s+(with.*)?is",
-					"end": "(?i)end\\s+(\\1);",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.ada",
-									"match": "(?i)\\b(end|is|package)\\b"
-								},
-								{ "include": "#aspect" },
-								{ "include": "#terminator" }
-							]
-						}
-					},
+		"package-spec": {
+			"name": "meta.package.spec.ada",
+			"begin": "(?i)package\\s+((\\w|\\.|_)+)\\s+(with.*)?is",
+			"end": "(?i)end\\s+(\\1);",
+			"captures": {
+				"0": {
 					"patterns": [
-						{ "include": "#section-comment" },
-						{ "include": "#comment" }
-					]
-				},
-				{
-					"name": "meta.package.body.ada",
-					"begin": "(?i)package\\s+body\\s+((\\w|\\.|_)+)\\s+is",
-					"end": "(?i)end\\s+(\\1)+;",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.ada",
-									"match": "(?i)\\b(body|end|is|package)\\b"
-								},
-								{ "include": "terminator" }
-							]
-						}	
-					},
-					"patterns": [
-						{ "include": "#section-comment" },
-						{ "include": "#comment" }
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(end|is|package)\\b"
+						},
+						{ "include": "#aspect" },
+						{ "include": "#terminator" }
 					]
 				}
+			},
+			"patterns": [
+				{ "include": "#section-comment" },
+				{ "include": "#comment" }
+			]
+		},
+		"package-body": {
+			"name": "meta.package.body.ada",
+			"begin": "(?i)package\\s+body\\s+((\\w|\\.|_)+)\\s+is",
+			"end": "(?i)end\\s+(\\1)+;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(body|end|is|package)\\b"
+						},
+						{ "include": "terminator" }
+					]
+				}	
+			},
+			"patterns": [
+				{ "include": "#section-comment" },
+				{ "include": "#comment" }
 			]
 		},
 		"terminator": {
