@@ -141,11 +141,16 @@
 			"captures": {
 				"0": {
 					"patterns": [
+						{ "include": "#parameter-profile" },
 						{ "include": "#function-rename" },
 						{ "include": "#function-return" },
 						{
 							"name": "keyword.ada",
-							"match": "(?i)\\b(function|return)\\b"
+							"match": "(?i)\\b(function)\\b"
+						},
+						{
+							"name": "entity.name.function.ada",
+							"match": "\\b(\\w|_)+\\b"
 						},
 						{ "include": "#terminator" }
 					]
@@ -209,6 +214,55 @@
 			"patterns": [
 				{ "include": "#section-comment" },
 				{ "include": "#comment" }
+			]
+		},
+		"parameter": {
+			"name": "meta.parameter.ada",
+			"match": "\\b(\\w|_)+(\\s*,\\s*(\\w|_)+)?\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+\\b;?",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "meta.type.annotation.ada",
+							"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+\\b",
+							"captures": {
+								"0": {
+									"patterns": [
+										{
+											"name": "storage.modifier.ada",
+											"match": "(?i)\\b(in|out)\\b"
+										},
+										{
+											"name": "storage.type.ada",
+											"match": "\\b(\\w|\\.|_)+\\b"
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "variable.parameter.ada",
+							"match": "\\b(\\w|_)+\\b"
+						},
+						{ "include": "#delimiter" }
+					]
+				}
+			}
+		},
+		"parameter-profile": {
+			"name": "meta.parameter-profile.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#delimiter" }
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#parameter" }
 			]
 		},
 		"terminator": {
