@@ -30,6 +30,21 @@
 				{ "include": "#delimiter" }
 			]
 		},
+		"attribute": {
+			"name": "meta.attribute.ada",
+			"match": "'(\\w|_)+\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#delimiter" },
+						{
+							"name": "entity.other.attribute-name.ada",
+							"match": "\\b(\\w|_)+\\b"
+						}
+					]
+				}
+			}
+		},
 		"section-comment": {
 			"name": "comment.line.double-dash.ada",
 			"match": "--[^-]+--\\s*$",
@@ -88,11 +103,31 @@
 			"captures": {
 				"0": {
 					"patterns": [
+						{ "include": "#function-return" },
 						{
 							"name": "keyword.ada",
 							"match": "(?i)\\b(function|renames|return)\\b"
 						},
 						{ "include": "#terminator" }
+					]
+				}
+			}
+		},
+		"function-return": {
+			"name": "meta.return-type.ada",
+			"match": "(?i)\\breturn\\s+(\\w|\\.|_)+('(\\w|_)+)?\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(return)\\b"
+						},
+						{ "include": "#attribute" },
+						{
+							"name": "entity.name.type.ada",
+							"match": "\\b(\\w|\\.|_)+\\b"
+						}
 					]
 				}
 			}
@@ -103,6 +138,7 @@
 			"captures": {
 				"0": {
 					"patterns": [
+						{ "include": "#function-return" },
 						{
 							"name": "keyword.ada",
 							"match": "(?i)\\b(function|return)\\b"
