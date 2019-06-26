@@ -99,16 +99,19 @@
 		},
 		"function-rename": {
 			"name": "meta.function.rename.ada",
-			"match": "(?i)\\bfunction.*renames.*;",
+			"match": "(?i)\\brenames\\s(\\w|\\.|_)+('(\\w|_)+)?\\b",
 			"captures": {
 				"0": {
 					"patterns": [
-						{ "include": "#function-return" },
 						{
 							"name": "keyword.ada",
-							"match": "(?i)\\b(function|renames|return)\\b"
+							"match": "(?i)\\b(renames)\\b"
 						},
-						{ "include": "#terminator" }
+						{ "include": "#attribute" },
+						{
+							"name": "entity.name.function.ada",
+							"match": "\\b(\\w|\\.|_)+\\b"
+						}
 					]
 				}
 			}
@@ -138,6 +141,7 @@
 			"captures": {
 				"0": {
 					"patterns": [
+						{ "include": "#function-rename" },
 						{ "include": "#function-return" },
 						{
 							"name": "keyword.ada",
@@ -182,7 +186,6 @@
 				}
 			},
 			"patterns": [
-				{ "include": "#function-rename" },
 				{ "include": "#function-spec" },
 				{ "include": "#section-comment" },
 				{ "include": "#comment" }
