@@ -18,7 +18,8 @@
 						{
 							"name": "keyword.ada",
 							"match": "(?i)\\b(with|is)\\b"
-						}
+						},
+						{ "include": "#terminator" }
 					]
 				}
 			},
@@ -148,6 +149,7 @@
 							"name": "keyword.ada",
 							"match": "(?i)\\b(function)\\b"
 						},
+						{ "include": "#aspect" },
 						{
 							"name": "entity.name.function.ada",
 							"match": "\\b(\\w|_)+\\b"
