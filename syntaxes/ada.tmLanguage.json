@@ -10,6 +10,32 @@
 	"repository": {
 		"aspect": {
 			"name": "meta.aspect.ada",
+			"match": "\\b(\\w|_)+(\\s*=>.*((?=,)|(?=;)|is))?",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "meta.aspect.definition.ada",
+							"match": "=>.*",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#comment" },
+										{ "include": "#delimiter" }
+									]
+								}
+							}
+						},
+						{
+							"name": "keyword.control.directive.ada",
+							"match": "\\b(\\w|_)+\\b"
+						}
+					]
+				}
+			}
+		},
+		"aspect-spec": {
+			"name": "meta.aspect.spec.ada",
 			"begin": "(?i)\\bwith\\b",
 			"end": "(?i)((?=;)|is)",
 			"captures": {
@@ -23,17 +49,8 @@
 				}
 			},
 			"patterns": [
-				{
-					"name": "keyword.control.directive.ada",
-					"match": "\\b(\\w|\\d|_)+\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{ "include": "#underline"}
-							]
-						}
-					}
-				},
+				{ "include": "#aspect" },
+				{ "include": "#comment" },				
 				{ "include": "#delimiter" }
 			]
 		},
@@ -182,7 +199,7 @@
 				{ "include": "#parameter-profile" },
 				{ "include": "#function-rename" },
 				{ "include": "#function-return" },
-				{ "include": "#aspect" },
+				{ "include": "#aspect-spec" },
 				{
 					"name": "entity.name.function.ada",
 					"match": "\\b(\\w|_)+\\b",
@@ -225,15 +242,15 @@
 							"name": "keyword.ada",
 							"match": "(?i)\\b(end|is|package)\\b"
 						},
-						{ "include": "#aspect" },
+						{ "include": "#aspect-spec" },
 						{ "include": "#terminator" }
 					]
 				}
 			},
 			"patterns": [
-				{ "include": "#function-spec" },
 				{ "include": "#section-comment" },
-				{ "include": "#comment" }
+				{ "include": "#comment" },
+				{ "include": "#function-spec" }
 			]
 		},
 		"package-body": {
