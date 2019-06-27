@@ -201,6 +201,14 @@
 				{ "include": "#function-return" },
 				{ "include": "#aspect-spec" },
 				{
+					"name": "keyword.ada",
+					"match": "\\b(is)\\b"	
+				},
+				{
+					"name": "keyword.modifier.unknown.ada",
+					"match": "\\b(abstract)\\b"	
+				},
+				{
 					"name": "entity.name.function.ada",
 					"match": "\\b(\\w|_)+\\b",
 					"captures": {
