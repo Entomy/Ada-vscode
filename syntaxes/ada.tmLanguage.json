@@ -128,6 +128,32 @@
 			"name": "punctuation.delimiter.ada",
 			"match": "(=>|\\||'|[()]|\\.|,)"
 		},
+		"function-instantiation": {
+			"name": "meta.function.instantiation.ada",
+			"begin": "(?i)\\bis\\s+new\\b",
+			"end": "(?i)((?=;)|(?=with))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(is)\\b"
+						},
+						{
+							"name": "keyword.modifier.unknown.ada",
+							"match": "(?i)\\b(new)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#generic-actual" },
+				{
+					"name": "entity.name.function.ada",
+					"match": "\\b(\\w|\\.|_)+\\b"
+				}
+			]
+		},
 		"function-rename": {
 			"name": "meta.function.rename.ada",
 			"match": "(?i)\\brenames\\s(\\w|\\.|_)+('(\\w|_)+)?\\b",
@@ -197,6 +223,7 @@
 			},
 			"patterns": [
 				{ "include": "#parameter-profile" },
+				{ "include": "#function-instantiation" },
 				{ "include": "#function-rename" },
 				{ "include": "#function-return" },
 				{ "include": "#aspect-spec" },
@@ -221,6 +248,46 @@
 				},
 				{ "include": "#terminator" }
 			]
+		},
+		"generic-actual": {
+			"name": "meta.generic.actual.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#delimiter" }
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#generic-association" }
+			]
+		},
+		"generic-association": {
+			"name": "meta.generic.association.ada",
+			"match": "\\b(\\w|_)+(\\s*=>)?",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "entity.name.selector.ada",
+							"match": "\\b(\\w|_)+\\s*=>",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#delimiter" }
+									]
+								}
+							}
+						},
+						{
+							"name": "meta.generic.parameter.ada",
+							"match": ".*"
+						}
+					]
+				}
+			}
 		},
 		"import": {
 			"name": "meta.import.package.ada",
