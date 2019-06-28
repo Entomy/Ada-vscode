@@ -327,7 +327,8 @@
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
 				{ "include": "#function-spec" },
-				{ "include": "#pragma" }
+				{ "include": "#pragma" },
+				{ "include": "#type" }
 			]
 		},
 		"package-body": {
@@ -443,6 +444,93 @@
 		"terminator": {
 			"name": "punctuation.terminator.ada",
 			"match": ";"
+		},
+		"type": {
+			"name": "meta.type.declaration.ada",
+			"begin": "(?i)\\btype\\b",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\btype\\b"
+						},
+						{ "include": "#terminator" }
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "keyword.ada",
+					"match": "(?i)\\bis\\b"
+				},
+				{
+					"name": "meta.type.declaration.range.ada",
+					"begin": "(?i)\\brange\\b",
+					"end": "(?i)(?=(with|;))",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\brange\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.type.declaration.modulus.ada",
+					"begin": "(?i)\\bmod\\b",
+					"end": "(?i)(?=(with|;))",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\bmod\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.type.declaration.delta.ada",
+					"begin": "(?i)\\bdelta\\b",
+					"end": "(?i)(?=(digits|range|with|;))",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\bdelta\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.type.declaration.digits.ada",
+					"begin": "(?i)\\bdigits\\b",
+					"end": "(?i)(?=(range|with|;))",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\bdigits\\b"
+								}
+							]
+						}
+					}	
+				},
+				{ "include": "#aspect-spec" },
+				{
+					"name": "entity.name.type.ada",
+					"match": "\\b(\\w|_)+\\b"
+				}
+			]
 		},
 		"underline": {
 			"name": "punctuation.underline.ada",
