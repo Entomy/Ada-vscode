@@ -4,6 +4,7 @@
 	"patterns": [
 		{ "include": "#comment" },
 		{ "include": "#import" },
+		{ "include": "#pragma" },
 		{ "include": "#package-spec" },
 		{ "include": "#package-body" }
 	],
@@ -325,7 +326,8 @@
 			"patterns": [
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
-				{ "include": "#function-spec" }
+				{ "include": "#function-spec" },
+				{ "include": "#pragma" }
 			]
 		},
 		"package-body": {
@@ -402,6 +404,40 @@
 			},
 			"patterns": [
 				{ "include": "#parameter" }
+			]
+		},
+		"pragma": {
+			"name": "meta.pragma.ada",
+			"begin": "(?i)\\bpragma\\b",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\bpragma\\b"
+						},
+						{ "include": "#terminator" }
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "meta.pragma.arguments.ada",
+					"begin": "\\(",
+					"end": "\\)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#delimiter" }
+							]
+						}
+					}
+				},
+				{
+					"name": "keyword.control.directive.ada",
+					"match": "\\b(\\w|_)+\\b"	
+				}
 			]
 		},
 		"terminator": {
