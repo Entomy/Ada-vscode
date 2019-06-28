@@ -307,6 +307,33 @@
 				}
 			}
 		},
+		"number": {
+			"name": "constant.numeric.ada",
+			"match": "(?<!\\w)([0-9]?[0-9]#)?[0-9A-F]+([0-9A-F_]*[0-9A-F])?(\\.[0-9A-F]([0-9A-F_]*[0-9A-F])?)?([eE][0-9]+)?#?",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "constant.numeric.base.ada",
+							"match": "[0-9]?[0-9]#(?=\\d)"
+						},
+						{
+							"name": "constant.numeric.base.ada",
+							"match": "#"	
+						},
+						{
+							"name": "punctuation.radix-point.ada",
+							"match": "\\."
+						},
+						{
+							"name": "punctuation.exponent-mark.ada",
+							"match": "[eE]"
+						},
+						{ "include": "#underline" }
+					]
+				}
+			}
+		},
 		"package-spec": {
 			"name": "meta.package.spec.ada",
 			"begin": "(?i)package\\s+((\\w|\\.|_)+)\\s+(with.*)?is",
@@ -478,7 +505,11 @@
 								}
 							]
 						}
-					}
+					},
+					"patterns": [
+						{ "include": "#number" },
+						{ "include": "#delimiter" }
+					]
 				},
 				{
 					"name": "meta.type.declaration.modulus.ada",
@@ -493,7 +524,11 @@
 								}
 							]
 						}
-					}
+					},
+					"patterns": [
+						{ "include": "#number" },
+						{ "include": "#delimiter" }
+					]
 				},
 				{
 					"name": "meta.type.declaration.delta.ada",
@@ -508,7 +543,11 @@
 								}
 							]
 						}
-					}
+					},
+					"patterns": [
+						{ "include": "#number" },
+						{ "include": "#delimiter" }
+					]
 				},
 				{
 					"name": "meta.type.declaration.digits.ada",
@@ -523,7 +562,11 @@
 								}
 							]
 						}
-					}	
+					},
+					"patterns": [
+						{ "include": "#number" },
+						{ "include": "#delimiter" }
+					]
 				},
 				{ "include": "#aspect-spec" },
 				{
