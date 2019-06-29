@@ -413,6 +413,29 @@
 				}
 			},
 			"patterns": [
+				{
+					"name": "meta.package.spec.private.ada",
+					"begin": "(?i)\\bprivate\\b",
+					"end": "(?i)(?=end)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\bprivate\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#section-comment" },
+						{ "include": "#comment" },
+						{ "include": "#declaration" },
+						{ "include": "#function-spec" },
+						{ "include": "#pragma" },
+						{ "include": "#type" }
+					]
+				},
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
 				{ "include": "#declaration" },
