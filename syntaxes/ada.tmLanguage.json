@@ -460,13 +460,31 @@
 								{ "include": "#delimiter" }
 							]
 						}
-					}
+					},
+					"patterns": [
+						{ "include": "#number" },
+						{ "include": "#string" }
+					]
 				},
 				{
 					"name": "keyword.control.directive.ada",
 					"match": "\\b(\\w|_)+\\b"	
 				}
 			]
+		},
+		"string": {
+			"name": "string.quoted.double.ada",
+			"match": "\"(\\\\.|[^\"])*\"",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "punctuation.definition.string.ada",
+							"match": "\""
+						}
+					]
+				}
+			}
 		},
 		"terminator": {
 			"name": "punctuation.terminator.ada",
