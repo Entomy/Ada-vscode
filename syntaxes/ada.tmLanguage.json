@@ -574,6 +574,39 @@
 					"match": "(?i)\\bis\\b"
 				},
 				{
+					"name": "meta.type.declaration.inheritance.ada",
+					"begin": "(?i)\\bnew\\b",
+					"end": "(?i)(with)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\b(new|with)\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\band\\b"
+						},
+						{
+							"name": "storage.type.ada",
+							"match": "\\b(\\w|\\.|_)+\\b",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#delimiter" },
+										{ "include": "#underline" }
+									]
+								}
+							}
+						}
+					]
+				},
+				{
 					"name": "meta.type.declaration.array.ada",
 					"begin": "(?i)\\barray\\b",
 					"end": "(?i)(?=(with|;))",
@@ -717,6 +750,20 @@
 				},
 				{
 					"name": "meta.type.declaration.record.ada",
+					"match": "(?i)\\b((abstract\\s+)?tagged\\s+)?(limited\\s+)?null\\s+record\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\b(abstract|tagged|limited|null|record)\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.type.declaration.record.ada",
 					"begin": "(?i)\\b((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
 					"end": "(?i)\\bend\\s+record\\b",
 					"captures": {
@@ -743,6 +790,18 @@
 					"match": "\\b(\\w|_)+\\b"
 				}
 			]
+		},
+		"type-discriminant": {
+			"name": "meta.type.discriminant.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#delimiter" }
+					]
+				}
+			}
 		},
 		"underline": {
 			"name": "punctuation.underline.ada",
