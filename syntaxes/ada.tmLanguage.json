@@ -813,6 +813,31 @@
 						{ "include": "#declaration" }
 					]
 				},
+				{
+					"name": "meta.type.declaration.interface.ada",
+					"begin": "(?i)\\b(limited|task|protected|synchronized)?interface\\b",
+					"end": "(?=;)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\b(limited|task|protected|synchronized|interface)\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\band\\b"
+						},
+						{
+							"name": "storage.type.ada",
+							"match": "\\b(\\w|\\.|_)+\\b"
+						}
+					]
+				},
 				{ "include": "#aspect-spec" },
 				{
 					"name": "entity.name.type.ada",
