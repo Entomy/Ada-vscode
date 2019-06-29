@@ -715,6 +715,28 @@
 						{ "include": "#delimiter" }
 					]
 				},
+				{
+					"name": "meta.type.declaration.record.ada",
+					"begin": "(?i)\\b((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
+					"end": "(?i)\\bend\\s+record\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\bend\\s+record\\b"
+								},
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\b(abstract|limited|tagged|record)\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#declaration" }
+					]
+				},
 				{ "include": "#aspect-spec" },
 				{
 					"name": "entity.name.type.ada",
