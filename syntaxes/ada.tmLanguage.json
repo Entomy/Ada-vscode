@@ -125,6 +125,68 @@
 				}
 			}
 		},
+		"declaration": {
+			"name": "meta.object.declaration.ada",
+			"begin": "\\b(\\w|_)+\\s*(?=:)",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "variable.name.ada",
+							"match": "\\b(\\w|_)+\\b"
+						},
+						{ "include": "#terminator" }
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "meta.type.annotation.ada",
+					"match": ":\\s*(aliased\\s+)?(constant\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\b(aliased|constant)\\b"
+								},
+								{ "include": "#attribute" },
+								{
+									"name": "storage.type.ada",
+									"match": "\\b(\\w|\\.|_)+\\b"
+								},
+								{
+									"name": "punctuation.delimiter.ada",
+									"match": ":"
+								},
+								{ "include": "#underline" }
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.assignment.ada",
+					"begin": ":=",
+					"end": "(?=;)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.operator.assignment.ada",
+									"match": ":="
+								},
+								{ "include": "#terminator" }
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#number" },
+						{ "include": "#string" }
+					]
+				}
+			]
+		},
 		"delimiter": {
 			"name": "punctuation.delimiter.ada",
 			"match": "(=>|\\||'|[()]|\\.|,)"
@@ -353,6 +415,7 @@
 			"patterns": [
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
+				{ "include": "#declaration" },
 				{ "include": "#function-spec" },
 				{ "include": "#pragma" },
 				{ "include": "#type" }
