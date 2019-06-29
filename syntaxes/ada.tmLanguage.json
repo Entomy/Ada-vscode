@@ -574,6 +574,72 @@
 					"match": "(?i)\\bis\\b"
 				},
 				{
+					"name": "meta.type.declaration.array.ada",
+					"begin": "(?i)\\barray\\b",
+					"end": "(?i)(?=(with|;))",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\barray\\b"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{
+							"name": "meta.type.declaration.array.indices.ada",
+							"begin": "\\(",
+							"end": "\\)",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#delimiter" }
+									]
+								}
+							},
+							"patterns": [
+								{
+									"name": "meta.type.declaration.array.index.ada",
+									"begin": "\\b(\\w|_)+\\b",
+									"end": "(?=[,)])",
+									"captures": {
+										"0": {
+											"patterns": [
+												{
+													"name": "storage.type.ada",
+													"match": "\\b(\\w|_)+\\b"
+												}
+											]
+										}
+									},
+									"patterns": [
+										{
+											"name": "storage.modifier.ada",
+											"match": "(?i)\\brange\\b"
+										},
+										{
+											"name": "keyword.modifier.unknown.ada",
+											"match": "<>"
+										},
+										{ "include": "#number" },
+										{ "include": "#delimiter" }
+									]
+								}
+							]
+						},
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\bof\\b"
+						},
+						{
+							"name": "storage.type.ada",
+							"match": "\\b(\\w|\\.|_)+\\b"
+						}
+					]
+				},
+				{
 					"name": "meta.type.declaration.range.ada",
 					"begin": "(?i)\\brange\\b",
 					"end": "(?i)(?=(with|;))",
