@@ -574,6 +574,10 @@
 					"match": "(?i)\\bis\\b"
 				},
 				{
+					"name": "storage.visibility.ada",
+					"match": "(?i)\\bprivate\\b"	
+				},
+				{
 					"name": "meta.type.declaration.access.ada",
 					"begin": "(?i)\\baccess\\b",
 					"end": "(?i)(?=(with|;))",
