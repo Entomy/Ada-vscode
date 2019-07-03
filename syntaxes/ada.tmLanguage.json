@@ -316,12 +316,11 @@
 			"name": "meta.generic.actual.ada",
 			"begin": "\\(",
 			"end": "\\)",
-			"captures": {
-				"0": {
-					"patterns": [
-						{ "include": "#delimiter" }
-					]
-				}
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close.ada" }
 			},
 			"patterns": [
 				{ "include": "#generic-association" }
@@ -510,12 +509,11 @@
 			"name": "meta.parameter-profile.ada",
 			"begin": "\\(",
 			"end": "\\)",
-			"captures": {
-				"0": {
-					"patterns": [
-						{ "include": "#delimiter" }
-					]
-				}
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close.ada" }
 			},
 			"patterns": [
 				{ "include": "#parameter" }
