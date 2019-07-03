@@ -441,6 +441,7 @@
 				{ "include": "#declaration" },
 				{ "include": "#function-spec" },
 				{ "include": "#pragma" },
+				{ "include": "#subtype" },
 				{ "include": "#type" }
 			]
 		},
@@ -571,6 +572,43 @@
 					]
 				}
 			}
+		},
+		"subtype": {
+			"name": "meta.type.declaration.subtype.ada",
+			"begin": "(?i)\\bsubtype\\b",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\bsubtype\\b"
+						},
+						{ "include": "#terminator" }
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#aspect-spec" },
+				{ "include": "#type-range" },
+				{
+					"match": "(?i)\\b(\\w|_)+\\s+is\\s+(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\bis\\b"
+								},
+								{
+									"name": "storage.type.ada",
+									"match": "\\b(\\w|\\.|_)+\\b"
+								}
+							]	
+						}
+					}
+				}
+			]
 		},
 		"terminator": {
 			"name": "punctuation.terminator.ada",
@@ -724,25 +762,7 @@
 						}
 					]
 				},
-				{
-					"name": "meta.type.declaration.range.ada",
-					"begin": "(?i)\\brange\\b",
-					"end": "(?i)(?=(with|;))",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\brange\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{ "include": "#number" },
-						{ "include": "#delimiter" }
-					]
-				},
+				{ "include": "#type-range" },
 				{
 					"name": "meta.type.declaration.modulus.ada",
 					"begin": "(?i)\\bmod\\b",
@@ -872,13 +892,31 @@
 			"name": "meta.type.discriminant.ada",
 			"begin": "\\(",
 			"end": "\\)",
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close.ada" }
+			}
+		},
+		"type-range": {
+			"name": "meta.type.declaration.range.ada",
+			"begin": "(?i)\\brange\\b",
+			"end": "(?i)(?=(with|;))",
 			"captures": {
 				"0": {
 					"patterns": [
-						{ "include": "#delimiter" }
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\brange\\b"
+						}
 					]
 				}
-			}
+			},
+			"patterns": [
+				{ "include": "#number" },
+				{ "include": "#delimiter" }
+			]
 		},
 		"underline": {
 			"name": "punctuation.underline.ada",
