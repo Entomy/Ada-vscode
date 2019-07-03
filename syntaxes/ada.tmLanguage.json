@@ -638,254 +638,150 @@
 					"name": "storage.visibility.ada",
 					"match": "(?i)\\bprivate\\b"	
 				},
-				{
-					"name": "meta.type.declaration.access.ada",
-					"begin": "(?i)\\baccess\\b",
-					"end": "(?i)(?=(with|;))",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\baccess\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"name": "storage.modifier.ada",
-							"match": "(?i)\\b(all|constant)\\b"
-						},
-						{
-							"name": "storage.type.ada",
-							"match": "\\b(\\w|\\.|_)+\\b"
-						}
-					]
-				},
-				{
-					"name": "meta.type.declaration.inheritance.ada",
-					"begin": "(?i)\\bnew\\b",
-					"end": "(?i)(with)",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.ada",
-									"match": "(?i)\\b(new|with)\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"name": "keyword.ada",
-							"match": "(?i)\\band\\b"
-						},
-						{
-							"name": "storage.type.ada",
-							"match": "\\b(\\w|\\.|_)+\\b",
-							"captures": {
-								"0": {
-									"patterns": [
-										{ "include": "#delimiter" },
-										{ "include": "#underline" }
-									]
-								}
-							}
-						}
-					]
-				},
-				{
-					"name": "meta.type.declaration.array.ada",
-					"begin": "(?i)\\barray\\b",
-					"end": "(?i)(?=(with|;))",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\barray\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"name": "meta.type.declaration.array.indices.ada",
-							"begin": "\\(",
-							"end": "\\)",
-							"captures": {
-								"0": {
-									"patterns": [
-										{ "include": "#delimiter" }
-									]
-								}
-							},
-							"patterns": [
-								{
-									"name": "meta.type.declaration.array.index.ada",
-									"begin": "\\b(\\w|_)+\\b",
-									"end": "(?=[,)])",
-									"captures": {
-										"0": {
-											"patterns": [
-												{
-													"name": "storage.type.ada",
-													"match": "\\b(\\w|_)+\\b"
-												}
-											]
-										}
-									},
-									"patterns": [
-										{
-											"name": "storage.modifier.ada",
-											"match": "(?i)\\brange\\b"
-										},
-										{
-											"name": "keyword.modifier.unknown.ada",
-											"match": "<>"
-										},
-										{ "include": "#number" },
-										{ "include": "#delimiter" }
-									]
-								}
-							]
-						},
-						{
-							"name": "storage.modifier.ada",
-							"match": "(?i)\\bof\\b"
-						},
-						{
-							"name": "storage.type.ada",
-							"match": "\\b(\\w|\\.|_)+\\b"
-						}
-					]
-				},
+				{ "include": "#type-access" },
+				{ "include": "#type-inheritance" },
+				{ "include": "#type-array" },
 				{ "include": "#type-range" },
-				{
-					"name": "meta.type.declaration.modulus.ada",
-					"begin": "(?i)\\bmod\\b",
-					"end": "(?i)(?=(with|;))",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\bmod\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{ "include": "#number" },
-						{ "include": "#delimiter" }
-					]
-				},
-				{
-					"name": "meta.type.declaration.delta.ada",
-					"begin": "(?i)\\bdelta\\b",
-					"end": "(?i)(?=(digits|range|with|;))",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\bdelta\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{ "include": "#number" },
-						{ "include": "#delimiter" }
-					]
-				},
-				{
-					"name": "meta.type.declaration.digits.ada",
-					"begin": "(?i)\\bdigits\\b",
-					"end": "(?i)(?=(range|with|;))",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\bdigits\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{ "include": "#number" },
-						{ "include": "#delimiter" }
-					]
-				},
-				{
-					"name": "meta.type.declaration.record.ada",
-					"match": "(?i)\\b((abstract\\s+)?tagged\\s+)?(limited\\s+)?null\\s+record\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\b(abstract|tagged|limited|null|record)\\b"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.type.declaration.record.ada",
-					"begin": "(?i)\\b((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
-					"end": "(?i)\\bend\\s+record\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.ada",
-									"match": "(?i)\\bend\\s+record\\b"
-								},
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\b(abstract|limited|tagged|record)\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{ "include": "#declaration" }
-					]
-				},
-				{
-					"name": "meta.type.declaration.interface.ada",
-					"begin": "(?i)\\b(limited|task|protected|synchronized)?interface\\b",
-					"end": "(?=;)",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "storage.modifier.ada",
-									"match": "(?i)\\b(limited|task|protected|synchronized|interface)\\b"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"name": "keyword.ada",
-							"match": "(?i)\\band\\b"
-						},
-						{
-							"name": "storage.type.ada",
-							"match": "\\b(\\w|\\.|_)+\\b"
-						}
-					]
-				},
+				{ "include": "#type-modulus" },
+				{ "include": "#type-delta" },
+				{ "include": "#type-digits" },
+				{ "include": "#type-record-null" },
+				{ "include": "#type-record" },
+				{ "include": "#type-interface" },
 				{ "include": "#aspect-spec" },
 				{
 					"name": "entity.name.type.ada",
 					"match": "\\b(\\w|_)+\\b"
 				}
+			]
+		},
+		"type-access": {
+			"name": "meta.type.declaration.access.ada",
+			"begin": "(?i)\\baccess\\b",
+			"end": "(?i)(?=(with|;))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\baccess\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "storage.modifier.ada",
+					"match": "(?i)\\b(all|constant)\\b"
+				},
+				{
+					"name": "storage.type.ada",
+					"match": "\\b(\\w|\\.|_)+\\b"
+				}
+			]
+		},
+		"type-array": {
+			"name": "meta.type.declaration.array.ada",
+			"begin": "(?i)\\barray\\b",
+			"end": "(?i)(?=(with|;))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\barray\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "meta.type.declaration.array.indices.ada",
+					"begin": "\\(",
+					"end": "\\)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#delimiter" }
+							]
+						}
+					},
+					"patterns": [
+						{
+							"name": "meta.type.declaration.array.index.ada",
+							"begin": "\\b(\\w|_)+\\b",
+							"end": "(?=[,)])",
+							"captures": {
+								"0": {
+									"patterns": [
+										{
+											"name": "storage.type.ada",
+											"match": "\\b(\\w|_)+\\b"
+										}
+									]
+								}
+							},
+							"patterns": [
+								{
+									"name": "storage.modifier.ada",
+									"match": "(?i)\\brange\\b"
+								},
+								{
+									"name": "keyword.modifier.unknown.ada",
+									"match": "<>"
+								},
+								{ "include": "#number" },
+								{ "include": "#delimiter" }
+							]
+						}
+					]
+				},
+				{
+					"name": "storage.modifier.ada",
+					"match": "(?i)\\bof\\b"
+				},
+				{
+					"name": "storage.type.ada",
+					"match": "\\b(\\w|\\.|_)+\\b"
+				}
+			]
+		},
+		"type-delta": {
+			"name": "meta.type.declaration.delta.ada",
+			"begin": "(?i)\\bdelta\\b",
+			"end": "(?i)(?=(digits|range|with|;))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\bdelta\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#number" },
+				{ "include": "#delimiter" }
+			]
+		},
+		"type-digits": {
+			"name": "meta.type.declaration.digits.ada",
+			"begin": "(?i)\\bdigits\\b",
+			"end": "(?i)(?=(range|with|;))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\bdigits\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#number" },
+				{ "include": "#delimiter" }
 			]
 		},
 		"type-discriminant": {
@@ -898,6 +794,83 @@
 			"endCaptures": {
 				"0": { "name": "punctuation.paren.close.ada" }
 			}
+		},
+		"type-inheritance": {
+			"name": "meta.type.declaration.inheritance.ada",
+			"begin": "(?i)\\bnew\\b",
+			"end": "(?i)(with)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(new|with)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "keyword.ada",
+					"match": "(?i)\\band\\b"
+				},
+				{
+					"name": "storage.type.ada",
+					"match": "\\b(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#delimiter" },
+								{ "include": "#underline" }
+							]
+						}
+					}
+				}
+			]
+		},
+		"type-interface": {
+			"name": "meta.type.declaration.interface.ada",
+			"begin": "(?i)\\b(limited|task|protected|synchronized)?interface\\b",
+			"end": "(?=;)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\b(limited|task|protected|synchronized|interface)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "keyword.ada",
+					"match": "(?i)\\band\\b"
+				},
+				{
+					"name": "storage.type.ada",
+					"match": "\\b(\\w|\\.|_)+\\b"
+				}
+			]
+		},
+		"type-modulus": {
+			"name": "meta.type.declaration.modulus.ada",
+			"begin": "(?i)\\bmod\\b",
+			"end": "(?i)(?=(with|;))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\bmod\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#number" },
+				{ "include": "#delimiter" }
+			]
 		},
 		"type-range": {
 			"name": "meta.type.declaration.range.ada",
@@ -916,6 +889,42 @@
 			"patterns": [
 				{ "include": "#number" },
 				{ "include": "#delimiter" }
+			]
+		},
+		"type-record-null": {
+			"name": "meta.type.declaration.record.ada",
+			"match": "(?i)\\b((abstract\\s+)?tagged\\s+)?(limited\\s+)?null\\s+record\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\b(abstract|tagged|limited|null|record)\\b"
+						}
+					]
+				}
+			}
+		},
+		"type-record": {
+			"name": "meta.type.declaration.record.ada",
+			"begin": "(?i)\\b((abstract\\s+)?tagged\\s+)?(limited\\s+)?record\\b",
+			"end": "(?i)\\bend\\s+record\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\bend\\s+record\\b"
+						},
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\b(abstract|limited|tagged|record)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#declaration" }
 			]
 		},
 		"underline": {
