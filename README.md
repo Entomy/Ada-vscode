@@ -27,6 +27,7 @@ Sometimes I just don't see an issue with the syntax highlighter, so if you notic
 
 # Works Best With
 * [Offbase](https://marketplace.visualstudio.com/items?itemName=Entomy.offbase) although any theme will work well.
+* [Ada-snippets](https://marketplace.visualstudio.com/items?itemName=Entomy.ada-snippets) for adding snippets.
 
 # Proofs in the Screenshot
 
