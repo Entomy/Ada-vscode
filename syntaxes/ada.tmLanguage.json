@@ -187,9 +187,42 @@
 				}
 			]
 		},
+		"declaration-block": {
+			"name": "meta.declaration-block.ada",
+			"begin": "(?i)\\b(declare|is)\\b",
+			"end": "(?i)(?=begin)\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\bis\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#declaration" }
+			]
+		},
 		"delimiter": {
 			"name": "punctuation.delimiter.ada",
 			"match": "(=>|\\||'|[()]|\\.|,)"
+		},
+		"execution-block": {
+			"name": "meta.execution-block.ada",
+			"begin": "(?i)\\bbegin\\b",
+			"end": "(?i)(?=(end|exception))\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\bbegin\\b"
+						}
+					]
+				}
+			}
 		},
 		"function-instantiation": {
 			"name": "meta.function.instantiation.ada",
@@ -270,6 +303,31 @@
 				}
 			}
 		},
+		"function-body": {
+			"name": "meta.function.body.ada",
+			"begin": "(?i)\\bfunction\\s+((\\w|_)+)\\b",
+			"end": "end\\s+(\\1);",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(end|function)\\b"
+						},
+						{
+							"name": "entity.name.function.ada",
+							"match": "\\b(\\w|_)+\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#declaration-block" },
+				{ "include": "#execution-block" },
+				{ "include": "#function-return" }
+			]
+		},
 		"function-spec": {
 			"name": "meta.function.spec.ada",
 			"begin": "(?i)\\bfunction\\b",
@@ -277,6 +335,7 @@
 			"captures": {
 				"0": {
 					"patterns": [
+						{ "include": "#terminator" },
 						{
 							"name": "keyword.ada",
 							"match": "(?i)\\b(function)\\b"
@@ -475,7 +534,8 @@
 			},
 			"patterns": [
 				{ "include": "#section-comment" },
-				{ "include": "#comment" }
+				{ "include": "#comment" },
+				{ "include": "#function-body" }
 			]
 		},
 		"parameter": {
