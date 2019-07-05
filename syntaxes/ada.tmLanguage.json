@@ -6,7 +6,8 @@
 		{ "include": "#import" },
 		{ "include": "#pragma" },
 		{ "include": "#package-spec" },
-		{ "include": "#package-body" }
+		{ "include": "#package-body" },
+		{ "include": "#function-body" }
 	],
 	"repository": {
 		"aspect": {
@@ -222,7 +223,50 @@
 						}
 					]
 				}
-			}
+			},
+			"patterns": [
+				{ "include": "#for-loop" },
+				{ "include": "#while-loop" },
+				{ "include": "#loop" }
+			]
+		},
+		"exit": {
+			"name": "meta.exit.ada",
+			"begin": "(?i)\\bexit\\b",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\bexit\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "meta.exit.when.ada",
+					"begin": "(?i)\\bwhen\\b",
+					"end": "(?=;)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#keyword" },
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\bwhen\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "entity.name.label.ada",
+					"match": "\\b(\\w|_)+\\b"
+				}
+			]
 		},
 		"function-instantiation": {
 			"name": "meta.function.instantiation.ada",
@@ -435,6 +479,107 @@
 							"patterns": [
 								{ "include": "#underline" },
 								{ "include": "#delimiter" }
+							]
+						}
+					}
+				}
+			]
+		},
+		"loop": {
+			"name": "meta.loop.ada",
+			"begin": "(?i)\\bloop\\b",
+			"end": "(?i)\\bend\\s+loop\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\b(end|loop)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#exit" }
+			]
+		},
+		"for-loop": {
+			"name": "meta.loop.for.ada",
+			"begin": "(?i)\\bfor\\b",
+			"end": "(?i)\\bend\\s+loop\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\b(end|for|loop)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "meta.loop.for.in.ada",
+					"begin": "(?i)\\bin\\b",
+					"end": "(?i)\\bloop\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ada",
+									"match": "(?i)\\b(in|loop)\\b"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.loop.for.of.ada",
+					"begin": "(?i)\\bof\\b",
+					"end": "(?i)\\bloop\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ada",
+									"match": "(?i)\\b(of|loop)\\b"
+								}
+							]
+						}
+					}	
+				},
+				{ "include": "#exit" }
+			]
+		},
+		"while-loop": {
+			"name": "meta.loop.while.ada",
+			"begin": "(?i)\\bwhile\\b",
+			"end": "(?i)\\bend\\s+loop\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(end|loop|while)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "meta.loop.while.ada",
+					"begin": "(?i)\\b(?<=while)\\b",
+					"end": "(?i)\\bloop\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.control.ada",
+									"match": "(?i)\\bloop\\b"
+								}
 							]
 						}
 					}
