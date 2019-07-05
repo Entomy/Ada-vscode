@@ -353,7 +353,8 @@
 		},
 		"import": {
 			"name": "meta.import.package.ada",
-			"match": "(?i)\\b(use|with)\\s+(\\w|\\.|_)+(\\s*,\\s*(\\w|\\.|_)+)?\\s*;",
+			"begin": "(?i)\\b(use|with)\\b",
+			"end": ";",
 			"captures": {
 				"0": {
 					"patterns": [
@@ -361,12 +362,25 @@
 							"name": "keyword.ada",
 							"match": "(?i)\\b(use|with)\\b"
 						},
-						{ "include": "#delimiter" },
-						{ "include": "#underline" },
 						{ "include": "#terminator" }
 					]
 				}
-			}
+			},
+			"patterns": [
+				{ "include": "#delimiter" },
+				{
+					"name": "entity.name.package.ada",
+					"match": "\\b(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#underline" },
+								{ "include": "#delimiter" }
+							]
+						}
+					}
+				}
+			]
 		},
 		"number": {
 			"name": "constant.numeric.ada",
