@@ -78,6 +78,44 @@
 				}
 			}
 		},
+		"case": {
+			"name": "meta.case.ada",
+			"begin": "(?i)\\bcase\\s+(\\w|\\.|_)+\\s+is\\b",
+			"end": "(?i)\\bend\\s+case\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\b(end|is|case)\\b"
+						},
+						{
+							"name": "variable.name.ada",
+							"match": "\\b(\\w|\\.|_)+\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"name": "meta.case.when.ada",
+					"begin": "(?i)\\bwhen\\b",
+					"end": "=>",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#delimiter" },
+								{
+									"name": "keyword.control.ada",
+									"match": "(?i)\\bwhen\\b"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
 		"section-comment": {
 			"name": "comment.line.double-dash.ada",
 			"match": "--[^-]+--\\s*$",
@@ -226,6 +264,7 @@
 			},
 			"patterns": [
 				{ "include": "#pragma" },
+				{ "include": "#case" },
 				{ "include": "#for-loop" },
 				{ "include": "#while-loop" },
 				{ "include": "#loop" },
