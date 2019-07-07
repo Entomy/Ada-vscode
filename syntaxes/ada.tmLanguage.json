@@ -225,9 +225,25 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#pragma" },
 				{ "include": "#for-loop" },
 				{ "include": "#while-loop" },
-				{ "include": "#loop" }
+				{ "include": "#loop" },
+				{
+					"name": "meta.statement.null.ada",
+					"match": "(?i)\\bnull\\s*;",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#terminator" },
+								{
+									"name": "keyword.ada",
+									"match": "(?i)\\bnull\\b"
+								}
+							]
+						}
+					}
+				}
 			]
 		},
 		"exit": {
@@ -369,7 +385,8 @@
 			"patterns": [
 				{ "include": "#declaration-block" },
 				{ "include": "#execution-block" },
-				{ "include": "#function-return" }
+				{ "include": "#function-return" },
+				{ "include": "#parameter-profile" }
 			]
 		},
 		"function-spec": {
@@ -649,6 +666,7 @@
 						{ "include": "#comment" },
 						{ "include": "#declaration" },
 						{ "include": "#function-spec" },
+						{ "include": "#procedure-spec" },
 						{ "include": "#pragma" },
 						{ "include": "#type" }
 					]
@@ -657,6 +675,7 @@
 				{ "include": "#comment" },
 				{ "include": "#declaration" },
 				{ "include": "#function-spec" },
+				{ "include": "#procedure-spec" },
 				{ "include": "#pragma" },
 				{ "include": "#subtype" },
 				{ "include": "#type" }
@@ -680,7 +699,8 @@
 			"patterns": [
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
-				{ "include": "#function-body" }
+				{ "include": "#function-body" },
+				{ "include": "#procedure-body" }
 			]
 		},
 		"parameter": {
@@ -774,6 +794,73 @@
 					"name": "keyword.control.directive.ada",
 					"match": "\\b(\\w|_)+\\b"	
 				}
+			]
+		},
+		"procedure-body": {
+			"name": "meta.procedure.body.ada",
+			"begin": "(?i)\\bprocedure\\s+((\\w|_)+)\\b",
+			"end": "end\\s+(\\1);",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(end|procedure)\\b"
+						},
+						{
+							"name": "entity.name.function.ada",
+							"match": "\\b(\\w|_)+\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#declaration-block" },
+				{ "include": "#execution-block" },
+				{ "include": "#parameter-profile" }
+			]
+		},
+		"procedure-spec": {
+			"name": "meta.procedure.spec.ada",
+			"begin": "(?i)\\bprocedure\\b",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\bprocedure\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#parameter-profile" },
+				{ "include": "#function-instantiation" },
+				{ "include": "#function-rename" },
+				{ "include": "#aspect-spec" },
+				{
+					"name": "keyword.ada",
+					"match": "\\b(is)\\b"	
+				},
+				{
+					"name": "keyword.modifier.unknown.ada",
+					"match": "\\b(abstract)\\b"	
+				},
+				{
+					"name": "entity.name.function.ada",
+					"match": "\\b(\\w|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#underline" }
+							]
+						}
+					}
+				},
+				{ "include": "#terminator" }
 			]
 		},
 		"string": {
