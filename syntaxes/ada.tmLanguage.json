@@ -220,8 +220,8 @@
 						}
 					},
 					"patterns": [
-						{ "include": "#number" },
-						{ "include": "#string" }
+						{ "include": "#expression" },
+						{ "include": "#expression-parenthesis" }
 					]
 				}
 			]
@@ -265,6 +265,7 @@
 			"patterns": [
 				{ "include": "#pragma" },
 				{ "include": "#case" },
+				{ "include": "#if" },
 				{ "include": "#for-loop" },
 				{ "include": "#while-loop" },
 				{ "include": "#loop" },
@@ -321,6 +322,38 @@
 					"name": "entity.name.label.ada",
 					"match": "\\b(\\w|_)+\\b"
 				}
+			]
+		},
+		"expression": {
+			"name": "meta.expression.ada",
+			"begin": "[^;]",
+			"end": "(?=;)",
+			"patterns": [
+				{ "include": "#expression-parenthesis" },
+				{ "include": "#operator-highest" },
+				{ "include": "#operator-unary" },
+				{ "include": "#operator-logical" },
+				{ "include": "#operator-relational" },
+				{ "include": "#operator-multiplying" },
+				{ "include": "#operator-adding" },
+				{ "include": "#number" },
+				{ "include": "#string" }
+			]
+		},
+		"expression-parenthesis": {
+			"name": "meta.expression.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"patterns": [
+				{ "include": "#expression-parenthesis" },
+				{ "include": "#operator-highest" },
+				{ "include": "#operator-unary" },
+				{ "include": "#operator-logical" },
+				{ "include": "#operator-relational" },
+				{ "include": "#operator-multiplying" },
+				{ "include": "#operator-adding" },
+				{ "include": "#number" },
+				{ "include": "#string" }
 			]
 		},
 		"function-instantiation": {
@@ -510,6 +543,58 @@
 				}
 			}
 		},
+		"if": {
+			"name": "meta.if.ada",
+			"begin": "(?i)\\bif\\b",
+			"end": "(?i)\\bend\\s+if\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\b(end|if)\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#if-condition" },
+				{
+					"name": "meta.if.elsif.ada",
+					"begin": "(?i)\\belsif\\b",
+					"end": "(?i)(?=(end|else|elsif))\\b",
+					"captures": {
+						"0": {
+							"name": "keyword.control.ada"
+						}
+					},
+					"patterns": [
+						{ "include": "#if-condition" }
+					]
+				},
+				{
+					"name": "meta.if.else.ada",
+					"begin": "(?i)\\belse\\b",
+					"end": "(?i)(?=(end|else))\\b",
+					"captures": {
+						"0": {
+							"name": "keyword.control.ada"
+						}
+					}
+				}
+			]
+		},
+		"if-condition": {
+			"name": "meta.if.condition.ada",
+			"begin": "(?i)(?<=if)",
+			"end": "(?i)\\bthen\\b",
+			"captures": {
+				"0": {
+					"name": "keyword.ada"
+				}
+			}
+		},
 		"import": {
 			"name": "meta.import.package.ada",
 			"begin": "(?i)\\b(use|with)\\b",
@@ -668,6 +753,30 @@
 					]
 				}
 			}
+		},
+		"operator-adding": {
+			"name": "keyword.operator.adding.ada",
+			"match": "[&+-]"
+		},
+		"operator-highest": {
+			"name": "keyword.operator.highest-precedence.ada",
+			"match": "(\\*\\*|\\b(abs|not)\\b)"	
+		},
+		"operator-logical": {
+			"name": "keyword.operator.logical.ada",
+			"match": "\\b(and(\\s+then)?|or(\\s+else)?|xor)\\b"	
+		},
+		"operator-multiplying": {
+			"name": "keyword.operator.multiplying.ada",
+			"match": "(\\*|/|\\b(mod|rem)\\b)"
+		},
+		"operator-relational": {
+			"name": "keyword.operator.relational.ada",
+			"match": "(=|/=|<|<=|>|>=)"
+		},
+		"operator-unary": {
+			"name": "keyword.operator.unary.ada",
+			"match": "[+-](?=[0-9A-F])"
 		},
 		"package-spec": {
 			"name": "meta.package.spec.ada",
