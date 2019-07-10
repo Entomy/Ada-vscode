@@ -340,6 +340,22 @@
 				{ "include": "#string" }
 			]
 		},
+		"expression-condition": {
+			"name": "meta.expression.ada",
+			"begin": "(?i)(?<=if)",
+			"end": "(?i)(?=then)",
+			"patterns": [
+				{ "include": "#expression-parenthesis" },
+				{ "include": "#operator-highest" },
+				{ "include": "#operator-unary" },
+				{ "include": "#operator-logical" },
+				{ "include": "#operator-relational" },
+				{ "include": "#operator-multiplying" },
+				{ "include": "#operator-adding" },
+				{ "include": "#number" },
+				{ "include": "#string" }
+			]
+		},
 		"expression-parenthesis": {
 			"name": "meta.expression.ada",
 			"begin": "\\(",
@@ -591,9 +607,13 @@
 			"end": "(?i)\\bthen\\b",
 			"captures": {
 				"0": {
-					"name": "keyword.ada"
+					"name": "keyword.control.ada"
 				}
-			}
+			},
+			"patterns": [
+				{ "include": "#expression-condition" },
+				{ "include": "#expression-parenthesis" }
+			]
 		},
 		"import": {
 			"name": "meta.import.package.ada",
