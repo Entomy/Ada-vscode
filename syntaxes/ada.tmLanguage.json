@@ -269,21 +269,8 @@
 				{ "include": "#for-loop" },
 				{ "include": "#while-loop" },
 				{ "include": "#loop" },
-				{
-					"name": "meta.statement.null.ada",
-					"match": "(?i)\\bnull\\s*;",
-					"captures": {
-						"0": {
-							"patterns": [
-								{ "include": "#terminator" },
-								{
-									"name": "keyword.ada",
-									"match": "(?i)\\bnull\\b"
-								}
-							]
-						}
-					}
-				}
+				{ "include": "#return-statement" },
+				{ "include": "#null-statement" }
 			]
 		},
 		"exit": {
@@ -747,6 +734,21 @@
 				}
 			]
 		},
+		"null-statement": {
+			"name": "meta.statement.null.ada",
+			"match": "(?i)\\bnull\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\bnull\\b"
+						}
+					]
+				}
+			}
+		},
 		"number": {
 			"name": "constant.numeric.ada",
 			"match": "(?<!\\w)([0-9]?[0-9]#)?[0-9A-F]+([0-9A-F_]*[0-9A-F])?(\\.[0-9A-F]([0-9A-F_]*[0-9A-F])?)?([eE][0-9]+)?#?",
@@ -1029,6 +1031,25 @@
 					}
 				},
 				{ "include": "#terminator" }
+			]
+		},
+		"return-statement": {
+			"name": "meta.statement.return.ada",
+			"begin": "(?i)\\breturn\\b",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\breturn\\b"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#expression" }
 			]
 		},
 		"string": {
