@@ -16,15 +16,5 @@
         ["<<", ">>"],
         ["'", "'"],
         ["\"", "\""]
-    ],
-    "folding": {
-        "markers": {
-            "start": "(?ig)\\brecord\\b",
-            "end": "(?ig)\\bend\\s+record;"
-        }
-    },
-    "indentationRules": {
-        "increaseIndentPattern": "(?ig)\\brecord\\s*$",
-        "decreaseIndentPattern": "(?ig)\\bend\\s+record\\s*;\\s*$"
-    }
+    ]
 }
