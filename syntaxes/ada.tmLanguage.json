@@ -13,29 +13,37 @@
 	"repository": {
 		"aspect": {
 			"name": "meta.aspect.ada",
-			"match": "\\b(\\w|_)+(\\s*=>.*((?=,)|(?=;)|is))?",
+			"begin": "\\b(\\w|_)+\\b",
+			"end": "(?=,)|(?=;)|(?=is)",
 			"captures": {
 				"0": {
 					"patterns": [
-						{
-							"name": "meta.aspect.definition.ada",
-							"match": "=>.*",
-							"captures": {
-								"0": {
-									"patterns": [
-										{ "include": "#comment" },
-										{ "include": "#delimiter" }
-									]
-								}
-							}
-						},
 						{
 							"name": "keyword.control.directive.ada",
 							"match": "\\b(\\w|_)+\\b"
 						}
 					]
 				}
-			}
+			},
+			"patterns": [
+				{
+					"name": "meta.aspect.definition.ada",
+					"begin": "=>",
+					"end": "(?=,)|(?=;)|(?=is)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#delimiter" }
+							]
+						}
+					},
+					"patterns": [
+						{ "include": "#comment" },
+						{ "include": "#string" },
+						{ "include": "#number" }
+					]
+				}
+			]
 		},
 		"aspect-spec": {
 			"name": "meta.aspect.spec.ada",
