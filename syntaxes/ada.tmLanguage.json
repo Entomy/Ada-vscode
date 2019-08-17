@@ -872,6 +872,7 @@
 				},
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
+				{ "include": "#import" },
 				{ "include": "#declaration" },
 				{ "include": "#package-instantiation" },
 				{ "include": "#function-spec" },
