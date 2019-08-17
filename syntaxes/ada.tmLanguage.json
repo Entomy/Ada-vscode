@@ -284,7 +284,8 @@
 				{ "include": "#while-loop" },
 				{ "include": "#loop" },
 				{ "include": "#return-statement" },
-				{ "include": "#null-statement" }
+				{ "include": "#null-statement" },
+				{ "include": "#comment" }
 			]
 		},
 		"exit": {
@@ -475,7 +476,8 @@
 				{ "include": "#declaration-block" },
 				{ "include": "#execution-block" },
 				{ "include": "#function-return" },
-				{ "include": "#parameter-profile" }
+				{ "include": "#parameter-profile" },
+				{ "include": "#comment" }
 			]
 		},
 		"function-spec": {
@@ -518,7 +520,8 @@
 						}
 					}
 				},
-				{ "include": "#terminator" }
+				{ "include": "#terminator" },
+				{ "include": "#comment" }
 			]
 		},
 		"generic-actual": {
@@ -1009,7 +1012,8 @@
 			"patterns": [
 				{ "include": "#declaration-block" },
 				{ "include": "#execution-block" },
-				{ "include": "#parameter-profile" }
+				{ "include": "#parameter-profile" },
+				{ "include": "#comment" }
 			]
 		},
 		"procedure-spec": {
@@ -1051,7 +1055,8 @@
 						}
 					}
 				},
-				{ "include": "#terminator" }
+				{ "include": "#terminator" },
+				{ "include": "#comment" }
 			]
 		},
 		"return-statement": {
