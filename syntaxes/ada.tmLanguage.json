@@ -899,45 +899,35 @@
 		},
 		"parameter": {
 			"name": "meta.parameter.ada",
-			"match": "\\b(\\w|_)+(\\s*,\\s*(\\w|_)+)?\\s*:\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\b;?",
+			"begin": "\\b(\\w|_)+\\b",
+			"end": "(?=\\))|;",
 			"captures": {
 				"0": {
 					"patterns": [
 						{ "include": "#terminator" },
 						{
-							"name": "meta.type.annotation.ada",
-							"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\b",
-							"captures": {
-								"0": {
-									"patterns": [
-										{ "include": "#attribute" },
-										{
-											"name": "storage.modifier.ada",
-											"match": "(?i)\\b(in|out)\\b"
-										},
-										{
-											"name": "storage.type.ada",
-											"match": "\\b(\\w|\\.|_)+\\b",
-											"captures": {
-												"0": {
-													"patterns": [
-														{ "include": "#underline" }
-													]
-												}
-											}
-										}
-									]
-								}
-							}
-						},
-						{
 							"name": "variable.parameter.ada",
 							"match": "\\b(\\w|_)+\\b"
-						},
-						{ "include": "#delimiter" }
+						}		
 					]
 				}
-			}
+			},
+			"patterns": [
+				{ "include": "#type-annotation" },
+				{
+					"name": "meta.parameter.default.ada",
+					"begin": ":=",
+					"end": "(?=\\))|;",
+					"beginCaptures": {
+						"0": { "name": "keyword.operator.assignment.ada" }
+					},
+					"patterns": [
+						{ "include": "#attribute" },
+						{ "include": "#string" },
+						{ "include": "#number" }
+					]
+				}
+			]
 		},
 		"parameter-profile": {
 			"name": "meta.parameter-profile.ada",
@@ -1199,6 +1189,32 @@
 					"match": "\\b(\\w|\\.|_)+\\b"
 				}
 			]
+		},
+		"type-annotation": {
+			"name": "meta.type.annotation.ada",
+			"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#attribute" },
+						{
+							"name": "storage.modifier.ada",
+							"match": "(?i)\\b(in|out)\\b"
+						},
+						{
+							"name": "storage.type.ada",
+							"match": "\\b(\\w|\\.|_)+\\b",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#underline" }
+									]
+								}
+							}
+						}
+					]
+				}
+			}
 		},
 		"type-array": {
 			"name": "meta.type.declaration.array.ada",
