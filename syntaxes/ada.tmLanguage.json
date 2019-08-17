@@ -863,6 +863,7 @@
 						{ "include": "#section-comment" },
 						{ "include": "#comment" },
 						{ "include": "#declaration" },
+						{ "include": "#package-instantiation" },
 						{ "include": "#function-spec" },
 						{ "include": "#procedure-spec" },
 						{ "include": "#pragma" },
@@ -872,6 +873,7 @@
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
 				{ "include": "#declaration" },
+				{ "include": "#package-instantiation" },
 				{ "include": "#function-spec" },
 				{ "include": "#procedure-spec" },
 				{ "include": "#pragma" },
@@ -899,6 +901,49 @@
 				{ "include": "#comment" },
 				{ "include": "#function-body" },
 				{ "include": "#procedure-body" }
+			]
+		},
+		"package-instantiation": {
+			"name": "meta.package.instantiation.ada",
+			"begin": "(?i)\\bpackage\\s+(\\w|\\.|_)+\\s+is\\s+new\\b",
+			"end": ";",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#terminator" },
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(package|is|new)\\b"
+						},
+						{
+							"name": "entity.name.package.ada",
+							"match": "\\b(\\w|\\.|_)+\\b",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#delimiter" },
+										{ "include": "#underline" }
+									]
+								}
+							}
+						}		
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#generic-actual" },
+				{
+					"name": "entity.name.package.ada",
+					"match": "\\b(\\w|\\.|_)+\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#delimiter" },
+								{ "include": "#underline" }
+							]
+						}
+					}
+				}
 			]
 		},
 		"parameter": {
