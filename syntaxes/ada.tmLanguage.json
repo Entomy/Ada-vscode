@@ -922,7 +922,11 @@
 						{ "include": "#terminator" },
 						{
 							"name": "keyword.ada",
-							"match": "(?i)\\b(package|is|new)\\b"
+							"match": "(?i)\\b(package|is)\\b"
+						},
+						{
+							"name": "keyword.modifier.unknown.ada",
+							"match": "(?i)\\b(new)\\b"
 						},
 						{
 							"name": "entity.name.package.ada",
