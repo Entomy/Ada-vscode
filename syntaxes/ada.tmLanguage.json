@@ -79,6 +79,10 @@
 				}
 			}
 		},
+		"box": {
+			"name": "keyword.modifier.unknown.ada",
+			"match": "<>"
+		},
 		"case": {
 			"name": "meta.case.ada",
 			"begin": "(?i)\\bcase\\s+(\\w|\\.|_)+\\s+is\\b",
@@ -1274,6 +1278,7 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#box" },
 				{ "include": "#attribute" },
 				{ "include": "#number" },
 				{ "include": "#delimiter" }
@@ -1294,6 +1299,7 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#box" },
 				{ "include": "#attribute" },
 				{ "include": "#number" },
 				{ "include": "#delimiter" }
