@@ -254,7 +254,8 @@
 				}
 			},
 			"patterns": [
-				{ "include": "#declaration" }
+				{ "include": "#declaration" },
+				{ "include": "#comment" }
 			]
 		},
 		"delimiter": {
@@ -694,7 +695,14 @@
 								}
 							]
 						}
-					}
+					},
+					"patterns": [
+						{
+							"name": "keyword.operator.ada",
+							"match": "\\.\\."
+						},
+						{ "include": "#number" }
+					]
 				},
 				{
 					"name": "meta.loop.for.of.ada",
