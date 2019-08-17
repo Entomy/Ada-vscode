@@ -482,7 +482,7 @@
 		},
 		"function-spec": {
 			"name": "meta.function.spec.ada",
-			"begin": "(?i)\\bfunction\\b",
+			"begin": "(?i)\\b(overriding\\s+)?function\\b",
 			"end": ";",
 			"captures": {
 				"0": {
@@ -491,7 +491,11 @@
 						{
 							"name": "keyword.ada",
 							"match": "(?i)\\b(function)\\b"
-						}		
+						},
+						{
+							"name": "keyword.modifier.unknown.ada",
+							"match": "(?i)\\b(overriding)\\b"
+						}
 					]
 				}
 			},
@@ -1028,12 +1032,16 @@
 		},
 		"procedure-spec": {
 			"name": "meta.procedure.spec.ada",
-			"begin": "(?i)\\bprocedure\\b",
+			"begin": "(?i)\\b(overriding\\s+)?procedure\\b",
 			"end": ";",
 			"captures": {
 				"0": {
 					"patterns": [
 						{ "include": "#terminator" },
+						{
+							"name": "keyword.modifier.unknown.ada",
+							"match": "(?i)\\boverriding\\b"	
+						},
 						{
 							"name": "keyword.ada",
 							"match": "(?i)\\bprocedure\\b"
