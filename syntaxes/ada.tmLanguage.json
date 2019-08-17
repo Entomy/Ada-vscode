@@ -1222,6 +1222,7 @@
 					"name": "storage.visibility.ada",
 					"match": "(?i)\\bprivate\\b"	
 				},
+				{ "include": "#type-discriminant" },
 				{ "include": "#type-access" },
 				{ "include": "#type-inheritance" },
 				{ "include": "#type-array" },
@@ -1266,14 +1267,14 @@
 		},
 		"type-annotation": {
 			"name": "meta.type.annotation.ada",
-			"match": ":\\s*(in\\s+)?(out\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\b",
+			"match": ":\\s*(in\\s+)?(out\\s+)?(((not\\s+)?null\\s+)?access\\s+)?(\\w|\\.|_)+('(\\w|_)+)?\\b",
 			"captures": {
 				"0": {
 					"patterns": [
 						{ "include": "#attribute" },
 						{
 							"name": "storage.modifier.ada",
-							"match": "(?i)\\b(in|out)\\b"
+							"match": "(?i)\\b(in|out|not|null|access)\\b"
 						},
 						{
 							"name": "storage.type.ada",
@@ -1407,7 +1408,11 @@
 			},
 			"endCaptures": {
 				"0": { "name": "punctuation.paren.close.ada" }
-			}
+			},
+			"patterns": [
+				{ "include": "#type-annotation" },
+				{ "include": "#delimiter "}
+			]
 		},
 		"type-inheritance": {
 			"name": "meta.type.declaration.inheritance.ada",
