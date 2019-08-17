@@ -46,6 +46,7 @@
 					},
 					"patterns": [
 						{ "include": "#comment" },
+						{ "include": "#attribute" },
 						{ "include": "#string" },
 						{ "include": "#number" }
 					]
