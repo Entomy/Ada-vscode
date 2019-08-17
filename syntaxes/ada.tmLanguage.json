@@ -1255,6 +1255,7 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#attribute" },
 				{ "include": "#number" },
 				{ "include": "#delimiter" }
 			]
@@ -1274,6 +1275,7 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#attribute" },
 				{ "include": "#number" },
 				{ "include": "#delimiter" }
 			]
@@ -1362,6 +1364,7 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#attribute" },
 				{ "include": "#number" },
 				{ "include": "#delimiter" }
 			]
@@ -1381,6 +1384,7 @@
 				}
 			},
 			"patterns": [
+				{ "include": "#attribute" },
 				{ "include": "#number" },
 				{ "include": "#delimiter" }
 			]
