@@ -539,7 +539,8 @@
 				"0": { "name": "punctuation.paren.close.ada" }
 			},
 			"patterns": [
-				{ "include": "#generic-association" }
+				{ "include": "#generic-association" },
+				{ "include": "#delimiter" }
 			]
 		},
 		"generic-association": {
