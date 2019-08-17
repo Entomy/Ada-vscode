@@ -551,24 +551,6 @@
 				}
 			}
 		},
-		"generic-block": {
-			"name": "meta.generic.block.ada",
-			"begin": "(?i)\\bgeneric\\b",
-			"end": "(?i)(?=(function|package|procedure)\\b)",
-			"captures": {
-				"0": {
-					"patterns": [
-						{
-							"name": "keyword.ada",
-							"match": "(?i)\\bgeneric\\b"
-						}
-					]
-				}
-			},
-			"patterns": [
-				{ "include": "#type" }
-			]
-		},
 		"if": {
 			"name": "meta.if.ada",
 			"begin": "(?i)\\bif\\b",
@@ -866,7 +848,6 @@
 				},
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
-				{ "include": "#generic-block" },
 				{ "include": "#declaration" },
 				{ "include": "#function-spec" },
 				{ "include": "#procedure-spec" },
