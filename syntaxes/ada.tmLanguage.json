@@ -913,6 +913,25 @@
 				}
 			},
 			"patterns": [
+				{
+					"name": "meta.parameter.list.ada",
+					"begin": ",",
+					"end": "(?=:)",
+					"captures": {
+						"0": {
+							"patterns": [
+								{ "include": "#delimiter" }
+							]
+						}
+					},
+					"patterns": [
+						{
+							"name": "variable.parameter.ada",
+							"match": "\\b(\\w|_)+\\b"	
+						},
+						{ "include": "#delimiter" }
+					]
+				},
 				{ "include": "#type-annotation" },
 				{
 					"name": "meta.parameter.default.ada",
