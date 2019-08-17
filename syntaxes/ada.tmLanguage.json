@@ -20,7 +20,14 @@
 					"patterns": [
 						{
 							"name": "keyword.control.directive.ada",
-							"match": "\\b(\\w|_)+\\b"
+							"match": "\\b(\\w|_)+\\b",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#underline" }
+									]
+								}
+							}
 						}
 					]
 				}
