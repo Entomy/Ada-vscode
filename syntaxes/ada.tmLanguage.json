@@ -291,6 +291,7 @@
 				{ "include": "#for-loop" },
 				{ "include": "#while-loop" },
 				{ "include": "#loop" },
+				{ "include": "#raise-statement" },
 				{ "include": "#return-statement" },
 				{ "include": "#null-statement" },
 				{ "include": "#comment" }
@@ -396,7 +397,14 @@
 					"patterns": [
 						{
 							"name": "storage.type.ada",
-							"match": "\\b(\\w|\\.|_)+\\b"
+							"match": "\\b(\\w|\\.|_)+\\b",
+							"captures": {
+								"0": {
+									"patterns": [
+										{ "include": "#underline" }
+									]
+								}
+							}
 						},
 						{
 							"name": "punctuation.qualifier.ada",
@@ -664,7 +672,9 @@
 							"name": "keyword.control.ada"
 						}
 					}
-				}
+				},
+				{ "include": "#raise-statement" },
+				{ "include": "#return-statement" }
 			]
 		},
 		"if-condition": {
@@ -728,7 +738,9 @@
 				}
 			},
 			"patterns": [
-				{ "include": "#exit" }
+				{ "include": "#exit" },
+				{ "include": "#raise-statement" },
+				{ "include": "#return-statement" }
 			]
 		},
 		"for-loop": {
@@ -784,7 +796,9 @@
 						}
 					}	
 				},
-				{ "include": "#exit" }
+				{ "include": "#exit" },
+				{ "include": "#raise-statement" },
+				{ "include": "#return-statement" }
 			]
 		},
 		"while-loop": {
@@ -817,7 +831,10 @@
 							]
 						}
 					}
-				}
+				},
+				{ "include": "#exit" },
+				{ "include": "#raise-statement" },
+				{ "include": "#return-statement" }
 			]
 		},
 		"null-statement": {
@@ -1185,6 +1202,25 @@
 				{ "include": "#terminator" },
 				{ "include": "#comment" }
 			]
+		},
+		"raise-statement": {
+			"name": "meta.statement.raise.ada",
+			"match": "(?i)\\braise\\s+(\\w|\\.|_)+\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.control.ada",
+							"match": "(?i)\\braise\\b"
+						},
+						{
+							"name": "entity.name.exception.ada",
+							"match": "\\b(\\w|\\.|_)+\\b"
+						},
+						{ "include": "#terminator" }
+					]
+				}
+			}
 		},
 		"return-statement": {
 			"name": "meta.statement.return.ada",
