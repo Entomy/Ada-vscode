@@ -370,6 +370,9 @@
 			"name": "meta.expression.ada",
 			"begin": "\\(",
 			"end": "\\)",
+			"captures": {
+				"0": { "name": "punctuation.delimiter.ada" }
+			},
 			"patterns": [
 				{ "include": "#expression-parenthesis" },
 				{ "include": "#operator-highest" },
@@ -380,6 +383,28 @@
 				{ "include": "#operator-adding" },
 				{ "include": "#number" },
 				{ "include": "#string" }
+			]
+		},
+		"function-expression": {
+			"name": "meta.function.expression.ada",
+			"begin": "(?i)\\bfunction\\s+(\\w|_)+\\s*\\(.*\\)\\s*return\\s+(\\w|\\.|_)+\\s+is\\s*(?=\\()",
+			"end": "(?<=\\))\\s*;",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ "include": "#parameter-profile" },
+						{ "include": "#function-return" },
+						{
+							"name": "keyword.ada",
+							"match": "(?i)\\b(function|is)\\b"
+						},
+						{ "include": "#delimiter" },
+						{ "include": "#terminator" }
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#expression-parenthesis" }
 			]
 		},
 		"function-instantiation": {
@@ -909,6 +934,7 @@
 			"patterns": [
 				{ "include": "#section-comment" },
 				{ "include": "#comment" },
+				{ "include": "#function-expression" },
 				{ "include": "#function-body" },
 				{ "include": "#procedure-body" }
 			]
