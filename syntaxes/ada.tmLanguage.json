@@ -339,6 +339,7 @@
 			"begin": "[^;]",
 			"end": "(?=;)",
 			"patterns": [
+				{ "include": "#expression-qualified" },
 				{ "include": "#expression-parenthesis" },
 				{ "include": "#operator-highest" },
 				{ "include": "#operator-unary" },
@@ -374,6 +375,7 @@
 				"0": { "name": "punctuation.delimiter.ada" }
 			},
 			"patterns": [
+				{ "include": "#expression-qualified" },
 				{ "include": "#expression-parenthesis" },
 				{ "include": "#operator-highest" },
 				{ "include": "#operator-unary" },
@@ -383,6 +385,28 @@
 				{ "include": "#operator-adding" },
 				{ "include": "#number" },
 				{ "include": "#string" }
+			]
+		},
+		"expression-qualified": {
+			"name": "meta.expression.qualified.ada",
+			"begin": "\\b(\\w|\\.|_)+'(?=\\()",
+			"end": "(?<=\\))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "storage.type.ada",
+							"match": "\\b(\\w|\\.|_)+\\b"
+						},
+						{
+							"name": "punctuation.qualifier.ada",
+							"match": "'"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{ "include": "#expression-parenthesis" }
 			]
 		},
 		"function-expression": {
