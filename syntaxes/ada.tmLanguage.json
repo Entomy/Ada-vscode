@@ -99,7 +99,7 @@
 			"name": "keyword.modifier.unknown.ada",
 			"match": "<>"
 		},
-		"case": {
+		"case-statement": {
 			"name": "meta.case.ada",
 			"begin": "(?i)\\bcase\\s+(\\w|\\.|_)+\\s+is\\b",
 			"end": "(?i)\\bend\\s+case\\s*;",
@@ -286,7 +286,7 @@
 			},
 			"patterns": [
 				{ "include": "#pragma" },
-				{ "include": "#case" },
+				{ "include": "#case-statement" },
 				{ "include": "#if" },
 				{ "include": "#for-loop" },
 				{ "include": "#while-loop" },
