@@ -2,7 +2,8 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Ada",
 	"patterns": [
-		{ "include": "#comment" }
+		{ "include": "#comment" },
+		{ "include": "#pragma" }
 	],
 	"repository": {
 		"identifier": {
@@ -81,6 +82,46 @@
 		"comment": {
 			"name": "comment.line.double-dash.ada",
 			"match": "--.*$"
+		},
+		"pragma": {
+			"name": "meta.pragma.ada",
+			"begin": "(?i)\\b(pragma)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"0": { "name": "keyword.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{ "include": "#pragma_arguments" },
+				{
+					"name": "keyword.control.directive.ada",
+					"match": "\\b(\\w|\\d|_)+\\b"
+				}
+			]
+		},
+		"pragma_arguments": {
+			"name": "meta.pragma.arguments.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#pragma_argument_association" }
+			]
+		},
+		"pragma_argument_association": {
+			"name": "meta.pragma.argument.association.ada",
+			"patterns": [
+				{ "include": "#expression" },
+				{ "include": "#identifier" }
+			]
 		}
 	},
 	"scopeName": "source.ada"
