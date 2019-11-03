@@ -2,7 +2,7 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Ada",
 	"patterns": [
-		{ "include": "#numeric_literal" }
+		{ "include": "#string_literal" }
 	],
 	"repository": {
 		"identifier": {
@@ -63,6 +63,18 @@
 							"match": "[eE]"
 						}
 					]
+				}
+			}
+		},
+		"string_literal": {
+			"name": "string.quoted.double.ada",
+			"match": "(\")([^\"][^\"])*(\")",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.string.ada"
+				},
+				"3": {
+					"name": "punctuation.definition.string.ada"
 				}
 			}
 		}
