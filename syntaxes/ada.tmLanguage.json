@@ -2,10 +2,70 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Ada",
 	"patterns": [
-		
+		{ "include": "#numeric_literal" }
 	],
 	"repository": {
-		
+		"identifier": {
+			"name": "meta.identifier.ada",
+			"match": "(\\w|\\d|_)+"
+		},
+		"numeric_literal": {
+			"name": "meta.literal.numeric.ada",
+			"patterns": [
+				{ "include": "#based_literal" },
+				{ "include": "#decimal_literal" }
+			]
+		},
+		"decimal_literal": {
+			"name": "constant.numeric.ada",
+			"match": "\\d(_?\\d)*(\\.\\d(_?\\d)*)?([eE](\\+|\\-)?\\d(_?\\d)*)?",
+			"captures": {
+				"2": {
+					"patterns": [
+						{
+							"name": "punctuation.radix-point.ada",
+							"match": "\\."
+						}
+					]
+				},
+				"4": {
+					"patterns": [
+						{
+							"name": "punctuation.exponent-mark.ada",
+							"match": "[eE]"
+						}
+					]
+				}
+			}
+		},
+		"based_literal": {
+			"name": "constant.numeric.ada",
+			"match": "(?i)(\\d(_?\\d)*#)[0-9a-f](_?[0-9a-f])*(\\.[0-9a-f](_?[0-9a-f])*)?(#)([eE](\\+|\\-)?\\d(_?\\d)*)?",
+			"captures": {
+				"1": {
+					"name": "constant.numeric.base.ada"
+				},
+				"4": {
+					"patterns": [
+						{
+							"name": "punctuation.radix-point.ada",
+							"match": "\\."
+						}
+					]
+				},
+				"6": {
+					"name": "constant.numeric.base.ada"
+				},
+				"7": {
+					"patterns": [
+						{
+							"name": "punctuation.exponent-mark.ada",
+							"match": "[eE]"
+						}
+					]
+				}
+			}
+		}
 	},
 	"scopeName": "source.ada"
 }
