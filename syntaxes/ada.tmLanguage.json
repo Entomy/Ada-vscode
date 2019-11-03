@@ -2,7 +2,7 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Ada",
 	"patterns": [
-		{ "include": "#string_literal" }
+		{ "include": "#comment" }
 	],
 	"repository": {
 		"identifier": {
@@ -77,6 +77,10 @@
 					"name": "punctuation.definition.string.ada"
 				}
 			}
+		},
+		"comment": {
+			"name": "comment.line.double-dash.ada",
+			"match": "--.*$"
 		}
 	},
 	"scopeName": "source.ada"
