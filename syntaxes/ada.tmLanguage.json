@@ -3,7 +3,8 @@
 	"name": "Ada",
 	"patterns": [
 		{ "include": "#comment" },
-		{ "include": "#pragma" }
+		{ "include": "#pragma" },
+		{ "include": "#type_declaration" }
 	],
 	"repository": {
 		"identifier": {
@@ -67,6 +68,20 @@
 				}
 			}
 		},
+		"character_literal": {
+			"name": "string.quoted.single.ada",
+			"match": "'.'",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "punctuation.definition.string.ada",
+							"match": "'"
+						}
+					]
+				}
+			}
+		},
 		"string_literal": {
 			"name": "string.quoted.double.ada",
 			"match": "(\")([^\"][^\"])*(\")",
@@ -85,7 +100,7 @@
 		},
 		"pragma": {
 			"name": "meta.pragma.ada",
-			"begin": "(?i)\\b(pragma)\\b",
+			"begin": "(?i)\\bpragma\\b",
 			"end": ";",
 			"beginCaptures": {
 				"0": { "name": "keyword.ada" }
@@ -122,6 +137,140 @@
 				{ "include": "#expression" },
 				{ "include": "#identifier" }
 			]
+		},
+		"basic_declaration": {
+			"name": "meta.declaration.ada",
+			"patterns": [
+				{ "include": "#type_declaration" },
+				{ "include": "#subtype_declaration" },
+				{ "include": "#object_declaration" },
+				{ "include": "#number_declaration" },
+				{ "include": "#subprogram_declaration" },
+				{ "include": "#abstract_subprogram_declaration" },
+				{ "include": "#null_procedure_declaration" },
+				{ "include": "#expression_function_declaration" },
+				{ "include": "#package_declaration" },
+				{ "include": "#renaming_declaration" },
+				{ "include": "#exception_declaration" },
+				{ "include": "#generic_declaration" },
+				{ "include": "#generic_instantiation" }
+			]
+		},
+		"defining_identifier": {
+			"patterns": [
+				{ "include": "#identifier" }
+			]
+		},
+		"type_declaration": {
+			"name": "meta.declaration.type.ada",
+			"patterns": [
+				{ "include": "#full_type_declaration" },
+				{ "include": "#incomplete_type_declaration" },
+				{ "include": "#private_type_declaration" },
+				{ "include": "#private_extension_declaration" }
+			]
+		},
+		"full_type_declaration": {
+			"patterns": [
+				{ "include": "#regular_type_declaration" },
+				{ "include": "#task_type_declaration" },
+				{ "include": "#protected_type_declaration" }
+			]
+		},
+		"regular_type_declaration": {
+			"begin": "(?i)\\btype\\b",
+			"end": ";",
+			"beginCaptures": {
+				"0": { "name": "keyword.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{ "include": "#type_definition" },
+				{
+					"name": "keyword.ada",
+					"match": "(?i)\\bis\\b"
+				},
+				{
+					"name": "storage.type.ada",
+					"match": "(\\w|\\d|_)+"
+				}
+			]
+		},
+		"type_definition": {
+			"name": "meta.declaration.type.definition.ada",
+			"patterns": [
+				{ "include": "#enumeration_type_definition" },
+				{ "include": "#integer_type_definition" },
+				{ "include": "#real_type_definition" },
+				{ "include": "#array_type_definition" },
+				{ "include": "#record_type_definition" },
+				{ "include": "#access_type_definition" },
+				{ "include": "#derived_type_definition" },
+				{ "include": "#interface_type_definition" }
+			]
+		},
+		"enumeration_type_definition": {
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				}
+			]
+		},
+		"enumeration_literal_specification": {
+			"patterns": [
+				{ "include": "#defining_identifier" },
+				{ "include": "#defining_character_literal" }
+			]
+		},
+		"defining_character_literal": {
+			"patterns": [
+				{ "include": "#character_literal" }
+			]
+		},
+		"integer_type_definition": {
+			"name": "meta.declaration.type.definition.integer.ada",
+			"patterns": [
+				{ "include": "#signed_integer_type_definition" },
+				{ "include": "#modular_type_definition" }
+			]
+		},
+		"signed_integer_type_definition": {
+			"name": "meta.declaration.type.definition.integer.signed.ada",
+			"match": "(?i)\\b(range)\\s+(.*)\\s*(\\.\\.)\\s*(.*)(?=;)",
+			"captures": {
+				"1": { "name": "storage.modifier.ada" },
+				"2": {
+					"patterns": [
+						{ "include": "#simple_expression" }
+					]
+				},
+				"3": { "name": "keyword.operator.ada" },
+				"4": {
+					"patterns": [
+						{ "include": "#simple_expression" }
+					]
+				}
+			}
+		},
+		"modular_type_definition": {
+			"name": "meta.declaration.type.definition.integer.modular.ada",
+			"match": "(?i)\\b(mod)\\s+(.*)(?=;)",
+			"captures": {
+				"1": { "name": "storage.modifier.ada" },
+				"2": {
+					"patterns": [
+						{ "include": "#simple_expression" }
+					]
+				}
+			}
 		}
 	},
 	"scopeName": "source.ada"
