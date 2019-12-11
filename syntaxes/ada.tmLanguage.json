@@ -4,7 +4,8 @@
 	"patterns": [
 		{ "include": "#comment" },
 		{ "include": "#pragma" },
-		{ "include": "#type_declaration" }
+		{ "include": "#type_declaration" },
+		{ "include": "#unknown_discriminant_part" }
 	],
 	"repository": {
 		"array_type_definition": {
@@ -428,6 +429,14 @@
 				},
 				{ "include": "#index_subtype_definition" }
 			]
+		},
+		"unknown_discriminant_part": {
+			"name": "meta.discriminant.part.unknown.ada",
+			"match": "\\((<>)\\)",
+			"captures": {
+				"1": { "name": "keyword.modifier.unknown.ada" },
+				"0": { "name": "punctuation.ada" }
+			}
 		}
 	},
 	"scopeName": "source.ada"
