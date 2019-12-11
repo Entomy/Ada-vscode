@@ -118,6 +118,12 @@
 				}
 			}
 		},
+		"default_expression": {
+			"name": "meta.default.expression.ada",
+			"patterns": [
+				{ "include": "#expression" }
+			]
+		},
 		"defining_character_literal": {
 			"patterns": [
 				{ "include": "#character_literal" }
