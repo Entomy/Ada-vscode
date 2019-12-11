@@ -61,6 +61,13 @@
 				{ "include": "#generic_instantiation" }
 			]
 		},
+		"binary_adding_operator": {
+			"name": "meta.operator.adding.binary.ada",
+			"match": "(\\+|-|&)",
+			"captures": {
+				"0": { "name": "keyword.operator.ada" }
+			}
+		},
 		"character_literal": {
 			"name": "string.quoted.single.ada",
 			"match": "'.'",
@@ -211,6 +218,13 @@
 				{ "include": "#protected_type_declaration" }
 			]
 		},
+		"highest_precedence_operator": {
+			"name": "meta.operator.highest-precedence.ada",
+			"match": "(?i)\\b(\\*\\*|abs|not)\\b",
+			"captures": {
+				"0": { "name": "keyword.operator.ada" }
+			}
+		},
 		"identifier": {
 			"name": "meta.identifier.ada",
 			"match": "(\\w|\\d|_)+"
@@ -245,6 +259,13 @@
 				{ "include": "#modular_type_definition" }
 			]
 		},
+		"logical_operator": {
+			"name": "meta.operator.logical.ada",
+			"match": "(?i)\\b(and|or|xor)\\b",
+			"captures": {
+				"0": { "name": "keyword.operator.ada" }
+			}
+		},
 		"mode": {
 			"name": "meta.parameter.mode.ada",
 			"match": "(?i)\\b(in\\s+out|in|out)?\\b",
@@ -263,6 +284,13 @@
 			"patterns": [
 				{ "include": "#simple_expression" }
 			]
+		},
+		"multiplying_operator": {
+			"name": "meta.operator.multiplying.ada",
+			"match": "(?i)\\b(\\*|/|mod|rem)\\b",
+			"captures": {
+				"0": { "name": "keyword.operator.ada" }
+			}
 		},
 		"null_exclusion": {
 			"name": "meta.null_exclusion.ada",
@@ -367,6 +395,13 @@
 				{ "include": "#type_definition" }
 			]
 		},
+		"relational_operator": {
+			"name": "meta.operator.relational.ada",
+			"match": "(=|/=|<|<=|>|>=)",
+			"captures": {
+				"0": { "name": "keyword.operator.ada" }
+			}
+		},
 		"signed_integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.signed.ada",
 			"begin": "(?i)\\b(is)\\s+(range)\\b",
@@ -439,6 +474,13 @@
 				{ "include": "#derived_type_definition" },
 				{ "include": "#interface_type_definition" }
 			]
+		},
+		"unary_adding_operator": {
+			"name": "meta.operator.adding.unary.ada",
+			"match": "(\\+|-)",
+			"captures": {
+				"0": { "name": "keyword.operator.ada" }
+			}
 		},
 		"unconstrained_array_definition": {
 			"name": "meta.declaration.type.definition.array.unconstrained.ada",
