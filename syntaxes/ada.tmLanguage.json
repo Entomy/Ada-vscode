@@ -224,6 +224,13 @@
 				{ "include": "#modular_type_definition" }
 			]
 		},
+		"mode": {
+			"name": "meta.parameter.mode.ada",
+			"match": "(?i)\\b(in\\s+out|in|out)?\\b",
+			"captures": {
+				"0": { "name": "keyword.ada" }
+			}
+		},
 		"modular_type_definition": {
 			"name": "meta.declaration.type.definition.integer.modular.ada",
 			"begin": "(?i)\\b(is)\\s+(mod)\\b",
