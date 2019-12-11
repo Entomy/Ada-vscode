@@ -354,6 +354,18 @@
 				}
 			}
 		},
+		"subtype_indication": {
+			"name": "meta.declaration.subtype.indication.ada",
+			"begin": "(?i)\\b(null)\\s+((\\w|\\d|\\.|_)+)\\b",
+			"end": "(?=;)",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "patterns": [ { "include": "#subtype_mark" } ] }
+			},
+			"patterns": [
+				{ "include": "#constraint" }
+			]
+		},
 		"subtype_mark": {
 			"name": "meta.subtype-mark.ada",
 			"match": "\\b(\\w|\\d|\\.|_)+\\b",
