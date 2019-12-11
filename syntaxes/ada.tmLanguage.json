@@ -516,6 +516,14 @@
 				}
 			}
 		},
+		"terminate_alternative": {
+			"name": "meta.tasking.terminate_alternative.ada",
+			"match": "(?i)\\b(terminate)\\s*(;)",
+			"captures": {
+				"1": { "name": "keyword.control.ada" },
+				"2": { "name": "punctuation.ada" }
+			}
+		},
 		"type_declaration": {
 			"name": "meta.declaration.type.ada",
 			"patterns": [
