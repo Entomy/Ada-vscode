@@ -35,6 +35,24 @@
 				}
 			}
 		},
+		"basic_declaration": {
+			"name": "meta.declaration.ada",
+			"patterns": [
+				{ "include": "#type_declaration" },
+				{ "include": "#subtype_declaration" },
+				{ "include": "#object_declaration" },
+				{ "include": "#number_declaration" },
+				{ "include": "#subprogram_declaration" },
+				{ "include": "#abstract_subprogram_declaration" },
+				{ "include": "#null_procedure_declaration" },
+				{ "include": "#expression_function_declaration" },
+				{ "include": "#package_declaration" },
+				{ "include": "#renaming_declaration" },
+				{ "include": "#exception_declaration" },
+				{ "include": "#generic_declaration" },
+				{ "include": "#generic_instantiation" }
+			]
+		},
 		"character_literal": {
 			"name": "string.quoted.single.ada",
 			"match": "'.'",
@@ -89,92 +107,6 @@
 				}
 			}
 		},
-		"identifier": {
-			"name": "meta.identifier.ada",
-			"match": "(\\w|\\d|_)+"
-		},
-		"numeric_literal": {
-			"name": "meta.literal.numeric.ada",
-			"patterns": [
-				{ "include": "#based_literal" },
-				{ "include": "#decimal_literal" }
-			]
-		},
-		"scalar_constraint": {
-			"name": "meta.constraint.scalar.ada",
-			"patterns": [
-				{ "include": "#range_constraint" },
-				{ "include": "#digits_constraint" },
-				{ "include": "#delta_constraint" }
-			]
-		},
-		"string_literal": {
-			"name": "string.quoted.double.ada",
-			"match": "(\")([^\"][^\"])*(\")",
-			"captures": {
-				"1": {
-					"name": "punctuation.definition.string.ada"
-				},
-				"3": {
-					"name": "punctuation.definition.string.ada"
-				}
-			}
-		},
-		"pragma": {
-			"name": "meta.pragma.ada",
-			"begin": "(?i)\\b(pragma)\\s+((?:\\w|\\d|_)+)\\b",
-			"end": ";",
-			"beginCaptures": {
-				"1": { "name": "keyword.ada" },
-				"2": { "name": "keyword.control.directive.ada" }
-			},
-			"endCaptures": {
-				"0": { "name": "punctuation.ada" }
-			},
-			"patterns": [
-				{ "include": "#pragma_arguments" }
-			]
-		},
-		"pragma_arguments": {
-			"name": "meta.pragma.arguments.ada",
-			"begin": "\\(",
-			"end": "\\)",
-			"captures": {
-				"0": { "name": "punctuation.ada" }
-			},
-			"patterns": [
-				{
-					"name": "punctuation.ada",
-					"match": ","
-				},
-				{ "include": "#pragma_argument_association" }
-			]
-		},
-		"pragma_argument_association": {
-			"name": "meta.pragma.argument.association.ada",
-			"patterns": [
-				{ "include": "#expression" },
-				{ "include": "#identifier" }
-			]
-		},
-		"basic_declaration": {
-			"name": "meta.declaration.ada",
-			"patterns": [
-				{ "include": "#type_declaration" },
-				{ "include": "#subtype_declaration" },
-				{ "include": "#object_declaration" },
-				{ "include": "#number_declaration" },
-				{ "include": "#subprogram_declaration" },
-				{ "include": "#abstract_subprogram_declaration" },
-				{ "include": "#null_procedure_declaration" },
-				{ "include": "#expression_function_declaration" },
-				{ "include": "#package_declaration" },
-				{ "include": "#renaming_declaration" },
-				{ "include": "#exception_declaration" },
-				{ "include": "#generic_declaration" },
-				{ "include": "#generic_instantiation" }
-			]
-		},
 		"defining_character_literal": {
 			"patterns": [
 				{ "include": "#character_literal" }
@@ -216,6 +148,10 @@
 				{ "include": "#protected_type_declaration" }
 			]
 		},
+		"identifier": {
+			"name": "meta.identifier.ada",
+			"match": "(\\w|\\d|_)+"
+		},
 		"integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.ada",
 			"patterns": [
@@ -233,6 +169,50 @@
 			},
 			"patterns": [
 				{ "include": "#simple_expression" }
+			]
+		},
+		"numeric_literal": {
+			"name": "meta.literal.numeric.ada",
+			"patterns": [
+				{ "include": "#based_literal" },
+				{ "include": "#decimal_literal" }
+			]
+		},
+		"pragma": {
+			"name": "meta.pragma.ada",
+			"begin": "(?i)\\b(pragma)\\s+((?:\\w|\\d|_)+)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "keyword.control.directive.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{ "include": "#pragma_arguments" }
+			]
+		},
+		"pragma_arguments": {
+			"name": "meta.pragma.arguments.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#pragma_argument_association" }
+			]
+		},
+		"pragma_argument_association": {
+			"name": "meta.pragma.argument.association.ada",
+			"patterns": [
+				{ "include": "#expression" },
+				{ "include": "#identifier" }
 			]
 		},
 		"range": {
@@ -276,6 +256,14 @@
 				{ "include": "#type_definition" }
 			]
 		},
+		"scalar_constraint": {
+			"name": "meta.constraint.scalar.ada",
+			"patterns": [
+				{ "include": "#range_constraint" },
+				{ "include": "#digits_constraint" },
+				{ "include": "#delta_constraint" }
+			]
+		},
 		"signed_integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.signed.ada",
 			"begin": "(?i)\\b(is)\\b",
@@ -286,6 +274,18 @@
 			"patterns": [
 				{ "include": "#range_constraint" }
 			]
+		},
+		"string_literal": {
+			"name": "string.quoted.double.ada",
+			"match": "(\")([^\"][^\"])*(\")",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.string.ada"
+				},
+				"3": {
+					"name": "punctuation.definition.string.ada"
+				}
+			}
 		},
 		"type_declaration": {
 			"name": "meta.declaration.type.ada",
