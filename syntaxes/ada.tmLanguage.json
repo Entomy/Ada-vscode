@@ -4,6 +4,7 @@
 	"patterns": [
 		{ "include": "#comment" },
 		{ "include": "#pragma" },
+		{ "include": "#use_clause" },
 		{ "include": "#type_declaration" }
 	],
 	"repository": {
@@ -568,6 +569,54 @@
 				"1": { "name": "keyword.modifier.unknown.ada" },
 				"0": { "name": "punctuation.ada" }
 			}
+		},
+		"use_clause": {
+			"name": "meta.use-clause.ada",
+			"patterns": [
+				{ "include": "#use_type_clause" },
+				{ "include": "#use_package_clause" }
+			]
+		},
+		"use_package_clause": {
+			"name": "meta.use-clause.package.ada",
+			"begin": "(?i)\\buse\\b",
+			"end": ";",
+			"beginCaptures": {
+				"0": { "name": "keyword.other.using.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{
+					"name": "entity.name.package.ada",
+					"match": "\\b(\\w|\\d|\\.|_)+\\b"
+				}
+			]
+		},
+		"use_type_clause": {
+			"name": "meta.use-clause.type.ada",
+			"begin": "(?i)\\b(use)\\s+((all)\\s+)?(type)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"1": { "name": "keyword.other.using.ada" },
+				"3": { "name": "keyword.modifier.ada" },
+				"4": { "name": "keyword.modifier.ada"  }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#subtype_mark" }
+			]
 		}
 	},
 	"scopeName": "source.ada"
