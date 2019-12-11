@@ -217,30 +217,26 @@
 		},
 		"range": {
 			"name": "meta.range.ada",
-			"match": "(.*)\\s*(\\.\\.)\\s*([^;]*)",
-			"captures": {
-				"1": {
-					"patterns": [
-						{ "include": "#simple_exression" }
-					]
+			"begin": "^",
+			"end": "(?=;)",
+			"patterns": [
+				{
+					"name": "keyword.operator.ada",
+					"match": "\\.\\."
 				},
-				"2": {
-					"name": "keyword.operator.ada"
-				},
-				"3": {
-					"patterns": [
-						{ "include": "#simple_expression" }
-					]
-				}
-			}
+				{ "include": "#simple_expression" }
+			]
 		},
 		"range_constraint": {
 			"name": "meta.constraint.range.ada",
-			"match": "(?i)\\b(range)\\s+((.*)\\s*(\\.\\.)\\s*([^;]*))",
-			"captures": {
-				"1": { "name": "storage.modifier.ada" },
-				"2": { "patterns": [ { "include": "#range" } ] }
-			}
+			"begin": "(?i)\\b(range)\\b",
+			"end": "(?=;)",
+			"beginCaptures": {
+				"1": { "name": "storage.modifier.ada" }
+			},
+			"patterns": [
+				{ "include": "#range" }
+			]
 		},
 		"regular_type_declaration": {
 			"begin": "(?i)\\b(type)\\s+((?:\\w|\\d|_)+)\\b",
