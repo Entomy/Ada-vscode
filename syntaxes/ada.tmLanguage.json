@@ -259,6 +259,14 @@
 				{ "include": "#modular_type_definition" }
 			]
 		},
+		"label": {
+			"name": "meta.label.ada",
+			"match": "<<((\\w|\\d|\\.|_)+)>>",
+			"captures": {
+				"1": { "name": "entity.name.label.ada" },
+				"0": { "name": "punctuation.label.ada" }
+			}
+		},
 		"logical_operator": {
 			"name": "meta.operator.logical.ada",
 			"match": "(?i)\\b(and|or|xor)\\b",
