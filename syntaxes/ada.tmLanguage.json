@@ -7,6 +7,14 @@
 		{ "include": "#type_declaration" }
 	],
 	"repository": {
+		"array_type_definition": {
+			"name": "meta.declaration.type.definition.array.ada",
+			"patterns": [
+				{ "include": "#unconstrained_array_definition" },
+				{ "include": "#constrained_array_definition" },
+				{ "include": "#component_definition" }
+			]
+		},
 		"based_literal": {
 			"name": "constant.numeric.ada",
 			"match": "(?i)(\\d(_?\\d)*#)[0-9a-f](_?[0-9a-f])*(\\.[0-9a-f](_?[0-9a-f])*)?(#)([eE](\\+|\\-)?\\d(_?\\d)*)?",
@@ -70,6 +78,22 @@
 		"comment": {
 			"name": "comment.line.double-dash.ada",
 			"match": "--.*$"
+		},
+		"component_definition": {
+			"name": "meta.declaration.type.definition.component.ada",
+			"begin": "(?i)\\bof\\b",
+			"end": "(?=;)",
+			"beginCaptures": {
+				"0": { "name": "keyword.ada" }
+			},
+			"patterns": [
+				{
+					"name": "storage.modifier.ada",
+					"match": "(?i)\\baliased\\b"
+				},
+				{ "include": "#subtype_indication" },
+				{ "include": "#access_definition" }
+			]
 		},
 		"decimal_literal": {
 			"name": "constant.numeric.ada",
@@ -175,6 +199,23 @@
 		"identifier": {
 			"name": "meta.identifier.ada",
 			"match": "(\\w|\\d|_)+"
+		},
+		"index_subtype_definition": {
+			"name": "meta.declaration.type.definition.array.index-subtype.ada",
+			"begin": "\\b(\\w|\\d|\\.|_)+\\b",
+			"end": "\\<\\>",
+			"beginCaptures": {
+				"0": { "patterns": [ { "include": "#subtype_mark" } ] }
+			},
+			"endCaptures": {
+				"0": { "name": "keyword.operator.unknown.ada" }
+			},
+			"patterns": [
+				{
+					"name": "storage.modifier.ada",
+					"match": "(?i)\\brange\\b"
+				}
+			]
 		},
 		"integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.ada",
@@ -313,6 +354,15 @@
 				}
 			}
 		},
+		"subtype_mark": {
+			"name": "meta.subtype-mark.ada",
+			"match": "\\b(\\w|\\d|\\.|_)+\\b",
+			"captures": {
+				"0": {
+					"name": "storage.type.ada"
+				}
+			}
+		},
 		"type_declaration": {
 			"name": "meta.declaration.type.ada",
 			"patterns": [
@@ -333,6 +383,23 @@
 				{ "include": "#access_type_definition" },
 				{ "include": "#derived_type_definition" },
 				{ "include": "#interface_type_definition" }
+			]
+		},
+		"unconstrained_array_definition": {
+			"name": "meta.declaration.type.definition.array.unconstrained.ada",
+			"begin": "(?i)\\b(is)\\s+(array)\\s*(\\()",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "storage.modifier.ada" },
+				"3": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#index_subtype_definition" }
 			]
 		}
 	},
