@@ -347,6 +347,14 @@
 				"0": { "name": "string.quoted.double.ada" }
 			}
 		},
+		"overriding_indicator": {
+			"name": "meta.overriding-indicator.ada",
+			"match": "(?i)\\b((not)\\s+)?(overriding)\\b",
+			"captures": {
+				"2": { "name": "keyword.modifier.ada" },
+				"3": { "name": "keyword.modifier.ada" }
+			}
+		},
 		"pragma": {
 			"name": "meta.pragma.ada",
 			"begin": "(?i)\\b(pragma)\\s+((?:\\w|\\d|_)+)\\b",
