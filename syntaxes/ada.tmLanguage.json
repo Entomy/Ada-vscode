@@ -131,6 +131,12 @@
 				{ "include": "#expression" }
 			]
 		},
+		"default_name": {
+			"name": "meta.default.name.ada",
+			"patterns": [
+				{ "include": "#name" }
+			]
+		},
 		"defining_character_literal": {
 			"patterns": [
 				{ "include": "#character_literal" }
@@ -492,6 +498,25 @@
 				},
 				"3": {
 					"name": "punctuation.definition.string.ada"
+				}
+			}
+		},
+		"subprogram_default": {
+			"name": "meta.default.subprogram.ada",
+			"match": "(?i)\\b((\\w|\\d|\\.|_)+|<>|null)\\b",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"name": "keyword.other.null.ada",
+							"match": "(?i)\\bnull\\b"
+						},
+						{
+							"name": "keyword.modifier.unknown.ada",
+							"match": "<>"
+						},
+						{ "include": "#default_name" }
+					]
 				}
 			}
 		},
