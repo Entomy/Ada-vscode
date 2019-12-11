@@ -250,6 +250,14 @@
 				{ "include": "#decimal_literal" }
 			]
 		},
+		"operator_symbol": {
+			"name": "meta.operator-symbol.ada",
+			"match": "(?i)\"(and|or|xor|mod|rem|abs|not|=|/=|<|<=|>|>=|\\+|-|&|\\*\\*|\\*|/)\"",
+			"captures": {
+				"1": { "name": "keyword.operator.ada" },
+				"0": { "name": "string.quoted.double.ada" }
+			}
+		},
 		"pragma": {
 			"name": "meta.pragma.ada",
 			"begin": "(?i)\\b(pragma)\\s+((?:\\w|\\d|_)+)\\b",
