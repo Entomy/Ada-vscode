@@ -402,6 +402,12 @@
 				"3": { "name": "keyword.modifier.ada" }
 			}
 		},
+		"parent_unit_name": {
+			"name": "meta.name.parent-unit.ada",
+			"patterns": [
+				{ "include": "#name" }
+			]
+		},
 		"pragma": {
 			"name": "meta.pragma.ada",
 			"begin": "(?i)\\b(pragma)\\s+((?:\\w|\\d|_)+)\\b",
