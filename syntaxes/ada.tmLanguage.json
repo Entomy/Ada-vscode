@@ -460,6 +460,20 @@
 				{ "include": "#numeric_literal" }
 			]
 		},
+		"simple_return_statement": {
+			"name": "meta.statement.return.simple.ada",
+			"begin": "(?i)\\breturn\\b",
+			"end": ";",
+			"beginCaptures": { 
+				"0": { "name": "keyword.control.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{ "include": "#expression" }
+			]
+		},
 		"string_literal": {
 			"name": "string.quoted.double.ada",
 			"match": "(\")([^\"][^\"])*(\")",
