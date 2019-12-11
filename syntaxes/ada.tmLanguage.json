@@ -4,6 +4,7 @@
 	"patterns": [
 		{ "include": "#comment" },
 		{ "include": "#pragma" },
+		{ "include": "#with_clause" },
 		{ "include": "#use_clause" },
 		{ "include": "#type_declaration" }
 	],
@@ -291,6 +292,26 @@
 				"0": { "name": "punctuation.label.ada" }
 			}
 		},
+		"limited_with_clause": {
+			"name": "meta.context.with.limited.ada",
+			"begin": "(?i)\\b(limited)\\s+((private)\\s+)?(with)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"1": { "name": "keyword.modifier.ada" },
+				"3": { "name": "storage.visibility.ada" },
+				"4": { "name": "keyword.other.using.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#name" }
+			]
+		},
 		"logical_operator": {
 			"name": "meta.operator.logical.ada",
 			"match": "(?i)\\b(and|or|xor)\\b",
@@ -323,6 +344,25 @@
 			"captures": {
 				"0": { "name": "keyword.operator.ada" }
 			}
+		},
+		"nonlimited_with_clause": {
+			"name": "meta.context.with.nonlimited.ada",
+			"begin": "(?i)\\b((private)\\s+)?(with)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"2": { "name": "storage.visibility.ada" },
+				"3": { "name": "keyword.other.using.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#name" }
+			]
 		},
 		"null_exclusion": {
 			"name": "meta.null_exclusion.ada",
@@ -604,14 +644,14 @@
 			}
 		},
 		"use_clause": {
-			"name": "meta.use-clause.ada",
+			"name": "meta.context.use.ada",
 			"patterns": [
 				{ "include": "#use_type_clause" },
 				{ "include": "#use_package_clause" }
 			]
 		},
 		"use_package_clause": {
-			"name": "meta.use-clause.package.ada",
+			"name": "meta.context.use.package.ada",
 			"begin": "(?i)\\buse\\b",
 			"end": ";",
 			"beginCaptures": {
@@ -625,14 +665,11 @@
 					"name": "punctuation.ada",
 					"match": ","
 				},
-				{
-					"name": "entity.name.package.ada",
-					"match": "\\b(\\w|\\d|\\.|_)+\\b"
-				}
+				{ "include": "#name" }
 			]
 		},
 		"use_type_clause": {
-			"name": "meta.use-clause.type.ada",
+			"name": "meta.context.use.type.ada",
 			"begin": "(?i)\\b(use)\\s+((all)\\s+)?(type)\\b",
 			"end": ";",
 			"beginCaptures": {
@@ -649,6 +686,13 @@
 					"match": ","
 				},
 				{ "include": "#subtype_mark" }
+			]
+		},
+		"with_clause": {
+			"name": "meta.context.with.ada",
+			"patterns": [
+				{ "include": "#limited_with_clause" },
+				{ "include": "#nonlimited_with_clause" }
 			]
 		}
 	},
