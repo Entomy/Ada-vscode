@@ -351,6 +351,13 @@
 				{ "include": "#identifier" }
 			]
 		},
+		"quantifier": {
+			"name": "meta.expression.quantifier.ada",
+			"match": "(?i)\\b(some|all)\\b",
+			"captures": {
+				"0": { "name": "keyword.operator.ada" }
+			}
+		},
 		"range": {
 			"name": "meta.range.ada",
 			"begin": "(?=.)",
