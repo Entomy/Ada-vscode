@@ -446,6 +446,34 @@
 				"0": { "name": "keyword.operator.ada" }
 			}
 		},
+		"raise_statement": {
+			"name": "meta.statement.raise.ada",
+			"begin": "(?i)\\braise\\b",
+			"end": ";",
+			"beginCaptures": {
+				"0": { "name": "keyword.control.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "meta.statement.raise.message.ada",
+					"begin": "(?i)\\bwith\\b",
+					"end": "(?=;)",
+					"beginCaptures": {
+						"0": { "name": "keyword.control.ada" }
+					},
+					"patterns": [
+						{ "include": "#expression" }
+					]
+				},
+				{
+					"name": "entity.name.exception.ada",
+					"match": "\\b(\\w|\\d|\\.|_)+\\b"
+				}
+			]
+		},
 		"range": {
 			"name": "meta.range.ada",
 			"begin": "(?=.)",
