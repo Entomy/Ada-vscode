@@ -250,6 +250,13 @@
 				{ "include": "#simple_expression" }
 			]
 		},
+		"null_exclusion": {
+			"name": "meta.null_exclusion.ada",
+			"match": "(?i)\\b(not\\s+null)\\b",
+			"captures": {
+				"0": { "name": "storage.modifier.ada" }
+			}
+		},
 		"numeric_literal": {
 			"name": "meta.literal.numeric.ada",
 			"patterns": [
