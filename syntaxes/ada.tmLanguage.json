@@ -4,8 +4,7 @@
 	"patterns": [
 		{ "include": "#comment" },
 		{ "include": "#pragma" },
-		{ "include": "#type_declaration" },
-		{ "include": "#unknown_discriminant_part" }
+		{ "include": "#type_declaration" }
 	],
 	"repository": {
 		"array_type_definition": {
@@ -169,6 +168,15 @@
 				}
 			]
 		},
+		"explicit_dereference": {
+			"name": "meta.dereference.explicit.ada",
+			"match": "(?i)\\b((\\w|\\d|\\.|_)+)(\\.)(all)\\b",
+			"captures": {
+				"1": { "patterns": [ { "include": "#name" } ] },
+				"3": { "name": "punctuation.ada" },
+				"4": { "name": "keyword.ada" }
+			}
+		},
 		"fixed_point_definition": {
 			"name": "meta.declaration.type.definition.real.fixed-point.ada",
 			"begin": "(?i)\\b(is)\\s+(delta)\\b",
@@ -206,6 +214,12 @@
 		"identifier": {
 			"name": "meta.identifier.ada",
 			"match": "(\\w|\\d|_)+"
+		},
+		"implicit_dereference": {
+			"name": "meta.dereference.implicit.ada",
+			"patterns": [
+				{ "include": "#name" }
+			]
 		},
 		"index_subtype_definition": {
 			"name": "meta.declaration.type.definition.array.index-subtype.ada",
