@@ -299,6 +299,14 @@
 				"0": { "name": "storage.modifier.ada" }
 			}
 		},
+		"null_statement": {
+			"name": "meta.statement.null.ada",
+			"match": "(?i)\\b(null)(;)",
+			"captures": {
+				"1": { "name": "keyword.control.ada" },
+				"2": { "name": "punctuation.ada" }
+			}
+		},
 		"numeric_literal": {
 			"name": "meta.literal.numeric.ada",
 			"patterns": [
