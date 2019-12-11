@@ -103,6 +103,17 @@
 				{ "include": "#identifier" }
 			]
 		},
+		"digits_constraint": {
+			"name": "meta.constraint.digits.ada",
+			"begin": "(?i)\\bdigits\\b",
+			"end": "(?i)(?=(;|range))\\b",
+			"beginCaptures": {
+				"0": { "name": "storage.modifier.ada" }
+			},
+			"patterns": [
+				{ "include": "#simple_expression" }
+			]
+		},
 		"enumeration_literal_specification": {
 			"patterns": [
 				{ "include": "#defining_identifier" },
@@ -125,6 +136,33 @@
 					"name": "punctuation.ada",
 					"match": ","
 				}
+			]
+		},
+		"fixed_point_definition": {
+			"name": "meta.declaration.type.definition.real.fixed-point.ada",
+			"begin": "(?i)\\b(is)\\s+(delta)\\b",
+			"end": "(?=;)",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "storage.modifier.ada" }
+			},
+			"patterns": [
+				{ "include": "#digits_constraint" },
+				{ "include": "#range_constraint" },
+				{ "include": "#simple_expression" }
+			]
+		},
+		"floating_point_definition": {
+			"name": "meta.declaration.type.definition.real.floating-point.ada",
+			"begin": "(?i)\\b(is)\\s+(digits)\\b",
+			"end": "(?=;)",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "storage.modifier.ada" }
+			},
+			"patterns": [
+				{ "include": "#range_constraint" },
+				{ "include": "#simple_expression" }
 			]
 		},
 		"full_type_declaration": {
@@ -211,6 +249,24 @@
 					"match": "\\.\\."
 				},
 				{ "include": "#simple_expression" }
+			]
+		},
+		"range_constraint": {
+			"name": "meta.constraint.range.ada",
+			"begin": "(?i)\\brange\\b",
+			"end": "(?=;)",
+			"beginCaptures": {
+				"0": { "name": "storage.modifier.ada" }
+			},
+			"patterns": [
+				{ "include": "#range" }
+			]
+		},
+		"real_type_definition": {
+			"name": "meta.declaration.type.definition.real.ada",
+			"patterns": [
+				{ "include": "#floating_point_definition" },
+				{ "include": "#fixed_point_definition" }
 			]
 		},
 		"regular_type_declaration": {
