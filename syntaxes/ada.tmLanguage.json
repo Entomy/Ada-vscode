@@ -53,6 +53,20 @@
 			"name": "comment.line.double-dash.ada",
 			"match": "--.*$"
 		},
+		"composite_constraint": {
+			"name": "meta.constraint.composite.ada",
+			"patterns": [
+				{ "include": "#index_constraint" },
+				{ "include": "#discriminant_constraint" }
+			]
+		},
+		"constraint": {
+			"name": "meta.constraint.ada",
+			"patterns": [
+				{ "include": "#scalar_constraint" },
+				{ "include": "#composite_constraint" }
+			]
+		},
 		"decimal_literal": {
 			"name": "constant.numeric.ada",
 			"match": "\\d(_?\\d)*(\\.\\d(_?\\d)*)?([eE](\\+|\\-)?\\d(_?\\d)*)?",
@@ -84,6 +98,14 @@
 			"patterns": [
 				{ "include": "#based_literal" },
 				{ "include": "#decimal_literal" }
+			]
+		},
+		"scalar_constraint": {
+			"name": "meta.constraint.scalar.ada",
+			"patterns": [
+				{ "include": "#range_constraint" },
+				{ "include": "#digits_constraint" },
+				{ "include": "#delta_constraint" }
 			]
 		},
 		"string_literal": {
@@ -232,6 +254,14 @@
 				}
 			}
 		},
+		"range_constraint": {
+			"name": "meta.constraint.range.ada",
+			"match": "(?i)\\b(range)\\s+((.*)\\s*(\\.\\.)\\s*([^;]*))",
+			"captures": {
+				"1": { "name": "storage.modifier.ada" },
+				"2": { "patterns": [ { "include": "#range" } ] }
+			}
+		},
 		"regular_type_declaration": {
 			"begin": "(?i)\\b(type)\\s+((?:\\w|\\d|_)+)\\b",
 			"end": ";",
@@ -248,14 +278,13 @@
 		},
 		"signed_integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.signed.ada",
-			"begin": "(?i)\\b(is)\\s+(range)\\b",
+			"begin": "(?i)\\b(is)\\b",
 			"end": "(?=;)",
 			"beginCaptures": {
-				"1": { "name": "keyword.ada" },
-				"2": { "name": "storage.modifier.ada" }
+				"1": { "name": "keyword.ada" }
 			},
 			"patterns": [
-				{ "include": "#range" }
+				{ "include": "#range_constraint" }
 			]
 		},
 		"type_declaration": {
