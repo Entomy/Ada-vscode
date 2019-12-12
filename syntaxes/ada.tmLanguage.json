@@ -149,6 +149,20 @@
 				{ "include": "#access_definition" }
 			]
 		},
+		"composite_constraint": {
+			"name": "meta.constraint.composite.ada",
+			"patterns": [
+				{ "include": "#index_constraint" },
+				{ "include": "#discriminant_constraint" }
+			]
+		},
+		"constraint": {
+			"name": "meta.constraint.ada",
+			"patterns": [
+				{ "include": "#scalar_constraint" },
+				{ "include": "#composite_constraint" }
+			]
+		},
 		"decimal_literal": {
 			"name": "constant.numeric.ada",
 			"match": "\\d(_?\\d)*(\\.\\d(_?\\d)*)?([eE](\\+|\\-)?\\d(_?\\d)*)?",
@@ -191,6 +205,24 @@
 		"defining_identifier": {
 			"patterns": [
 				{ "include": "#identifier" }
+			]
+		},
+		"delta_constraint": {
+			"name": "meta.constraint.delta.ada",
+			"begin": "(?i)\\bdelta\\b",
+			"end": "(?i)(?=(;|digits|range|with))\\b",
+			"beginCaptures": {
+				"0": { "name": "storage.modifier.ada" }
+			},
+			"patterns": [
+				{ "include": "#simple_expression" }
+			]
+		},
+		"discrete_range": {
+			"name": "meta.range.discrete.ada",
+			"patterns": [
+				{ "include": "#subtype_indiciation" },
+				{ "include": "#range" }
 			]
 		},
 		"digits_constraint": {
@@ -309,6 +341,21 @@
 			"name": "meta.dereference.implicit.ada",
 			"patterns": [
 				{ "include": "#name" }
+			]
+		},
+		"index_constraint": {
+			"name": "meta.constraint.index.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#discrete_range" }
 			]
 		},
 		"index_subtype_definition": {
@@ -614,6 +661,14 @@
 			"captures": {
 				"0": { "name": "keyword.operator.ada" }
 			}
+		},
+		"scalar_constraint": {
+			"name": "meta.constraint.scalar.ada",
+			"patterns": [
+				{ "include": "#range_constraint" },
+				{ "include": "#digits_constraint" },
+				{ "include": "#delta_constraint" }
+			]
 		},
 		"signed_integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.signed.ada",
