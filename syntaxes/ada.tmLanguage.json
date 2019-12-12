@@ -597,6 +597,32 @@
 				{ "include": "#identifier" }
 			]
 		},
+		"primary":{
+			"name": "meta.expression.primary.ada",
+			"patterns": [
+				{ "include": "#numeric_literal" },
+				{
+					"name": "keyword.ada",
+					"match": "(?i)\\bnull\\b"
+				},
+				{ "include": "#string_literal" },
+				{ "include": "#aggregate" },
+				{ "include": "#name" },
+				{ "include": "#allocator" },
+				{
+					"begin": "\\(",
+					"end": "\\)",
+					"captures": {
+						"0": { "name": "punctuation.ada" }
+					},
+					"patterns": [
+						{ "include": "#expression" },
+						{ "include": "#conditional_expression" },
+						{ "include": "#quantified_expression" }
+					]
+				}
+			]
+		},
 		"quantifier": {
 			"name": "meta.expression.quantifier.ada",
 			"match": "(?i)\\b(some|all)\\b",
@@ -756,12 +782,12 @@
 		},
 		"string_literal": {
 			"name": "string.quoted.double.ada",
-			"match": "(\")([^\"][^\"])*(\")",
+			"match": "(\").*?(\")",
 			"captures": {
 				"1": {
 					"name": "punctuation.definition.string.ada"
 				},
-				"3": {
+				"2": {
 					"name": "punctuation.definition.string.ada"
 				}
 			}
