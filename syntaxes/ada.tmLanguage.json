@@ -225,6 +225,28 @@
 				{ "include": "#range" }
 			]
 		},
+		"discriminant_association": {
+			"name": "meta.constraint.discriminant.association.ada",
+			"patterns": [
+				{ "include": "#selecting_discriminant_association" },
+				{ "include": "#simple_discriminant_association" }
+			]
+		},
+		"discriminant_constraint": {
+			"name": "meta.constraint.discriminant.ada",
+			"begin": "\\(",
+			"end": "\\)",
+			"captures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#discriminant_association" }
+			]
+		},
 		"digits_constraint": {
 			"name": "meta.constraint.digits.ada",
 			"begin": "(?i)\\bdigits\\b",
@@ -670,6 +692,31 @@
 				{ "include": "#delta_constraint" }
 			]
 		},
+		"selecting_discriminant_association": {
+			"patterns": [
+				{
+					"name": "meta.constraint.discriminant.association.definition.ada",
+					"begin": "=>",
+					"end": "(?=(,|\\)))",
+					"beginCaptures": {
+						"0": { "name": "keyword.other.ada" }
+					},
+					"patterns": [
+						{ "include": "#expression" }
+					]
+				},
+				{
+					"name": "punctuation.ada",
+					"match": "[|]"
+				},
+				{
+					"name": "meta.constraint.discriminant.association.selector.ada",
+					"patterns": [
+						{ "include": "#name" }
+					]
+				}
+			]
+		},
 		"signed_integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.signed.ada",
 			"begin": "(?i)\\b(is)\\s+(range)\\b",
@@ -680,6 +727,11 @@
 			},
 			"patterns": [
 				{ "include": "#range" }
+			]
+		},
+		"simple_discriminant_association": {
+			"patterns": [
+				{ "include": "#expression" }
 			]
 		},
 		"simple_expression": {
