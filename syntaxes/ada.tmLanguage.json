@@ -136,7 +136,7 @@
 		"component_definition": {
 			"name": "meta.declaration.type.definition.component.ada",
 			"begin": "(?i)\\bof\\b",
-			"end": "(?=;)",
+			"end": "(?i)(?=(;|with))",
 			"beginCaptures": {
 				"0": { "name": "keyword.ada" }
 			},
@@ -196,7 +196,7 @@
 		"digits_constraint": {
 			"name": "meta.constraint.digits.ada",
 			"begin": "(?i)\\bdigits\\b",
-			"end": "(?i)(?=(;|range))\\b",
+			"end": "(?i)(?=(;|range|with))\\b",
 			"beginCaptures": {
 				"0": { "name": "storage.modifier.ada" }
 			},
@@ -240,7 +240,7 @@
 		"fixed_point_definition": {
 			"name": "meta.declaration.type.definition.real.fixed-point.ada",
 			"begin": "(?i)\\b(is)\\s+(delta)\\b",
-			"end": "(?=;)",
+			"end": "(?i)(?=(;|with))",
 			"beginCaptures": {
 				"1": { "name": "keyword.ada" },
 				"2": { "name": "storage.modifier.ada" }
@@ -254,7 +254,7 @@
 		"floating_point_definition": {
 			"name": "meta.declaration.type.definition.real.floating-point.ada",
 			"begin": "(?i)\\b(is)\\s+(digits)\\b",
-			"end": "(?=;)",
+			"end": "(?i)(?=(;|with))",
 			"beginCaptures": {
 				"1": { "name": "keyword.ada" },
 				"2": { "name": "storage.modifier.ada" }
@@ -374,7 +374,7 @@
 		"modular_type_definition": {
 			"name": "meta.declaration.type.definition.integer.modular.ada",
 			"begin": "(?i)\\b(is)\\s+(mod)\\b",
-			"end": "(?=;)",
+			"end": "(?i)(?=(;|with))",
 			"beginCaptures": {
 				"1": { "name": "keyword.ada" },
 				"2": { "name": "storage.modifier.ada" }
@@ -560,7 +560,7 @@
 		"range": {
 			"name": "meta.range.ada",
 			"begin": "(?=.)",
-			"end": "(?=;)",
+			"end": "(?i)(?=(;|with))",
 			"patterns": [
 				{
 					"name": "keyword.operator.ada",
@@ -572,7 +572,7 @@
 		"range_constraint": {
 			"name": "meta.constraint.range.ada",
 			"begin": "(?i)\\brange\\b",
-			"end": "(?=;)",
+			"end": "(?i)(?=(;|with))",
 			"beginCaptures": {
 				"0": { "name": "storage.modifier.ada" }
 			},
@@ -598,6 +598,7 @@
 				"0": { "name": "punctuation.ada" }
 			},
 			"patterns": [
+				{ "include": "#aspect_specification" },
 				{ "include": "#type_definition" }
 			]
 		},
@@ -611,7 +612,7 @@
 		"signed_integer_type_definition": {
 			"name": "meta.declaration.type.definition.integer.signed.ada",
 			"begin": "(?i)\\b(is)\\s+(range)\\b",
-			"end": "(?=;)",
+			"end": "(?i)(?=(;|with))",
 			"beginCaptures": {
 				"1": { "name": "keyword.ada" },
 				"2": { "name": "storage.modifier.ada" }
