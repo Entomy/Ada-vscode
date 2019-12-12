@@ -20,7 +20,7 @@
 		"aspect_definition": {
 			"name": "meta.aspect.definition.ada",
 			"begin": "=>",
-			"end": "(?=(,|;|is))",
+			"end": "(?i)\\b(?=(,|;|is))\\b",
 			"beginCaptures": {
 				"0": { "name": "keyword.other.ada" }
 			},
@@ -50,7 +50,7 @@
 					"name": "punctation.ada",
 					"match": ","
 				},
-				{ "include": "#aspect_specification" },
+				{ "include": "#aspect_definition" },
 				{ "include": "#aspect_mark" }
 			]
 		},
@@ -236,6 +236,12 @@
 				"3": { "name": "punctuation.ada" },
 				"4": { "name": "keyword.ada" }
 			}
+		},
+		"expression": {
+			"name": "meta.expression.ada",
+			"patterns": [
+				{ "include": "#simple_expression" }
+			]
 		},
 		"fixed_point_definition": {
 			"name": "meta.declaration.type.definition.real.fixed-point.ada",
