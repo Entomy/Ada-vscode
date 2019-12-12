@@ -659,6 +659,15 @@
 				}
 			}
 		},
+		"subpool_specification": {
+			"name": "meta.storage-pool.subpool.specification.ada",
+			"match": "(\\()((\\w|\\d|\\.|_)+)(\\))",
+			"captures": {
+				"1": { "name": "punctuation.ada" },
+				"2": { "patterns": [ { "include": "#name" } ] },
+				"4": { "name": "punctuation.ada" }
+			}
+		},
 		"subprogram_default": {
 			"name": "meta.default.subprogram.ada",
 			"match": "(?i)\\b((\\w|\\d|\\.|_)+|<>|null)\\b",
