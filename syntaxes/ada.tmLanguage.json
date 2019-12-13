@@ -203,8 +203,19 @@
 			]
 		},
 		"defining_identifier": {
+			"name": "meta.defining-identifier.ada",
 			"patterns": [
 				{ "include": "#identifier" }
+			]
+		},
+		"defining_identifier_list": {
+			"name": "meta.defining-identifier.list.ada",
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#defining_identifier" }
 			]
 		},
 		"delta_constraint": {
