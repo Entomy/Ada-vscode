@@ -331,6 +331,13 @@
 				{ "include": "#protected_type_declaration" }
 			]
 		},
+		"general_access_modifier": {
+			"name": "meta.access.modifier.ada",
+			"match": "(?i)\\b(all|constant)\\b",
+			"captures": {
+				"0": { "name": "storage.modifier.ada" }
+			}
+		},
 		"goto_statement": {
 			"name": "meta.statement.goto.ada",
 			"begin": "(?i)\\bgoto\\b",
