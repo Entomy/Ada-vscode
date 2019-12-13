@@ -820,10 +820,32 @@
 				}
 			}
 		},
+		"subtype_declaration": {
+			"name": "meta.declaration.subtype.ada",
+			"begin": "(?i)\\b(subtype)\\s+((\\w|\\d|\\.|_)+)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "storage.type.ada" }
+			},
+			"patterns": [
+				{
+					"begin": "(?i)\\bis\\b",
+					"end": "(?i)\\b(?=(;|with))\\b",
+					"beginCaptures": {
+						"0": { "name": "keyword.ada" }
+					},
+					"patterns": [
+						{ "include": "#subtype_indication" }
+					]
+				},
+				{ "include": "#aspect_specification" }
+			]
+		},
 		"subtype_indication": {
 			"name": "meta.declaration.subtype.indication.ada",
-			"begin": "(?i)\\b(null)\\s+((\\w|\\d|\\.|_)+)\\b",
-			"end": "(?=;)",
+			"begin": "(?i)\\b(null\\s+)?((\\w|\\d|\\.|_)+)\\b",
+			"end": "(?i)\\b(?=(;|with))\\b",
 			"beginCaptures": {
 				"1": { "name": "keyword.ada" },
 				"2": { "patterns": [ { "include": "#subtype_mark" } ] }
