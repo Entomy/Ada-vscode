@@ -35,79 +35,8 @@
     ],
     "contributes": {
         "grammars": [
-            {
-                "language": "ada",
-                "scopeName": "source.ada",
-                "path": "./syntaxes/ada.tmLanguage.json"
-            },
-            {
-                "language": "adc",
-                "scopeName": "source.adc",
-                "path": "./syntaxes/adc.tmLanguage.json"
-            },
-            {
-                "language": "ali",
-                "scopeName": "source.ali",
-                "path": "./syntaxes/ali.tmLanguage.json"
-            },
-            {
-                "language": "gpr",
-                "scopeName": "source.gpr",
-                "path": "./syntaxes/gpr.tmLanguage.json"
-            }
         ],
         "languages": [
-            {
-                "id": "ada",
-                "aliases": [
-                    "Ada",
-                    "ADA",
-                    "ada",
-                    "Spark",
-                    "SPARK",
-                    "spark"
-                ],
-                "extensions": [
-                    ".ada",
-                    ".adb",
-                    ".ads"
-                ],
-                "configuration": "./ada.language.json"
-            },
-            {
-                "id": "adc",
-                "aliases": [
-                    "GNAT Configuration",
-                    "GNAT Config",
-                    "adc"
-                ],
-                "extensions": [
-                    ".adc"
-                ],
-                "configuration": "./adc.language.json"
-            },
-            {
-                "id": "ali",
-                "aliases": [
-                    "ali",
-                    "ALI",
-                    "Ada Library Information"
-                ],
-                "extensions": [
-                    ".ali"
-                ]
-            },
-            {
-                "id": "gpr",
-                "aliases": [
-                    "GNAT Project",
-                    "gpr"
-                ],
-                "extensions": [
-                    ".gpr"
-                ],
-                "configuration": "./gpr.language.json"
-            }
         ]
     }
 }
