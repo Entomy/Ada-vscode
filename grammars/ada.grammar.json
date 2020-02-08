@@ -2,7 +2,9 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Ada",
 	"patterns": [
-		{ "include": "#package_declaration" }
+		{ "include": "#package_declaration" },
+		{ "include": "#use_clause" },
+		{ "include": "#with_clause" }
 	],
 	"repository": {
 		"aspect_definition": {
@@ -42,11 +44,32 @@
 				{ "include": "#aspect_mark" }
 			]
 		},
+		"basic_declarative_item": {
+			"name": "meta.declaration.ada",
+			"patterns": [
+				{ "include": "#use_clause" }
+			]
+		},
 		"package_declaration": {
 			"name": "meta.declaration.package.ada",
 			"patterns": [
 				{ "include": "#package_specification" }
 			]
+		},
+		"package_mark": {
+			"name": "meta.package-mark.ada",
+			"match": "\\b(\\w|\\d|\\.|_)+\\b",
+			"captures": {
+				"0": {
+					"name": "entity.name.package.ada",
+					"patterns": [
+						{
+							"name": "punctuation.ada",
+							"match": "[_.]"
+						}
+					]
+				}
+			}
 		},
 		"package_specification": {
 			"name": "meta.declaration.package.specification.ada",
@@ -54,19 +77,100 @@
 			"end": "(?i)\\b(end)\\s(\\2)(;)",
 			"beginCaptures": {
 				"1": { "name": "keyword.ada" },
-				"2": { "name": "entity.name.package.ada" }
+				"2": { "patterns": [ { "include": "#package_mark" } ] }
 			},
 			"endCaptures": {
 				"1": { "name": "keyword.ada" },
-				"2": { "name": "entity.name.package.ada" },
+				"2": { "patterns": [ { "include": "#package_mark" } ] },
 				"3": { "name": "punctuation.ada" }
 			},
 			"patterns": [
+				{ "include": "#basic_declarative_item" },
 				{ "include": "#aspect_specification" },
 				{
 					"name": "keyword.ada",
 					"match": "(?i)\\bis\\b"
 				}
+			]
+		},
+		"subtype_mark": {
+			"name": "meta.subtype-mark.ada",
+			"match": "\\b(\\w|\\d|\\.|_)+\\b",
+			"captures": {
+				"0": {
+					"name": "storage.type.ada",
+					"patterns": [
+						{
+							"name": "punctuation.ada",
+							"match": "_"
+						}
+					]
+				}
+			}
+		},
+		"use_clause": {
+			"name": "meta.context.use.ada",
+			"patterns": [
+				{ "include": "#use_type_clause" },
+				{ "include": "#use_package_clause" }
+			]
+		},
+		"use_package_clause": {
+			"name": "meta.context.use.package.ada",
+			"begin": "(?i)\\buse\\b",
+			"end": ";",
+			"beginCaptures": {
+				"0": { "name": "keyword.other.using.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#package_mark" }
+			]
+		},
+		"use_type_clause": {
+			"name": "meta.context.use.type.ada",
+			"begin": "(?i)\\b(use)\\s+(?:(all)\\s+)?(type)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"1": { "name": "keyword.other.using.ada" },
+				"2": { "name": "keyword.modifier.ada" },
+				"3": { "name": "keyword.modifier.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#subtype_mark" }
+			]
+		},
+		"with_clause": {
+			"name": "meta.context.with.ada",
+			"begin": "(?i)\\b(?:(limited)\\s+)?(?:(private)\\s+)?(with)\\b",
+			"end": ";",
+			"beginCaptures": {
+				"1": { "name": "keyword.modifier.ada" },
+				"2": { "name": "storage.visibility.ada" },
+				"3": { "name": "keyword.other.using.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#package_mark" }
 			]
 		}
 	},
