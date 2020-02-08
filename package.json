@@ -35,8 +35,19 @@
     ],
     "contributes": {
         "grammars": [
+            {
+                "language": "ada",
+                "scopeName": "source.ada",
+                "path": "./grammars/ada.grammar.json"
+            }
         ],
         "languages": [
+            {
+                "id": "ada",
+                "aliases": [ "ada", "Ada", "ADA", "spark", "Spark", "SPARK" ],
+                "extensions": [ ".ada", ".adb", ".ads" ],
+                "configuration": "./languages/ada.language.json"
+            }
         ]
     }
 }

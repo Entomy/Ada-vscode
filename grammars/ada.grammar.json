@@ -1,0 +1,74 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ada",
+	"patterns": [
+		{ "include": "#package_declaration" }
+	],
+	"repository": {
+		"aspect_definition": {
+			"name": "meta.aspect.definition.ada",
+			"begin": "=>",
+			"end": "(?i)\\b(?=(,|;|is))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.other.ada" }
+			},
+			"patterns": [
+				{ "include": "#name" },
+				{ "include": "#expression" }
+			]
+		},
+		"aspect_mark": {
+			"name": "meta.aspect.mark.ada",
+			"match": "(?i)\\b((?:\\w|\\d|\\.|_)+)(?:(')(class))?\\b",
+			"captures": {
+				"1": { "name": "keyword.control.directive.ada" },
+				"2": { "name": "punctuation.ada" },
+				"3": { "name": "entity.other.attribute-name.ada" }
+			}
+		},
+		"aspect_specification": {
+			"name": "meta.aspect.specification.ada",
+			"begin": "(?i)\\bwith\\b",
+			"end": "(?i)\\b(?=(;|is))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				},
+				{ "include": "#aspect_definition" },
+				{ "include": "#aspect_mark" }
+			]
+		},
+		"package_declaration": {
+			"name": "meta.declaration.package.ada",
+			"patterns": [
+				{ "include": "#package_specification" }
+			]
+		},
+		"package_specification": {
+			"name": "meta.declaration.package.specification.ada",
+			"begin": "(?i)\\b(package)\\s+((?:\\w|\\d|\\.|_)+)\\b",
+			"end": "(?i)\\b(end)\\s(\\2)(;)",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "entity.name.package.ada" }
+			},
+			"endCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "entity.name.package.ada" },
+				"3": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{ "include": "#aspect_specification" },
+				{
+					"name": "keyword.ada",
+					"match": "(?i)\\bis\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.ada"
+}
