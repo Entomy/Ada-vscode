@@ -56,6 +56,24 @@
 				{ "include": "#basic_declaration" }
 			]
 		},
+		"enumeration_type_definition": {
+			"name": "meta.declaration.type.definition.enumeration.ada",
+			"begin": "(?i)\\b(is)\\s+(\\()",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": { "name": "keyword.ada" },
+				"2": { "name": "punctuation.ada" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.ada" }
+			},
+			"patterns": [
+				{
+					"name": "punctuation.ada",
+					"match": ","
+				}
+			]
+		},
 		"full_type_declaration": {
 			"patterns": [
 				{ "include": "#regular_type_declaration" }
@@ -174,6 +192,7 @@
 		"type_definition": {
 			"name": "meta.declaration.type.definition.ada",
 			"patterns": [
+				{ "include": "#enumeration_type_definition" },
 				{ "include": "#record_type_definition" }
 			]
 		},
