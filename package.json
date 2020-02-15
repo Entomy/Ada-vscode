@@ -1,6 +1,6 @@
 {
     "name": "ada",
-    "displayName": "Ada",
+    "displayName": "Ada (deprecated)",
     "description": "Ada language support, developed by an actual Ada programmer",
     "icon": "icon.png",
     "version": "0.88.0",
